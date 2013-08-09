@@ -13,16 +13,16 @@ categories: python
 ``` python
 def br(fn):
     def wrapped():
-        return '<li>' + fn()+ '</li>'
+        return '<br>' + fn()+ '</br>'
     return wrapped
 
 def li(fn):
     def wrapped():
-        return '<br>' + fn()+ '</br>'
+        return '<li>' + fn()+ '</li>'
     return wrapped
 
-@li
 @br
+@li
 def hello():
     return 'Hello'
 print hello()
@@ -73,17 +73,17 @@ xiaoming()
     Function is called.               
     Name=xiaoming, Age=8, Sexy=Male              
        
-可以看到xiaoming这个类实例表现的像函数一样，调用xiaoming()的结果是执行了__call__方法，这个前后都带双下划线的方法称为魔术方法。通过魔术方法__call__，类实例表现出了函数的特征。
+可以看到xiaoming这个类实例表现的像函数一样，调用xiaoming()的结果是执行了\_\_call\_\_方法，这个前后都带双下划线的方法称为魔术方法。通过魔术方法\_\_call\_\_，类实例表现出了函数的特征。
        
 魔术方法
 -----------
        
-魔术方法很多，比如__enter__，__exit__。我们知道with函数的用法：      
+魔术方法很多，比如\_\_enter\_\_，\_\_exit\_\_。我们知道with函数的用法：      
 ```python  
 with open('test.txt') as f:
     print 'Open file test.txt'
 ```   
-with函数会自动执行__enter__和__exit__方法，在with开始执行的时候，就会调用__enter__方法，而在with函数结束的时候调用__exit__方法，open的__exit__会自动关闭文件，省去了显式调用close方法的步骤。      
+with函数会自动执行\_\_enter\_\_和\_\_exit\_\_方法，在with开始执行的时候，就会调用\_\_enter\_\_方法，而在with函数结束的时候调用\_\_exit\_\_方法，open的\_\_exit\_\_会自动关闭文件，省去了显式调用close方法的步骤。      
          
 举个例子：
        
@@ -108,14 +108,14 @@ with Vipsl() as v:
     processing...    
     Exit.         
       
-我们可以看到__exit__最后执行。       
+我们可以看到\_\_exit\_\_最后执行。       
          
-上例有最基本的魔法函数__init__，他在创建对象时调用，可以视为C++中的构造函数，而__del__视为析构器。其实__init__并不是类实例化时所调用的第一个方法，第一个调用的方法是__new__。
+上例有最基本的魔法函数\_\_init\_\_，他在创建对象时调用，可以视为C++中的构造函数，而\_\_del\_\_视为析构器。其实\_\_init\_\_并不是类实例化时所调用的第一个方法，第一个调用的方法是\_\_new\_\_。
 
 元类
 --------------     
 
-说到__new__，就涉及到元类的概念了。       
+说到\_\_new\_\_，就涉及到元类的概念了。       
 元类就是类的类。       
 我们知道类可以使用class关键字来定义，这时候python解释器会自动创建这个对象，但类也是对象，像其他对象一样，为了生成类，python也会提供一个手动处理的方法，这个方法就是type。type创建类的格式是：         
 `type(类名，父类元组，属性字典)`
@@ -132,7 +132,7 @@ class student(person)：
 可以看到，type创建了一个类。其实type就是元类，而且是python中创建所有类的元类。
 str是类，int也是类，从这些类中可以创建出字符串对象，整型对象，而str类和int类的元类也是type。
 
-我们可以从__class__属性中看出端倪。
+我们可以从\_\_class\_\_属性中看出端倪。
 ```
 >>> a = 'hello world'
 >>> a.__class__
@@ -140,9 +140,9 @@ str是类，int也是类，从这些类中可以创建出字符串对象，整�
 >>> a.__class__.__class__
 <type 'type'>
 ```
-字符串a是从str类而来，str类来自元类type，那么a.__class__.__class__.__class__是什么呢？还是type。
+字符串a是从str类而来，str类来自元类type，那么a.\_\_class\_\_.\_\_class\_\_.\_\_class\_\_是什么呢？还是type。
 
-type是元类，当然我们可以创建自己的元类，这就是__metaclass__。如果指定了__metaclass__，那么，这个类将不会由type创建，而是由指定的__mataclass__创建，那么__metaclass__是什么呢？其实就是可以创建类的东西，可以是一个类（来自type），也可以是type。
+type是元类，当然我们可以创建自己的元类，这就是\_\_metaclass\_\_。如果指定了\_\_metaclass\_\_，那么，这个类将不会由type创建，而是由指定的\_\_mataclass\_\_创建，那么\_\_metaclass\_\_是什么呢？其实就是可以创建类的东西，可以是一个类（来自type），也可以是type。
 
 举例子：
 ```python
@@ -171,12 +171,12 @@ print student.nlist
 可以看到mc其实是type的子类，任意person的子类名，都会放到nlist里面。定义type的时候注意，要符合type的参数定义格式。就是：
 type(类名，父类元组，属性字典)         
          
-回到__new__属性，记不记得前面讲的__call__，那么type是不是可以类实例函数化，所以       
+回到\_\_new\_\_属性，记不记得前面讲的\_\_call\_\_，那么type是不是可以类实例函数化，所以       
 `type(类名，父类元组，属性字典)`  
 等价为       
 `type(类名).__call__(类名，父类元组，属性字典)`
 
-而在__call__的实现中，是先尝试用__new__来创建类实例的，只有__new__返回了类的实例，__init__才会执行。
+而在\_\_call\_\_的实现中，是先尝试用\_\_new\_\_来创建类实例的，只有\_\_new\_\_返回了类的实例，\_\_init\_\_才会执行。
 可以这样表示：
 ```python
 def __call__(cls, *args, **kwargs):

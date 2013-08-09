@@ -1,0 +1,290 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>python 的编码问题 - BaQiao</title>
+	<meta name="author" content="yexinjing">
+
+	
+	<meta name="description" content="Python 的编码问题 编码涉及到很多问题，本文简单讲一讲 写python脚本的时候，头两行的常见格式是： #!/usr/bin/env python #coding:utf-8 第一行的意义是在Linux下，当脚本是可执行文件是，以&#8221;./*.py&#8221; &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="BaQiao" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://xdbaqiao.github.io/blog/2013/08/09/coding-problem/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("yexj061761@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+</div>
+<h1><a href="/">BaQiao</a></h1>
+<p class="subtitle"><br>XDU/NWPU/VIPSL/<br> Program/Python/Algorithm/<br> Linux/Arch/Embedded Linux/<br> Xi'an, Shannxi Province<br> <br><h1>KEEP MOVING</h1></p>
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		<a class="google" href="https://plus.google.com/112081939216553363796" rel="author" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/yexinjing" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/xdbaqiao" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Python 的编码问题</h1>
+	<div class="entry-content" itemprop="articleBody"><p>编码涉及到很多问题，本文简单讲一讲</p>
+
+<p>写python脚本的时候，头两行的常见格式是：</p>
+
+<pre><code>#!/usr/bin/env python                  
+#coding:utf-8               
+</code></pre>
+
+<p>第一行的意义是在Linux下，当脚本是可执行文件是，以&#8221;./*.py&#8221;执行程序时需要调用的命令，如果以命令&#8217;python  *.py&#8217;执行程序，则第一行是没有意义的              <br/>
+第二行涉及到python编码问题，它指定脚本内容的编码方式。这一行的写法很灵活，但必须包含三项内容，即&#8221;#&#8221;, &#8220;coding&#8221; 和编码   <br/>
+所以，也可以写作<code># -*- coding: UTF-8 -*-</code></p>
+
+<p><strong>基本知识</strong>               <br/>
+在讲python编码之前，需要了解一些基本知识：         <br/>
+1. python有两种字符串类型，str和unicode，例如</p>
+
+<pre><code>&gt;&gt;&gt; a = u'你好'          
+&gt;&gt;&gt; a.__class__             
+&lt;type 'unicode'&gt;           
+&gt;&gt;&gt; a = '你好'           
+&gt;&gt;&gt; a.__class__      
+&lt;type 'str'&gt;          
+</code></pre>
+
+<p>2. python里       <br/>
+encode是指将unicode 转换成  其他编码</p>
+
+<pre><code>encode： unicode  --&gt;  other            
+</code></pre>
+
+<p>decode 是将其他编码  转换成 unicode</p>
+
+<pre><code>decode ： other   --&gt;  unicode               
+</code></pre>
+
+<p>3. 注意区分字符集和字符编码。</p>
+
+<pre><code>字符集是一个系统支持的所有抽象字符的集合，包括各种文字和符号。         
+字符编码是一套法则，使用该法则，将一个字符集与另一个集合配对。       
+字符集包括ASCII字符集，GB2312字符集，BIG5字符集，UNICODE字符集等        
+</code></pre>
+
+<p>4. UNICODE是字符集，UTF-8,UTF-16,UTF-32是三种字符编码方案。</p>
+
+<p><strong>python的编码问题</strong></p>
+
+<p>python在安装的时候，默认的编码是ASCII码，当程序中出现非ASCII码时，程序会报错.          <br/>
+在终端里，运行</p>
+
+<pre><code>&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.getdefaultencoding()
+'ascii'
+</code></pre>
+
+<p>可以看到，默认编码是ASCII码，看看&#8221;你好&#8221;是怎么编码的</p>
+
+<pre><code>&gt;&gt;&gt; a = '你好'
+&gt;&gt;&gt; a
+'\xe4\xbd\xa0\xe5\xa5\xbd'
+</code></pre>
+
+<p>这是&#8221;你好&#8221;的<strong>utf-8</strong>编码，如果对a解码呢，解码就是转换成unicode</p>
+
+<pre><code>&gt;&gt;&gt; a.decode('utf8')
+u'\u4f60\u597d'
+&gt;&gt;&gt; a = u'你好'
+&gt;&gt;&gt; a
+u'\u4f60\u597d'
+</code></pre>
+
+<p>可以看到，a被解码成unicode了，那对a编码呢，编码的定义是将unicode转换成其他编码，看看python会怎么处理</p>
+
+<pre><code>&gt;&gt;&gt; a = '你好'
+&gt;&gt;&gt; a.encode('utf8')
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal not in range(128)
+</code></pre>
+
+<p><strong>报错了</strong>！为什么会报错呢？这是因为对a进行encode操作，实际的代码是</p>
+
+<pre><code>unicode(a).encode('utf-8')
+</code></pre>
+
+<p>会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，解码出错。         <br/>
+而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，编码出错。</p>
+
+<pre><code>&gt;&gt;&gt; a.decode('utf8')
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "/usr/lib/python2.7/encodings/utf_8.py", line 16, in decode
+    return codecs.utf_8_decode(input, errors, True)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordinal not in range(128)
+</code></pre>
+
+<p>所以，<strong>最好对unicode对象只做encode操作，对str对象只做decode操作</strong>            <br/>
+前面都没有用print函数打印，这时因为print会对编码进行自动处理</p>
+
+<pre><code>&gt;&gt;&gt; a = '你好'
+&gt;&gt;&gt; print a.decode('utf8')
+你好
+</code></pre>
+
+<p>因为print函数对编码做了自动处理，所以显示汉字，这个操作系统环境变量设置有关。</p>
+
+<pre><code>&gt;&gt;&gt; a.decode('utf-8').encode('utf-8')
+'\xe4\xbd\xa0\xe5\xa5\xbd'
+&gt;&gt;&gt; print a.decode('utf8').encode('utf-8')
+你好
+</code></pre>
+
+<p>系统默认编码是ASCII码，那怎么修改系统默认编码呢：</p>
+
+<pre><code>&gt;&gt;&gt; import sys
+&gt;&gt;&gt; reload(sys)
+&gt;&gt;&gt; sys.setdefaultencoding('utf-8')
+</code></pre>
+
+<p>这样系统默认编码就是utf-8了。</p>
+
+<pre><code>&gt;&gt;&gt; sys.getdefaultencoding()
+'utf-8'
+</code></pre>
+
+<p>而在脚本文件里，如果没有<code>#coding:utf-8</code>，会发生什么情况呢？</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&#39;你好&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>运行程序，会报错：             <br/>
+<code>SyntaxError: Non-ASCII character '\xe4' in file 1.py on line 4, but no encoding declared;</code>              <br/>
+第四行不是ASCII码，出错，由打印的错误信息也可以看出系统默认编码是ASCII码</p>
+
+<p>如果加上<code>#coding:utf-8</code>，则会默认将非ASCII码，编码成utf-8</p>
+
+<p>OK，今天的研究就到这，以后有空再深入研究</p>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2013 - yexinjing -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'xdbaqiao';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xdbaqiao.github.io/blog/2013/08/09/coding-problem/';
+        var disqus_url = 'http://xdbaqiao.github.io/blog/2013/08/09/coding-problem/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

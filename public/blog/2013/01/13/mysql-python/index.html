@@ -1,0 +1,214 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Python和mysql - BaQiao</title>
+	<meta name="author" content="yexinjing">
+
+	
+	<meta name="description" content="Python和mysql 用python操作mysql很方便，主要运用MySQLdb库。Arch可以直接敲以下命令安装： pacman -S mysql-python 我的任务很简单，在已经存在的数据库中插入，查询和更新数据。代码也很简单，首先创建与数据库的链接： self.conn = &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="BaQiao" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://xdbaqiao.github.io/blog/2013/01/13/mysql-python/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("yexj061761@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+</div>
+<h1><a href="/">BaQiao</a></h1>
+<p class="subtitle"><br>XDU/NWPU/VIPSL/<br> Program/Python/Algorithm/<br> Linux/Arch/Embedded Linux/<br> Xi'an, Shannxi Province<br> <br><h1>KEEP MOVING</h1></p>
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		<a class="google" href="https://plus.google.com/112081939216553363796" rel="author" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/yexinjing" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/xdbaqiao" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Python和mysql</h1>
+	<div class="entry-content" itemprop="articleBody"><p>用python操作mysql很方便，主要运用MySQLdb库。Arch可以直接敲以下命令安装：</p>
+
+<blockquote><p>pacman -S mysql-python</p></blockquote>
+
+<p>我的任务很简单，在已经存在的数据库中插入，查询和更新数据。代码也很简单，首先创建与数据库的链接：</p>
+
+<blockquote><p>self.conn = MySQLdb.connect(host=mysql_host, port=mysql_port, user=mysql_user, passwd=mysql_password, charset=&#8217;utf8&#8217;, use_unicode=True)</p></blockquote>
+
+<p>然后获取游标：</p>
+
+<blockquote><p>self.cursor = self.conn.cursor()</p></blockquote>
+
+<p>选择数据库：</p>
+
+<blockquote><p>conn.select_db(mysql_db)</p></blockquote>
+
+<p>这样初始化就完成了，然后就可以执行SQL语句，进行数据库操作了。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MySQLHandler</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mysql_host</span><span class="p">,</span> <span class="n">mysql_user</span><span class="p">,</span> <span class="n">mysql_password</span><span class="p">,</span> <span class="n">mysql_db</span><span class="p">,</span> <span class="n">mysql_port</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">mysql_host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">mysql_port</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">mysql_user</span><span class="p">,</span> <span class="n">passwd</span><span class="o">=</span><span class="n">mysql_password</span><span class="p">,</span> <span class="n">charset</span><span class="o">=</span><span class="s">&#39;utf8&#39;</span><span class="p">,</span> <span class="n">use_unicode</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">select_db</span><span class="p">(</span><span class="n">mysql_db</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">=</span> <span class="bp">None</span>
+</span><span class='line'>    <span class="c"># 插入</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">add_row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">bag</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">sql</span> <span class="o">=</span> <span class="s">&#39;INSERT INTO </span><span class="si">%s</span><span class="s"> (</span><span class="si">%s</span><span class="s">) VALUES(</span><span class="si">%s</span><span class="s">);&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bag</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="s">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">bag</span><span class="p">)))</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">bag</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span class='line'>    <span class="c"># 查询</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">select_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">select_id</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">params_value</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">sql</span> <span class="o">=</span> <span class="s">&#39;SELECT </span><span class="si">%s</span><span class="s"> FROM </span><span class="si">%s</span><span class="s"> WHERE </span><span class="si">%s</span><span class="s"> = &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">select_id</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">;&#39;</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="p">(</span><span class="n">params_value</span><span class="p">,</span> <span class="p">))</span>
+</span><span class='line'>            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">r</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>            <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">return</span> <span class="s">&#39;&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2013 - yexinjing -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'xdbaqiao';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xdbaqiao.github.io/blog/2013/01/13/mysql-python/';
+        var disqus_url = 'http://xdbaqiao.github.io/blog/2013/01/13/mysql-python/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

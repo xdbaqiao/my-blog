@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://xdbaqiao.github.io/sitemap.xml 
