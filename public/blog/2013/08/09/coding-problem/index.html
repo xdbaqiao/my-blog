@@ -41,7 +41,7 @@
 	</script>
 </div>
 <h1><a href="/">BaQiao</a></h1>
-<p class="subtitle"><br>XDU/NWPU/VIPSL/<br> Program/Python/Algorithm/<br> Linux/Arch/Embedded Linux/<br> Xi'an, Shannxi Province<br> <br><h1>KEEP MOVING</h1></p>
+<p class="subtitle"><br>XDU/NWPU/VIPSL/<br> Program/Python/Algorithm/<br> Linux/Arch/Embedded Linux/<br> Xi'an, Shannxi Province, China<br> <br><h1>KEEP MOVING</h1></p>
 <nav id="main-nav"><ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
@@ -163,8 +163,8 @@ UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal 
 <pre><code>unicode(a).encode('utf-8')
 </code></pre>
 
-<p>会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，解码出错。         <br/>
-而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，编码出错。</p>
+<p>会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，<strong>解码</strong>出错。         <br/>
+而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，<strong>编码</strong>出错。</p>
 
 <pre><code>&gt;&gt;&gt; a.decode('utf8')
 Traceback (most recent call last):

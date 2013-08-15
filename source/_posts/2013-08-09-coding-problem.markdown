@@ -60,8 +60,8 @@ python在安装的时候，默认的编码是ASCII码，当程序中出现非ASC
     UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal not in range(128)
 __报错了__！为什么会报错呢？这是因为对a进行encode操作，实际的代码是             
     unicode(a).encode('utf-8')
-会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，解码出错。           
-而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，编码出错。           
+会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，__解码__出错。           
+而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，__编码__出错。           
     >>> a.decode('utf8')
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>

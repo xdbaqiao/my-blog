@@ -7,7 +7,7 @@
 	<meta name="author" content="yexinjing">
 
 	
-	<meta name="description" content="Apr 30th, 2013 python Python操作excel 最近一直在研究用python操作windows平台下的excel，对数据进行处理。目前操作excel的python库比较多，有xlwt、xlrd、pyexcelerator、openpyxl、win32com等，功能不一， &hellip;">
+	<meta name="description" content="May 25th, 2013 linux Ubuntu Touch Developer Preview Runs in My Galaxy Nexus *I tried to install the ubuntu touch preview in my Galaxy nexus several &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -41,7 +41,7 @@
 	</script>
 </div>
 <h1><a href="/">BaQiao</a></h1>
-<p class="subtitle"><br>XDU/NWPU/VIPSL/<br> Program/Python/Algorithm/<br> Linux/Arch/Embedded Linux/<br> Xi'an, Shannxi Province<br> <br><h1>KEEP MOVING</h1></p>
+<p class="subtitle"><br>XDU/NWPU/VIPSL/<br> Program/Python/Algorithm/<br> Linux/Arch/Embedded Linux/<br> Xi'an, Shannxi Province, China<br> <br><h1>KEEP MOVING</h1></p>
 <nav id="main-nav"><ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
@@ -95,6 +95,42 @@
   
 
 
+<time datetime="2013-05-25T19:38:00+08:00" data-updated="true" itemprop="datePublished">May 25<span>th</span>, 2013</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>linux</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/05/25/ubuntu-in-nexus/" itemprop="url">Ubuntu Touch Developer Preview Runs in My Galaxy Nexus</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="http://i.imgur.com/DK4RATL.jpg" alt="ubuntu" />         <br/>
+*I tried to install the ubuntu touch preview in my Galaxy nexus several mouths ago and i made it.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
 <time datetime="2013-04-30T19:37:00+08:00" data-updated="true" itemprop="datePublished">Apr 30<span>th</span>, 2013</time></div>
 		<div class="tags">
 
@@ -120,100 +156,6 @@
 <p>openpyxl可以实现很多excel的功能，我关注的功能包括合并单元格，调整单元格大小，设置单元格背景颜色，设置文本字体、大小、颜色等，都能轻易实现。</p>
 
 <p>代码不在本机，就不上了。</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-13T19:33:00+08:00" data-updated="true" itemprop="datePublished">Mar 13<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/linux/'>linux</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/03/13/mini2440/" itemprop="url">Mini2440 实现软件路由</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>（硬件配置：Mini2440嵌入式电路板，外置网卡芯片是DM9601的usb有线网卡）</p>
-
-<p>1.配置内核，使支持iptables，usbnet和mii，交叉编译内核（usbnet和mii主要是为了支持usb网卡，注意是编译到内核，不是编译成模块），将内核移植到Mini2440。</p>
-
-<p>2.交叉编译iptables和usb网卡驱动qf9700，后者是单独的模块qf9700.ko，下载到板上insmod即可（不用modprobe usbnet），可ifconfig eth1看到设备。</p>
-
-<p>3.交叉编译libpcap，版本是0.9，命令大致如下</p>
-
-<blockquote><p>./configure –host=arm-linux</p></blockquote>
-
-<p>编辑Makefile，更改—prefix，使为arm-linux-gcc原目录下的arm-non-。。。。</p>
-
-<pre><code>make 
-make install
-</code></pre>
-
-<p>4. 交叉编译h3cclient，注意Makefile的编写，编译器应该修改为arm-linux-g++</p>
-
-<p>附上Makefile</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='makefile'><span class='line'><span class="nv">OBJECT</span> <span class="o">=</span> main.o dot1x.o md5.o
-</span><span class='line'><span class="nv">LIBS</span> <span class="o">=</span> -lpcap
-</span><span class='line'><span class="nv">TARGET</span> <span class="o">=</span> h3cclient
-</span><span class='line'><span class="k">$(</span>TARGET<span class="k">)</span>: <span class="k">$(</span>OBJECT<span class="k">)</span>
-</span><span class='line'>arm-linux-g++ -o <span class="k">$(</span>TARGET<span class="k">)</span> <span class="k">$(</span>OBJECT<span class="k">)</span> <span class="k">$(</span>LIBS<span class="k">)</span>
-</span><span class='line'>main.o: main.cpp dot1x.h
-</span><span class='line'>arm-linux-g++ -c main.cpp
-</span><span class='line'>dot1x.o: dot1x.cpp dot1x.h md5.h
-</span><span class='line'>arm-linux-g++ -c dot1x.cpp
-</span><span class='line'>md5.o: md5.cpp md5.h
-</span><span class='line'>arm-linux-g++ -c md5.cpp
-</span><span class='line'>clean:
-</span><span class='line'>rm -f <span class="k">$(</span>OBJECT<span class="k">)</span> <span class="k">$(</span>TARGET<span class="k">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>客户端为xd-h3c，需要细微修改，将grep及ps相关代码注释，busybox版本有点陈旧，不支持部分选项。       <br/>
-客户端的移植依赖libpcap-0.9.3，libgpg-error-1.1和libgcrypt-1.2.1，这些包的发布时间都是在06年前后，版本很重要，其他版本尝试过几次，都无法顺利移植。编译大同小异，都需要root权限</p>
-
-<pre><code>./configure –host=arm-linux –prefix=/opt/…/arm- 
-make 
-make install
-</code></pre>
-
-<p>编译成功之后需要将相关的库文件libgpg-error.so，libgcrypt.so复制到嵌入式板/usr/lib目录，之后就可以共享上网了。</p>
-
-<p>ifconfig eth0 -promisc关闭网卡混杂模式。</p>
 
 		
 		

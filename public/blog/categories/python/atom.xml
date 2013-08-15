@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | BaQiao]]></title>
   <link href="http://xdbaqiao.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://xdbaqiao.github.io/"/>
-  <updated>2013-08-09T21:17:25+08:00</updated>
+  <updated>2013-08-15T15:55:59+08:00</updated>
   <id>http://xdbaqiao.github.io/</id>
   <author>
     <name><![CDATA[yexinjing]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[python与gnuplot]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/08/15/webserver/"/>
+    <updated>2013-08-15T15:53:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/08/15/webserver</id>
+    <content type="html"><![CDATA[<p>写了一个测试web服务器性能的简单脚本，运用了apache中的测试工具ab，代码如下：        <br/>
+额，这不是什么机密吧，只是一个框架，以后可以加cache机制，加config或者argv，领导不要抓我。
+```python</p>
+
+<h1>!/usr/bin/python</h1>
+
+<h1>coding:utf-8</h1>
+
+<p>import re
+import commands
+import Gnuplot</p>
+
+<p>class nginxTest:</p>
+
+<pre><code>def __init__(self, num):
+    self.request_finish_time = []
+    self.command = 'ab -n %s -c 10 -k http://localhost/' # 把localhost 换成www.google.com，让暴风雨来的猛烈些吧
+    self.num = num
+
+def start(self):
+    for i_num, i in enumerate(self.num): 
+        self.getOutput(i)
+        self.parseOutput()
+        print 'Total %s, finish %s.' % (str(len(self.num)), str(i_num+1))
+
+def getOutput(self, num):
+    (status, self.output) = commands.getstatusoutput(self.command % num)
+
+def parseOutput(self):
+    m = re.compile('Time taken for tests:\s+([\.\d]+)').search(self.output)
+    if m:
+        rft = m.groups()[0]
+        self.request_finish_time.append(rft)
+</code></pre>
+
+<p>class gnuplot:</p>
+
+<pre><code>def __init__(self, x, y, title):
+    self.x = x
+    self.y = y
+    self.title = title
+    self.plot()
+
+def plot(self):
+    self.g = Gnuplot.Gnuplot(debug=1)
+    d = Gnuplot.Data(self.x, self.y, with_='lines')
+    self.g.title(self.title)
+    self.g.xlabel('times')
+    self.g.ylabel('%s' % self.title)
+    self.g.plot(d)
+    self.g.hardcopy('./%s.ps' % self.title, enhanced=1, color=1)
+</code></pre>
+
+<p>if <strong>name</strong> == '<strong>main</strong>':</p>
+
+<pre><code>times = [i for i in range(10, 45)]
+n = nginxTest(num=times)
+n.start()
+gnuplot(x=times, y=n.request_finish_time, title='request finish time')
+</code></pre>
+
+<p>```</p>
+
+<p><strong>The result is following</strong></p>
+
+<p><img src="http://imgur.com/okeEBq1.png" alt="request_finish_time" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[python 的编码问题]]></title>
@@ -102,8 +176,8 @@ UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal 
 <pre><code>unicode(a).encode('utf-8')
 </code></pre>
 
-<p>会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，解码出错。         <br/>
-而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，编码出错。</p>
+<p>会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，<strong>解码</strong>出错。         <br/>
+而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，<strong>编码</strong>出错。</p>
 
 <pre><code>&gt;&gt;&gt; a.decode('utf8')
 Traceback (most recent call last):
@@ -565,60 +639,6 @@ return result
 <p>openpyxl可以实现很多excel的功能，我关注的功能包括合并单元格，调整单元格大小，设置单元格背景颜色，设置文本字体、大小、颜色等，都能轻易实现。</p>
 
 <p>代码不在本机，就不上了。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python和mysql]]></title>
-    <link href="http://xdbaqiao.github.io/blog/2013/01/13/mysql-python/"/>
-    <updated>2013-01-13T19:25:00+08:00</updated>
-    <id>http://xdbaqiao.github.io/blog/2013/01/13/mysql-python</id>
-    <content type="html"><![CDATA[<p>用python操作mysql很方便，主要运用MySQLdb库。Arch可以直接敲以下命令安装：</p>
-
-<blockquote><p>pacman -S mysql-python</p></blockquote>
-
-<p>我的任务很简单，在已经存在的数据库中插入，查询和更新数据。代码也很简单，首先创建与数据库的链接：</p>
-
-<blockquote><p>self.conn = MySQLdb.connect(host=mysql_host, port=mysql_port, user=mysql_user, passwd=mysql_password, charset='utf8', use_unicode=True)</p></blockquote>
-
-<p>然后获取游标：</p>
-
-<blockquote><p>self.cursor = self.conn.cursor()</p></blockquote>
-
-<p>选择数据库：</p>
-
-<blockquote><p>conn.select_db(mysql_db)</p></blockquote>
-
-<p>这样初始化就完成了，然后就可以执行SQL语句，进行数据库操作了。         <br/>
-```python
-class MySQLHandler:</p>
-
-<pre><code>def __init__(self, mysql_host, mysql_user, mysql_password, mysql_db, mysql_port):
-    try:
-        self.conn = MySQLdb.connect(host=mysql_host, port=mysql_port, user=mysql_user, passwd=mysql_password, charset='utf8', use_unicode=True)
-        self.cursor = self.conn.cursor()
-        self.conn.select_db(mysql_db)
-    except Exception, e:
-        self.cursor = None
-# 插入
-def add_row(self, table, bag):
-    if self.cursor:
-        sql = 'INSERT INTO %s (%s) VALUES(%s);' % (table, ','.join(bag.keys()), ','.join(['%s']*len(bag)))
-        self.cursor.execute(sql, tuple(bag.values()))
-        self.conn.commit()
-# 查询
-def select_table(self, select_id, table, params, params_value):
-    if self.cursor:
-        sql = 'SELECT %s FROM %s WHERE %s = ' % (select_id, table, params) + '%s;'
-        self.cursor.execute(sql, (params_value, ))
-        r = self.cursor.fetchone()
-        if r:
-            return r[0]
-        else:
-            return ''
-</code></pre>
-
-<p>```</p>
 ]]></content>
   </entry>
   

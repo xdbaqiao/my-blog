@@ -4,7 +4,7 @@
   <title><![CDATA[BaQiao]]></title>
   <link href="http://xdbaqiao.github.io/atom.xml" rel="self"/>
   <link href="http://xdbaqiao.github.io/"/>
-  <updated>2013-08-09T21:17:25+08:00</updated>
+  <updated>2013-08-15T15:55:59+08:00</updated>
   <id>http://xdbaqiao.github.io/</id>
   <author>
     <name><![CDATA[yexinjing]]></name>
@@ -12,6 +12,121 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[python与gnuplot]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/08/15/webserver/"/>
+    <updated>2013-08-15T15:53:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/08/15/webserver</id>
+    <content type="html"><![CDATA[<p>写了一个测试web服务器性能的简单脚本，运用了apache中的测试工具ab，代码如下：        <br/>
+额，这不是什么机密吧，只是一个框架，以后可以加cache机制，加config或者argv，领导不要抓我。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/python</span>
+</span><span class='line'><span class="c">#coding:utf-8</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">re</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">commands</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">Gnuplot</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">nginxTest</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">request_finish_time</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="s">&#39;ab -n </span><span class="si">%s</span><span class="s"> -c 10 -k http://localhost/&#39;</span> <span class="c"># 把localhost 换成www.google.com，让暴风雨来的猛烈些吧</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">i_num</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">):</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">getOutput</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">parseOutput</span><span class="p">()</span>
+</span><span class='line'>            <span class="k">print</span> <span class="s">&#39;Total </span><span class="si">%s</span><span class="s">, finish </span><span class="si">%s</span><span class="s">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="n">i_num</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">getOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+</span><span class='line'>        <span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">)</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">getstatusoutput</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">parseOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">&#39;Time taken for tests:\s+([\.\d]+)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">rft</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">request_finish_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rft</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">gnuplot</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="n">Gnuplot</span><span class="o">.</span><span class="n">Gnuplot</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">d</span> <span class="o">=</span> <span class="n">Gnuplot</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">with_</span><span class="o">=</span><span class="s">&#39;lines&#39;</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;times&#39;</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">hardcopy</span><span class="p">(</span><span class="s">&#39;./</span><span class="si">%s</span><span class="s">.ps&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">enhanced</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">45</span><span class="p">)]</span>
+</span><span class='line'>    <span class="n">n</span> <span class="o">=</span> <span class="n">nginxTest</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="n">times</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">n</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">gnuplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">times</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">n</span><span class="o">.</span><span class="n">request_finish_time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&#39;request finish time&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>The result is following</strong></p>
+
+<p><img src="http://imgur.com/okeEBq1.png" alt="request_finish_time" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[python 的编码问题]]></title>
@@ -102,8 +217,8 @@ UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal 
 <pre><code>unicode(a).encode('utf-8')
 </code></pre>
 
-<p>会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，解码出错。         <br/>
-而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，编码出错。</p>
+<p>会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，<strong>解码</strong>出错。         <br/>
+而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，<strong>编码</strong>出错。</p>
 
 <pre><code>&gt;&gt;&gt; a.decode('utf8')
 Traceback (most recent call last):
