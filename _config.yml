@@ -8,7 +8,7 @@ subtitle: <br>XDU/NWPU/VIPSL/<br>
     Program/Python/Algorithm/<br>
     Linux/Arch/Embedded Linux/<br>
     Xi'an, Shannxi Province, China<br>
-    <br><h1>KEEP MOVING</h1>
+    <br><font color="#00DB00" size=+2>KEEP MOVING!</font>
 author: yexinjing
 simple_search: http://google.com/search
 description:
@@ -40,7 +40,7 @@ category_dir: blog/categories
 markdown: rdiscount
 pygments: false # default python pygments have been replaced by pygments.rb
 
-paginate: 2          # Posts per page on the blog index
+paginate: 3          # Posts per page on the blog index
 pagination_dir:   # Directory base for pagination URLs eg. /blog/page/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section
 excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles

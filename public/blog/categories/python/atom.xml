@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | BaQiao]]></title>
   <link href="http://xdbaqiao.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://xdbaqiao.github.io/"/>
-  <updated>2013-08-15T15:55:59+08:00</updated>
+  <updated>2013-08-27T21:40:50+08:00</updated>
   <id>http://xdbaqiao.github.io/</id>
   <author>
     <name><![CDATA[yexinjing]]></name>
@@ -179,7 +179,8 @@ UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal 
 <p>会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，<strong>解码</strong>出错。         <br/>
 而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，<strong>编码</strong>出错。</p>
 
-<pre><code>&gt;&gt;&gt; a.decode('utf8')
+<pre><code>&gt;&gt;&gt; a = u'你好'
+&gt;&gt;&gt; a.decode('utf8')
 Traceback (most recent call last):
   File "&lt;stdin&gt;", line 1, in &lt;module&gt;
   File "/usr/lib/python2.7/encodings/utf_8.py", line 16, in decode
@@ -398,8 +399,9 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordin
     <id>http://xdbaqiao.github.io/blog/2013/06/30/about-python</id>
     <content type="html"><![CDATA[<h2>装饰器</h2>
 
-<p>装饰器从字面上看，是一个起到装饰作用的工具，而这个工具其实还是函数，起到装饰函数的作用。也就是说，装饰器是一个用来装饰函数的函数，实现对函数的修改。我们来看一个例子。    <br/>
-``` python
+<p>装饰器从字面上看，是一个起到装饰作用的工具，而这个工具其实还是函数，起到装饰函数的作用。也就是说，装饰器是一个用来装饰函数的函数，实现对函数的修改。来看一个例子。</p>
+
+<p>``` python
 def br(fn):</p>
 
 <pre><code>def wrapped():
@@ -481,6 +483,40 @@ Name=xiaoming, Age=8, Sexy=Male
 
 <p>可以看到xiaoming这个类实例表现的像函数一样，调用xiaoming()的结果是执行了__call__方法，这个前后都带双下划线的方法称为魔术方法。通过魔术方法__call__，类实例表现出了函数的特征。</p>
 
+<p>装饰器有很多用途，包括</p>
+
+<ul>
+<li>访问控制</li>
+<li>清除临时对象</li>
+<li>错误处理</li>
+<li>缓存</li>
+<li>日志</li>
+</ul>
+
+
+<p>来看一个缓存的例子：</p>
+
+<pre><code>&gt;&gt;&gt; def cache(func):
+...     c = {}
+...     def wrapper(*args):
+...         if args in c:
+...             return c[args]
+...         print 'Calling %s()' % func.__name__
+...         res = func(*args)
+...         c[args] = res
+...         return res
+...     return wrapper
+&gt;&gt;&gt; @cache
+... def mum(x,y):
+...     return x*y
+... 
+&gt;&gt;&gt; mum(6,7)
+Calling mum()
+42
+&gt;&gt;&gt; mum(6,7)
+42
+</code></pre>
+
 <h2>魔术方法</h2>
 
 <p>魔术方法很多，比如__enter__，__exit__。我们知道with函数的用法：    <br/>
@@ -549,16 +585,16 @@ class student(person)：</p>
 <p>可以看到，type创建了一个类。其实type就是元类，而且是python中创建所有类的元类。
 str是类，int也是类，从这些类中可以创建出字符串对象，整型对象，而str类和int类的元类也是type。</p>
 
-<p>我们可以从__class__属性中看出端倪。
-```</p>
+<p>我们可以从__class__属性中看出端倪。</p>
 
-<blockquote><blockquote><blockquote><p>a = 'hello world'
-a.<strong>class</strong>
-<type 'str'>
-a.<strong>class</strong>.<strong>class</strong>
-<type 'type'>
-```
-字符串a是从str类而来，str类来自元类type，那么a.__class__.__class__.__class__是什么呢？还是type。</p></blockquote></blockquote></blockquote>
+<pre><code>&gt;&gt;&gt; a = 'hello world'
+&gt;&gt;&gt; a.__class__
+&lt;type 'str'&gt;
+&gt;&gt;&gt; a.__class__.__class__
+&lt;type 'type'&gt;
+</code></pre>
+
+<p>字符串a是从str类而来，str类来自元类type，那么a.__class__.__class__.__class__是什么呢？还是type。</p>
 
 <p>type是元类，当然我们可以创建自己的元类，这就是__metaclass__。如果指定了__metaclass__，那么，这个类将不会由type创建，而是由指定的__mataclass__创建，那么__metaclass__是什么呢？其实就是可以创建类的东西，可以是一个类（来自type），也可以是type。</p>
 

@@ -9,7 +9,8 @@ categories: python
 装饰器
 ------------
          
-装饰器从字面上看，是一个起到装饰作用的工具，而这个工具其实还是函数，起到装饰函数的作用。也就是说，装饰器是一个用来装饰函数的函数，实现对函数的修改。我们来看一个例子。      
+装饰器从字面上看，是一个起到装饰作用的工具，而这个工具其实还是函数，起到装饰函数的作用。也就是说，装饰器是一个用来装饰函数的函数，实现对函数的修改。来看一个例子。      
+
 ``` python
 def br(fn):
     def wrapped():
@@ -74,6 +75,36 @@ xiaoming()
     Name=xiaoming, Age=8, Sexy=Male              
        
 可以看到xiaoming这个类实例表现的像函数一样，调用xiaoming()的结果是执行了\_\_call\_\_方法，这个前后都带双下划线的方法称为魔术方法。通过魔术方法\_\_call\_\_，类实例表现出了函数的特征。
+        
+装饰器有很多用途，包括        
+          
+* 访问控制        
+* 清除临时对象         
+* 错误处理          
+* 缓存         
+* 日志           
+     
+来看一个缓存的例子：
+    >>> def cache(func):
+    ...     c = {}
+    ...     def wrapper(*args):
+    ...         if args in c:
+    ...             return c[args]
+    ...         print 'Calling %s()' % func.__name__
+    ...         res = func(*args)
+    ...         c[args] = res
+    ...         return res
+    ...     return wrapper
+    >>> @cache
+    ... def mum(x,y):
+    ...     return x*y
+    ... 
+    >>> mum(6,7)
+    Calling mum()
+    42
+    >>> mum(6,7)
+    42
+
        
 魔术方法
 -----------
@@ -132,14 +163,14 @@ class student(person)：
 可以看到，type创建了一个类。其实type就是元类，而且是python中创建所有类的元类。
 str是类，int也是类，从这些类中可以创建出字符串对象，整型对象，而str类和int类的元类也是type。
 
-我们可以从\_\_class\_\_属性中看出端倪。
-```
->>> a = 'hello world'
->>> a.__class__
-<type 'str'>
->>> a.__class__.__class__
-<type 'type'>
-```
+我们可以从\_\_class\_\_属性中看出端倪。       
+     
+    >>> a = 'hello world'
+    >>> a.__class__
+    <type 'str'>
+    >>> a.__class__.__class__
+    <type 'type'>
+    
 字符串a是从str类而来，str类来自元类type，那么a.\_\_class\_\_.\_\_class\_\_.\_\_class\_\_是什么呢？还是type。
 
 type是元类，当然我们可以创建自己的元类，这就是\_\_metaclass\_\_。如果指定了\_\_metaclass\_\_，那么，这个类将不会由type创建，而是由指定的\_\_mataclass\_\_创建，那么\_\_metaclass\_\_是什么呢？其实就是可以创建类的东西，可以是一个类（来自type），也可以是type。
