@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "python 的编码问题"
+title: "python2 的编码问题"
 date: 2013-08-09 20:36
 comments: true
 categories: python
@@ -8,7 +8,7 @@ categories: python
 编码涉及到很多问题，本文简单讲一讲    
               
 写python脚本的时候，头两行的常见格式是：          
-    #!/usr/bin/env python                  
+    #!/usr/bin/env python2                  
     #coding:utf-8               
 第一行的意义是在Linux下，当脚本是可执行文件是，以"./\*.py"执行程序时需要调用的命令，如果以命令'python  \*.py'执行程序，则第一行是没有意义的                
 第二行涉及到python编码问题，它指定脚本内容的编码方式。这一行的写法很灵活，但必须包含三项内容，即"#", "coding" 和编码     
@@ -37,7 +37,7 @@ decode 是将其他编码  转换成 unicode
                
 __python的编码问题__            
                
-python在安装的时候，默认的编码是ASCII码，当程序中出现非ASCII码时，程序会报错.            
+python在安装的时候，默认的编码是ASCII码(python3 的默认编码是UTF8)，当程序中出现非ASCII码时，程序会报错.            
 在终端里，运行           
     >>> import sys
     >>> sys.getdefaultencoding()
@@ -89,7 +89,7 @@ __报错了__！为什么会报错呢？这是因为对a进行encode操作，实
               
 而在脚本文件里，如果没有`#coding:utf-8`，会发生什么情况呢？            
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 if __name__ == '__main__':
     print '你好'

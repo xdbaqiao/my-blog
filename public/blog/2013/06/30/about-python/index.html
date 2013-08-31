@@ -3,11 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Python 装饰器、魔术方法和元类 - BaQiao</title>
+	<title>Python2 装饰器、魔术方法和元类 - BaQiao</title>
 	<meta name="author" content="yexinjing">
 
 	
-	<meta name="description" content="Python 装饰器、魔术方法和元类 装饰器 装饰器从字面上看，是一个起到装饰作用的工具，而这个工具其实还是函数，起到装饰函数的作用。也就是说，装饰器是一个用来装饰函数的函数，实现对函数的修改。来看一个例子。 1
+	<meta name="description" content="Python2 装饰器、魔术方法和元类 装饰器 装饰器从字面上看，是一个起到装饰作用的工具，而这个工具其实还是函数，起到装饰函数的作用。也就是说，装饰器是一个用来装饰函数的函数，实现对函数的修改。来看一个例子。 1
 2
 3
 4
@@ -22,7 +22,7 @@
 13
 14
 15
-def br( &hellip;">
+def br &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -56,7 +56,7 @@ def br( &hellip;">
 	</script>
 </div>
 <h1><a href="/">BaQiao</a></h1>
-<p class="subtitle"><br>XDU/NWPU/VIPSL/<br> Program/Python/Algorithm/<br> Linux/Arch/Embedded Linux/<br> Xi'an, Shannxi Province, China<br> <br><font color="#00DB00" size=+2>KEEP MOVING</font></p>
+<p class="subtitle"><br>XDU/NWPU/VIPSL/<br> Program/Python/Algorithm/<br> Linux/Arch/Embedded Linux/<br> Xi'an, Shannxi Province, China<br> <br><font color="#00DB00" size=+2>KEEP MOVING!</font></p>
 <nav id="main-nav"><ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
@@ -93,7 +93,7 @@ def br( &hellip;">
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">Python 装饰器、魔术方法和元类</h1>
+	<h1 class="title" itemprop="name">Python2 装饰器、魔术方法和元类</h1>
 	<div class="entry-content" itemprop="articleBody"><h2>装饰器</h2>
 
 <p>装饰器从字面上看，是一个起到装饰作用的工具，而这个工具其实还是函数，起到装饰函数的作用。也就是说，装饰器是一个用来装饰函数的函数，实现对函数的修改。来看一个例子。</p>
@@ -320,7 +320,7 @@ Exit.
 
 <p>那么用type创建就是：</p>
 
-<p><code>student = type(student, (person), {'SmallThan18':True})</code></p>
+<p><code>student = type('student', ('person'), {'SmallThan18':True})</code></p>
 
 <p>可以看到，type创建了一个类。其实type就是元类，而且是python中创建所有类的元类。
 str是类，int也是类，从这些类中可以创建出字符串对象，整型对象，而str类和int类的元类也是type。</p>
@@ -337,8 +337,6 @@ str是类，int也是类，从这些类中可以创建出字符串对象，整�
 <p>字符串a是从str类而来，str类来自元类type，那么a.__class__.__class__.__class__是什么呢？还是type。</p>
 
 <p>type是元类，当然我们可以创建自己的元类，这就是__metaclass__。如果指定了__metaclass__，那么，这个类将不会由type创建，而是由指定的__mataclass__创建，那么__metaclass__是什么呢？其实就是可以创建类的东西，可以是一个类（来自type），也可以是type。</p>
-
-<p>举例子：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -380,8 +378,8 @@ str是类，int也是类，从这些类中可以创建出字符串对象，整�
 <p>输出：   <br/>
 <code>['student', 'gilrs']</code></p>
 
-<p>可以看到mc其实是type的子类，任意person的子类名，都会放到nlist里面。定义type的时候注意，要符合type的参数定义格式。就是：
-type(类名，父类元组，属性字典)</p>
+<p>可以看到mc其实是type的子类，任意person的子类名，都会放到nlist里面。定义type的时候注意，要符合type的参数定义格式。就是：      <br/>
+<code>type(类名，父类元组，属性字典)</code></p>
 
 <p>回到__new__属性，记不记得前面讲的__call__，那么type是不是可以类实例函数化，所以     <br/>
 <code>type(类名，父类元组，属性字典)</code><br/>

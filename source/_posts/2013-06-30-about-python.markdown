@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Python 装饰器、魔术方法和元类"
+title: "Python2 装饰器、魔术方法和元类"
 date: 2013-06-30 19:41
 comments: true
 categories: python
@@ -158,7 +158,7 @@ class student(person)：
 ```
 那么用type创建就是：
 
-`student = type(student, (person), {'SmallThan18':True})`     
+`student = type('student', ('person'), {'SmallThan18':True})`     
 
 可以看到，type创建了一个类。其实type就是元类，而且是python中创建所有类的元类。
 str是类，int也是类，从这些类中可以创建出字符串对象，整型对象，而str类和int类的元类也是type。
@@ -175,7 +175,6 @@ str是类，int也是类，从这些类中可以创建出字符串对象，整�
 
 type是元类，当然我们可以创建自己的元类，这就是\_\_metaclass\_\_。如果指定了\_\_metaclass\_\_，那么，这个类将不会由type创建，而是由指定的\_\_mataclass\_\_创建，那么\_\_metaclass\_\_是什么呢？其实就是可以创建类的东西，可以是一个类（来自type），也可以是type。
 
-举例子：
 ```python
 class mc(type):
     def __init__(cls, name, base, dict):
@@ -199,8 +198,8 @@ print student.nlist
 输出：     
 `['student', 'gilrs']`
 
-可以看到mc其实是type的子类，任意person的子类名，都会放到nlist里面。定义type的时候注意，要符合type的参数定义格式。就是：
-type(类名，父类元组，属性字典)         
+可以看到mc其实是type的子类，任意person的子类名，都会放到nlist里面。定义type的时候注意，要符合type的参数定义格式。就是：        
+`type(类名，父类元组，属性字典)`         
          
 回到\_\_new\_\_属性，记不记得前面讲的\_\_call\_\_，那么type是不是可以类实例函数化，所以       
 `type(类名，父类元组，属性字典)`  

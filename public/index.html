@@ -47,7 +47,7 @@
 	</script>
 </div>
 <h1><a href="/">BaQiao</a></h1>
-<p class="subtitle"><br>XDU/NWPU/VIPSL/<br> Program/Python/Algorithm/<br> Linux/Arch/Embedded Linux/<br> Xi'an, Shannxi Province, China<br> <br><font color="#00DB00" size=+2>KEEP MOVING</font></p>
+<p class="subtitle"><br>XDU/NWPU/VIPSL/<br> Program/Python/Algorithm/<br> Linux/Arch/Embedded Linux/<br> Xi'an, Shannxi Province, China<br> <br><font color="#00DB00" size=+2>KEEP MOVING!</font></p>
 <nav id="main-nav"><ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
@@ -252,13 +252,13 @@
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/08/09/coding-problem/" itemprop="url">Python 的编码问题</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/08/09/coding-problem/" itemprop="url">Python2 的编码问题</a></h1>
 	<div class="entry-content" itemprop="articleBody">
 		<p>编码涉及到很多问题，本文简单讲一讲</p>
 
 <p>写python脚本的时候，头两行的常见格式是：</p>
 
-<pre><code>#!/usr/bin/env python                  
+<pre><code>#!/usr/bin/env python2                  
 #coding:utf-8               
 </code></pre>
 
@@ -300,7 +300,7 @@ encode是指将unicode 转换成  其他编码</p>
 
 <p><strong>python的编码问题</strong></p>
 
-<p>python在安装的时候，默认的编码是ASCII码，当程序中出现非ASCII码时，程序会报错.          <br/>
+<p>python在安装的时候，默认的编码是ASCII码(python3 的默认编码是UTF8)，当程序中出现非ASCII码时，程序会报错.          <br/>
 在终端里，运行</p>
 
 <pre><code>&gt;&gt;&gt; import sys
@@ -385,7 +385,7 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordin
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python2</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
 </span><span class='line'>    <span class="k">print</span> <span class="s">&#39;你好&#39;</span>

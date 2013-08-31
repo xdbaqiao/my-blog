@@ -4,7 +4,7 @@
   <title><![CDATA[BaQiao]]></title>
   <link href="http://xdbaqiao.github.io/atom.xml" rel="self"/>
   <link href="http://xdbaqiao.github.io/"/>
-  <updated>2013-08-27T21:40:50+08:00</updated>
+  <updated>2013-08-31T14:42:07+08:00</updated>
   <id>http://xdbaqiao.github.io/</id>
   <author>
     <name><![CDATA[yexinjing]]></name>
@@ -129,7 +129,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[python 的编码问题]]></title>
+    <title type="html"><![CDATA[python2 的编码问题]]></title>
     <link href="http://xdbaqiao.github.io/blog/2013/08/09/coding-problem/"/>
     <updated>2013-08-09T20:36:00+08:00</updated>
     <id>http://xdbaqiao.github.io/blog/2013/08/09/coding-problem</id>
@@ -137,7 +137,7 @@
 
 <p>写python脚本的时候，头两行的常见格式是：</p>
 
-<pre><code>#!/usr/bin/env python                  
+<pre><code>#!/usr/bin/env python2                  
 #coding:utf-8               
 </code></pre>
 
@@ -179,7 +179,7 @@ encode是指将unicode 转换成  其他编码</p>
 
 <p><strong>python的编码问题</strong></p>
 
-<p>python在安装的时候，默认的编码是ASCII码，当程序中出现非ASCII码时，程序会报错.          <br/>
+<p>python在安装的时候，默认的编码是ASCII码(python3 的默认编码是UTF8)，当程序中出现非ASCII码时，程序会报错.          <br/>
 在终端里，运行</p>
 
 <pre><code>&gt;&gt;&gt; import sys
@@ -264,7 +264,7 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordin
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python2</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
 </span><span class='line'>    <span class="k">print</span> <span class="s">&#39;你好&#39;</span>
@@ -436,7 +436,7 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordin
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Python 装饰器、魔术方法和元类]]></title>
+    <title type="html"><![CDATA[Python2 装饰器、魔术方法和元类]]></title>
     <link href="http://xdbaqiao.github.io/blog/2013/06/30/about-python/"/>
     <updated>2013-06-30T19:41:00+08:00</updated>
     <id>http://xdbaqiao.github.io/blog/2013/06/30/about-python</id>
@@ -666,7 +666,7 @@ Exit.
 
 <p>那么用type创建就是：</p>
 
-<p><code>student = type(student, (person), {'SmallThan18':True})</code></p>
+<p><code>student = type('student', ('person'), {'SmallThan18':True})</code></p>
 
 <p>可以看到，type创建了一个类。其实type就是元类，而且是python中创建所有类的元类。
 str是类，int也是类，从这些类中可以创建出字符串对象，整型对象，而str类和int类的元类也是type。</p>
@@ -683,8 +683,6 @@ str是类，int也是类，从这些类中可以创建出字符串对象，整�
 <p>字符串a是从str类而来，str类来自元类type，那么a.__class__.__class__.__class__是什么呢？还是type。</p>
 
 <p>type是元类，当然我们可以创建自己的元类，这就是__metaclass__。如果指定了__metaclass__，那么，这个类将不会由type创建，而是由指定的__mataclass__创建，那么__metaclass__是什么呢？其实就是可以创建类的东西，可以是一个类（来自type），也可以是type。</p>
-
-<p>举例子：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -726,8 +724,8 @@ str是类，int也是类，从这些类中可以创建出字符串对象，整�
 <p>输出：   <br/>
 <code>['student', 'gilrs']</code></p>
 
-<p>可以看到mc其实是type的子类，任意person的子类名，都会放到nlist里面。定义type的时候注意，要符合type的参数定义格式。就是：
-type(类名，父类元组，属性字典)</p>
+<p>可以看到mc其实是type的子类，任意person的子类名，都会放到nlist里面。定义type的时候注意，要符合type的参数定义格式。就是：      <br/>
+<code>type(类名，父类元组，属性字典)</code></p>
 
 <p>回到__new__属性，记不记得前面讲的__call__，那么type是不是可以类实例函数化，所以     <br/>
 <code>type(类名，父类元组，属性字典)</code><br/>
