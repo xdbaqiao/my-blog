@@ -4,7 +4,7 @@
   <title><![CDATA[BaQiao]]></title>
   <link href="http://xdbaqiao.github.io/atom.xml" rel="self"/>
   <link href="http://xdbaqiao.github.io/"/>
-  <updated>2013-08-31T14:42:07+08:00</updated>
+  <updated>2013-08-31T18:18:27+08:00</updated>
   <id>http://xdbaqiao.github.io/</id>
   <author>
     <name><![CDATA[yexinjing]]></name>
@@ -765,7 +765,7 @@ str是类，int也是类，从这些类中可以创建出字符串对象，整�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Python操作excel]]></title>
+    <title type="html"><![CDATA[Python库openpyxl操作excel]]></title>
     <link href="http://xdbaqiao.github.io/blog/2013/04/30/python-excel/"/>
     <updated>2013-04-30T19:37:00+08:00</updated>
     <id>http://xdbaqiao.github.io/blog/2013/04/30/python-excel</id>

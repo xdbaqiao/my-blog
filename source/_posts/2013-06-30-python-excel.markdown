@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Python操作excel"
+title: "Python库openpyxl操作excel"
 date: 2013-04-30 19:37
 comments: true
 categories: python
