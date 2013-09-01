@@ -15,7 +15,8 @@ import urllib
 import urllib2
 import logging
 import cookielib
-from colloctions import deque
+import threading
+from collections import deque
 
 def set_log():
     FMT = '%(asctime)s-%(levelname)s\t%(message)s'
@@ -56,7 +57,7 @@ def fetch():
     surl = 'http://medboard.nv.gov/verification/Search.aspx'
 
     name = deque()
-    for i in string.lowercase():
+    for i in string.lowercase:
         name.append(i)
 
     def worker():
@@ -82,8 +83,8 @@ def fetch():
 
     muilt_thread(worker, 30)
 
-def muilt_thread(target, num_threads):
-    threads = [thread.Thread(target=target) for i in range(num_threads)]
+def muilt_thread(target, num_threads, wait=True):
+    threads = [threading.Thread(target=target) for i in range(num_threads)]
     for thread in threads:
         thread.start()
     if wait:
@@ -94,4 +95,3 @@ if __name__ == '__main__':
     set_log()
     fetch()
 ```
-
