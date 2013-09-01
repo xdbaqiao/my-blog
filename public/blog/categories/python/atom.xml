@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | BaQiao]]></title>
   <link href="http://xdbaqiao.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://xdbaqiao.github.io/"/>
-  <updated>2013-08-31T18:18:27+08:00</updated>
+  <updated>2013-09-01T17:59:50+08:00</updated>
   <id>http://xdbaqiao.github.io/</id>
   <author>
     <name><![CDATA[yexinjing]]></name>
@@ -12,6 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[python爬虫程序(多线程，get，post，代理，日志)]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/09/01/python-scrape/"/>
+    <updated>2013-09-01T15:58:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/09/01/python-scrape</id>
+    <content type="html"><![CDATA[<p>```python</p>
+
+<h1>!/usr/bin/env python2</h1>
+
+<h1>coding: utf-8</h1>
+
+<p>import re
+import string
+import urllib
+import urllib2
+import logging
+import cookielib
+from colloctions import deque</p>
+
+<p>def set_log():</p>
+
+<pre><code>FMT = '%(asctime)s-%(levelname)s\t%(message)s'
+logging.basicConfig(format=FMT, level=logging.INFO, filename='downloading.log', filemode='a')
+</code></pre>
+
+<p>class download:</p>
+
+<pre><code>def __init__(self, first_url, proxy=None):
+    self.user_agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0'
+    self.headers = {'User-Agent': self.user_agent, 'Accept-encoding':'gzip, deflate', 'Referer': first_url}
+    self.opener = urllib2.build_opener()
+    self.proxy = proxy
+
+def add_proxy(self, url, proxy):
+    if proxy:
+        if url.startswith('https'):
+            self.opener.add_handler(urllib2.ProxyHandler({'https': proxy}))
+        else:
+            self.opener.add_handler(urllib2.ProxyHandler({'http': proxy}))
+
+def get(self, url):
+    self.add_proxy(url, self.proxy)
+    request = urllib2.Request(url)
+    response = self.opener.open(request)
+    html = response.read()
+    return html
+
+def post(self, url, data):
+    self.add_proxy(url, self.proxy)
+    if isinstance(data, dict):
+        data = urllib.urlencode(data)
+    request = urllib2.Request(url, data, self.headers)
+    response = self.opener.open(request)
+    html = response.read()
+    return html
+</code></pre>
+
+<p>def fetch():</p>
+
+<pre><code>url = 'http://medboard.nv.gov/verification/'
+surl = 'http://medboard.nv.gov/verification/Search.aspx'
+
+name = deque()
+for i in string.lowercase():
+    name.append(i)
+
+def worker():
+    D = download(url)
+    D.opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookielib.MozillaCookieJar()))
+    while True:
+        try:
+            letter = name.popleft()
+        except IndexError:
+            break
+        html = D.get(url=url)
+
+        post_data = {}
+        m = re.compile(r'__VIEWSTATE"\svalue="([^"]+)', re.DOTALL|re.IGNORECASE).search(html)
+        post_data['__VIEWSTATE'] = m.groups()[0] if m else ''
+        m = re.compile(r'__EVENTVALIDATION"\svalue="([^"]+)', re.DOTALL|re.IGNORECASE).search(html)
+        post_data['__EVENTVALIDATION'] = m.groups()[0] if m else ''
+        post_data['t_web_lookup__license_type_name'] = 'Medical Doctor'
+        post_data['t_web_lookup__first_name'] = letter
+        post_data['sch_button'] = 'Search'
+        html = D.post(url=surl, data=post_data)
+        logging.info(html)
+
+muilt_thread(worker, 30)
+</code></pre>
+
+<p>def muilt_thread(target, num_threads):</p>
+
+<pre><code>threads = [thread.Thread(target=target) for i in range(num_threads)]
+for thread in threads:
+    thread.start()
+if wait:
+    for thread in threads:
+        thread.join()
+</code></pre>
+
+<p>if <strong>name</strong> == '<strong>main</strong>':</p>
+
+<pre><code>set_log()
+fetch()
+</code></pre>
+
+<p>```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[python与gnuplot]]></title>
@@ -653,27 +763,6 @@ return result
 <p>参考资料：   <br/>
 <a href="http://blog.danmarner.com/me/entry/python-new-metaclass-init-plugin-system/">http://blog.danmarner.com/me/entry/python-new-metaclass-init-plugin-system/</a>       <br/>
 <a href="http://blog.jobbole.com/21351/">http://blog.jobbole.com/21351/</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python库openpyxl操作excel]]></title>
-    <link href="http://xdbaqiao.github.io/blog/2013/04/30/python-excel/"/>
-    <updated>2013-04-30T19:37:00+08:00</updated>
-    <id>http://xdbaqiao.github.io/blog/2013/04/30/python-excel</id>
-    <content type="html"><![CDATA[<p>最近一直在研究用python操作windows平台下的excel，对数据进行处理。目前操作excel的python库比较多，有xlwt、xlrd、pyexcelerator、openpyxl、win32com等，功能不一，各有优劣。</p>
-
-<p>xlwt、xlrd、pyexcelerator针对excel2007（不包括）以前版本，生成的excel后缀是xls，而我的需求中需要支持excel2007及以上版本，文件后缀名是xlsx，这时就只有选用openpyxl或者win32com了。</p>
-
-<p>有必要说一下，为什么得选用xlsx版本。因为xls的列数有最大256的限制，xlsx没有，而需要处理的数据列数是超过256的，有700多列。</p>
-
-<p>win32com是python到VBA的接口，python利用win32com直接调用office API，在windows下兼容性好。office下的所有功能，都可以通过这个接口用python实现，但是，它有一个致命的缺点，速度慢。它是所有操作excel的库中最慢的一个。一个win32com的程序，处理120多行，700多列的数据，花了近一个半小时！</p>
-
-<p>最后，选用openpyxl库，这个库文档不是很完整，遇到问题只有google和看源码。写出来运算速度还是比较令人满意的，处理相同的数据，只花了30s！！比win32com效率提升180倍！！</p>
-
-<p>openpyxl可以实现很多excel的功能，我关注的功能包括合并单元格，调整单元格大小，设置单元格背景颜色，设置文本字体、大小、颜色等，都能轻易实现。</p>
-
-<p>代码不在本机，就不上了。</p>
 ]]></content>
   </entry>
   
