@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | BaQiao]]></title>
   <link href="http://xdbaqiao.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://xdbaqiao.github.io/"/>
-  <updated>2013-09-01T18:07:56+08:00</updated>
+  <updated>2013-09-02T20:42:52+08:00</updated>
   <id>http://xdbaqiao.github.io/</id>
   <author>
     <name><![CDATA[yexinjing]]></name>
@@ -672,7 +672,71 @@ Exit.
 
 <p>我们可以看到__exit__最后执行。</p>
 
-<p>上例有最基本的魔法函数__init__，他在创建对象时调用，可以视为C++中的构造函数，而__del__视为析构器。其实__init__并不是类实例化时所调用的第一个方法，第一个调用的方法是__new__。</p>
+<p>上例有最基本的魔法函数__init__，在创建对象时调用，可以视为C++中的构造函数，而__del__视为析构器。其实__init__并不是类实例化时所调用的第一个方法，第一个调用的方法是__new__。</p>
+
+<p>当然也可以重载魔术方法：      <br/>
+```python</p>
+
+<h1>!/usr/bin/env python2</h1>
+
+<h1>coding: utf-8</h1>
+
+<p>from collections import defaultdict</p>
+
+<p>class my_dict():</p>
+
+<pre><code>def __init__(self):
+    self.d = defaultdict()
+
+def __contains__(self, name):
+    return self.d.__contains__(self.get_hash(name))
+
+def __getitem__(self, name):
+    return  self.d.__getitem__(self.get_hash(name))
+
+def __setitem__(self, name, value):
+    return self.d.__setitem__(self.get_hash(name), value)
+
+def get_hash(self, name):
+    return hash(name)
+
+def keys(self):
+    print self.d.keys()
+</code></pre>
+
+<p>class my_bag(dict):</p>
+
+<pre><code>def __init__(self, *args, **kwargs):
+    dict.__init__(self, *args, **kwargs)
+
+def __getattr__(self, name):
+    return self.get(name)
+
+def __setattr__(self, name, value):
+    if name:
+        self[name] = value
+</code></pre>
+
+<p>y = my_dict()
+y['test'] = 'Hello world!'
+y['test2'] = 'Hello world!'
+print y['test']
+print 'test' in y</p>
+
+<p>bag = my_bag()
+bag.name = 'hello bag'
+print bag.name
+print bag.fd
+print bag
+```
+输出</p>
+
+<pre><code> Hello world!         
+ True        
+ hello bag          
+ None               
+ {'name': 'hello bag'}       
+</code></pre>
 
 <h2>元类</h2>
 

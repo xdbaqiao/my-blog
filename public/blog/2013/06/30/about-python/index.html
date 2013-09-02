@@ -300,7 +300,113 @@ Exit.
 
 <p>我们可以看到__exit__最后执行。</p>
 
-<p>上例有最基本的魔法函数__init__，他在创建对象时调用，可以视为C++中的构造函数，而__del__视为析构器。其实__init__并不是类实例化时所调用的第一个方法，第一个调用的方法是__new__。</p>
+<p>上例有最基本的魔法函数__init__，在创建对象时调用，可以视为C++中的构造函数，而__del__视为析构器。其实__init__并不是类实例化时所调用的第一个方法，第一个调用的方法是__new__。</p>
+
+<p>当然也可以重载魔术方法：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python2</span>
+</span><span class='line'><span class="c"># coding: utf-8</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">my_dict</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="o">.</span><span class="n">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_hash</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="o">.</span><span class="n">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_hash</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="o">.</span><span class="n">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_hash</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">value</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">get_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">my_bag</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'>        <span class="nb">dict</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+</span><span class='line'>            <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="n">my_dict</span><span class="p">()</span>
+</span><span class='line'><span class="n">y</span><span class="p">[</span><span class="s">&#39;test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Hello world!&#39;</span>
+</span><span class='line'><span class="n">y</span><span class="p">[</span><span class="s">&#39;test2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Hello world!&#39;</span>
+</span><span class='line'><span class="k">print</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;test&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="k">print</span> <span class="s">&#39;test&#39;</span> <span class="ow">in</span> <span class="n">y</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">bag</span> <span class="o">=</span> <span class="n">my_bag</span><span class="p">()</span>
+</span><span class='line'><span class="n">bag</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;hello bag&#39;</span>
+</span><span class='line'><span class="k">print</span> <span class="n">bag</span><span class="o">.</span><span class="n">name</span>
+</span><span class='line'><span class="k">print</span> <span class="n">bag</span><span class="o">.</span><span class="n">fd</span>
+</span><span class='line'><span class="k">print</span> <span class="n">bag</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>输出</p>
+
+<pre><code> Hello world!         
+ True        
+ hello bag          
+ None               
+ {'name': 'hello bag'}       
+</code></pre>
 
 <h2>元类</h2>
 

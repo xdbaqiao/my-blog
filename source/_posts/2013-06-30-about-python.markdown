@@ -141,8 +141,64 @@ with Vipsl() as v:
       
 我们可以看到\_\_exit\_\_最后执行。       
          
-上例有最基本的魔法函数\_\_init\_\_，他在创建对象时调用，可以视为C++中的构造函数，而\_\_del\_\_视为析构器。其实\_\_init\_\_并不是类实例化时所调用的第一个方法，第一个调用的方法是\_\_new\_\_。
+上例有最基本的魔法函数\_\_init\_\_，在创建对象时调用，可以视为C++中的构造函数，而\_\_del\_\_视为析构器。其实\_\_init\_\_并不是类实例化时所调用的第一个方法，第一个调用的方法是\_\_new\_\_。
+        
+当然也可以重载魔术方法：        
+```python
+#!/usr/bin/env python2
+# coding: utf-8
 
+from collections import defaultdict
+
+class my_dict():
+    def __init__(self):
+        self.d = defaultdict()
+ 
+    def __contains__(self, name):
+        return self.d.__contains__(self.get_hash(name))
+
+    def __getitem__(self, name):
+        return  self.d.__getitem__(self.get_hash(name))
+
+    def __setitem__(self, name, value):
+        return self.d.__setitem__(self.get_hash(name), value)
+
+    def get_hash(self, name):
+        return hash(name)
+    
+    def keys(self):
+        print self.d.keys()
+
+class my_bag(dict):
+    def __init__(self, *args, **kwargs):
+        dict.__init__(self, *args, **kwargs)
+
+    def __getattr__(self, name):
+        return self.get(name)
+
+    def __setattr__(self, name, value):
+        if name:
+            self[name] = value
+
+y = my_dict()
+y['test'] = 'Hello world!'
+y['test2'] = 'Hello world!'
+print y['test']
+print 'test' in y 
+
+bag = my_bag()
+bag.name = 'hello bag'
+print bag.name
+print bag.fd
+print bag
+```
+输出       
+     Hello world!         
+     True        
+     hello bag          
+     None               
+     {'name': 'hello bag'}       
+           
 元类
 --------------     
 
