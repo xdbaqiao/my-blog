@@ -4,14 +4,220 @@
   <title><![CDATA[BaQiao]]></title>
   <link href="http://xdbaqiao.github.io/atom.xml" rel="self"/>
   <link href="http://xdbaqiao.github.io/"/>
-  <updated>2013-09-02T20:42:52+08:00</updated>
+  <updated>2014-03-24T20:20:43+08:00</updated>
   <id>http://xdbaqiao.github.io/</id>
   <author>
-    <name><![CDATA[yexinjing]]></name>
+    <name><![CDATA[BaQiao]]></name>
     <email><![CDATA[yexj061761@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[学习]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2014/03/24/recent-learn/"/>
+    <updated>2014-03-24T19:45:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2014/03/24/recent-learn</id>
+    <content type="html"><![CDATA[<p>总结一下最近学习的东西，有点乱。。。</p>
+
+<h2>1. keep-alive              </h2>
+
+<p>http基于tcp协议，是一种请求响应机制的协议。       <br/>
+所以，它的请求过程是：        <br/>
+建立连接（三次握手），请求，响应，断开连接（四次挥手）        <br/>
+而如果包含keep-alive属性，则他的请求过程将节省建立连接的过程：          <br/>
+建立连接，请求，响应，请求，响应，请求，响应&#8230;.断开连接</p>
+
+<h2>2. 数据库性能优化           </h2>
+
+<p>使用MyISAM存储引擎，加上唯一索引，设置主键         <br/>
+（其实可以考虑用innoDB存储引擎，便于设置外键，而且是事务存储引擎）</p>
+
+<p>存储引擎：MyISAM, innoDB, Falcon, Memory, ARCHIVE, CSV, EXAMPLE, MERGE等         <br/>
+索引类型：普通索引，唯一索引，Fulltext索引，Hash索引等         <br/>
+数据类型的选择，int? tinyint? mediumint? float?double?         <br/>
+blob和text 数据列里面的值在长度方面往往差距巨大，所以对他们的删除和修改操作容易产生大量的碎片。</p>
+
+<p>对数据库的某个字段进行检索，加上唯一索引与不加，速度上至少相差一个数量级！</p>
+
+<h2>3. 传输文件           </h2>
+
+<p>高效的文件传输工具rsync         <br/>
+<code>rsync -avzSHP --exclude "*.LJPEG" * root@192.168.0.101:/mnt/file_dir</code></p>
+
+<h2>4. HTTP协议相关</h2>
+
+<p>Internet 最基本的通讯单元是数据包，http最基本的单元是消息，http协议有四个重要术语，消息，实体，资源，用户代理。</p>
+
+<p>消息</p>
+
+<pre><code>    1.请求消息：包括请求行，常规标头，请求标头（标头是自由格式的ASCII字符串）          
+    2.响应消息：包括响应行，常规标头，响应标头          
+</code></pre>
+
+<p>实体，表示封装在消息中的一个资源，实体由标头和可选的主体组成。        <br/>
+用户代理，表示客户机，可以是浏览器，爬虫等。用户代理信息会作为请求的一部分，在User-Agent标头中发送。</p>
+
+<p>标头：自由格式的ASCII字符串</p>
+
+<pre><code>       常规标头：Date，Pragma(伪指令，发送给消息接收方，唯一的伪指令pragma：no-cache)
+       请求标头：Authorization，From，If-Modified-Since，Referer，User-Agent
+       响应标头：Location（将请求重定向可找到资源的地方），Server，WWW-Authorization
+       实体标头：Allow，Content-Type，Content-Coding，Content-Length，Expires，Last-Modified
+</code></pre>
+
+<p>信息类：1xx                        成功类： 2xx           <br/>
+重定向类： 3xx                    客户机错误类：4xx            <br/>
+服务器错误类：  5xx</p>
+
+<h2>5.装饰器的用途          </h2>
+
+<p>•  Access control         <br/>
+•  Cleanup of temporary objects         <br/>
+•  Error handling         <br/>
+•  Caching         <br/>
+•  Logging</p>
+
+<pre><code>&gt;&gt;&gt; def mom(func):
+...     cache = {}
+...     def wrapper(*args):
+...         if args in cache:
+...             return cache[args]
+...         print 'Calling %s()' % func.__name__
+...         res = func(*args)
+...         cache[args] = res
+...         return res
+...     return wrapper
+&gt;&gt;&gt; @mom
+... def mum(x,y):
+...     return x*y
+... 
+&gt;&gt;&gt; mum(6,7)
+Calling mum()
+42
+&gt;&gt;&gt; mum(6,7)
+42 
+</code></pre>
+
+<h2>6.生成器 yield</h2>
+
+<p>yield 就像return， 但不会终止程序，他将值推出函数体，当生成器被call时，这个值被消耗。</p>
+
+<pre><code>&gt;&gt;&gt; def test():
+...     for i in range(2):
+...         yield i
+&gt;&gt;&gt; t=test()
+&gt;&gt;&gt; t
+&lt;generator object test at 0x7f5609846910&gt;
+&gt;&gt;&gt; list(t)
+[0, 1, 2]
+&gt;&gt;&gt; list(t)
+[]
+</code></pre>
+
+<h2>7. @property        </h2>
+
+<p>使得类中的方法可以像类属性一样访问（build_in decorator），但不能写，如果要写的话，如下例用@name.setter修饰符，还可以用@name.deleter 删除方法属性</p>
+
+<pre><code>&gt;&gt;&gt; class person:
+...     def __init__(self, first_name, last_name):
+...         self.f = first_name
+...         self.l = last_name
+...     @property
+...     def name(self):
+...         return '%s %s' % (self.f, self.l)
+...     @name.setter   #修饰之后，返回value值
+...     def name(self, value):
+...         return '%s %s' % (self.f, self.l) #所以这句话没意义了
+... 
+&gt;&gt;&gt; p = person('hello', 'world')
+&gt;&gt;&gt; p.name    #不是p.name()
+'hello world’
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[梁漱溟：做学问]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/11/19/zuoxuewen/"/>
+    <updated>2013-11-19T22:46:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/11/19/zuoxuewen</id>
+    <content type="html"><![CDATA[<p><strong>节选自<a href="http://www.ruanyifeng.com/blog/2013/09/liang_shuming.html">阮一峰的网络日志</a></strong></p>
+
+<p>所谓学问，就是对问题说得出道理，有自己的想法。     <br/>
+想法似乎人人都是有的，但又等于没有。因为大多数人的头脑杂乱无章，人云亦云，对于不同的观点意见，他都点头称是，等于没有想法。     <br/>
+我从来没有想过要做学问，走上现在这条路，只是因为我喜欢提问题。大约从十四岁开始，总有问题占据在我的心里，从一个问题转入另一个问题，一直想如何解答，解答不完就欲罢不能，就一路走了下来。     <br/>
+提得出问题，然后想要解决它，这大概是做学问的起点吧。      <br/>
+以下分八层来说明我走的一条路：</p>
+
+<h2>第一层境界：形成主见</h2>
+
+<p>用心想一个问题，便会对这个问题有主见，形成自己的判断。        <br/>
+说是主见，称之为偏见亦可。我们的主见也许是很浅薄的，但即使浅薄，也终究是你自己的意见。       <br/>
+许多哲学家的哲学也很浅，就因为浅便行了，胡适之先生的哲学很浅，亦很行。因为这是他自己的，纵然不高深，却是心得，而亲切有味。所以说出来便能够动人，能动人就行了！他就能自成一派，其他人不行，就是因为其他人连浅薄的哲学都没有。</p>
+
+<h2>第二层境界：发现不能解释的事情</h2>
+
+<p>有主见，才有你自己；有自己，才有旁人，才会发觉前后左右都是与我意见不同的人。     <br/>
+这时候，你感觉到种种冲突，种种矛盾，种种没有道理，又种种都是道理。于是就不得不第二步地用心思。       <br/>
+面对各种问题，你自己说不出道理，不甘心随便跟着人家说，也不敢轻易自信，这时你就走上求学问的正确道路了。</p>
+
+<h2>第三层境界：融汇贯通</h2>
+
+<p>从此以后，前人的主张、今人的言论，你不会轻易放过，稍有与自己不同处，便知道加以注意。        <br/>
+你看到与自己想法相同的，感到亲切；看到与自己想法不同的，感到隔膜。有不同，就非求解决不可；有隔膜，就非求了解不可。于是，古人今人所曾用过的心思，慢慢融汇到你自己。          <br/>
+你最初的一点主见，成为以后大学问的萌芽。从这点萌芽，你才可以吸收养料，才可以向上生枝发叶，向下入土生根。待得上边枝叶扶疏，下边根深蒂固，学问便成了。     <br/>
+这是读书唯一正确的方法，不然读书也没用处。会读书的人说话时，说他自己的话，不堆砌名词，不旁征博引；反之，引书越多的人越不会读书。</p>
+
+<h2>第四层境界：知不足</h2>
+
+<p>用心之后，就知道要虚心了。自己当初一点见解之浮浅，不足以解决问题。      <br/>
+学问的进步，不单是见解有进步，还表现在你的心思头脑锻炼得精密了，心气态度锻炼得谦虚了。      <br/>
+心虚思密是求学的必要条件。          <br/>
+对于前人之学，总不要说自己都懂。因为自己觉得不懂，就可以除去一切浮见，完全虚心地先求了解它。       <br/>
+遇到不同的意见思想，我总疑心他比我高明，疑心他必有我所未及的见闻，不然，他何以不和我作同样判断呢？疑心他必有精思深悟过于我，不然，何以我所见如此而他所见如彼呢？</p>
+
+<h2>第五层境界：以简御繁</h2>
+
+<p>你见到的意见越多，专研得愈深，这时候零碎的知识，片段的见解都没有了；心里全是一贯的系统，整个的组织。如此，就可以算成功了。到了这时候，才能以简御繁，才可以学问多而不觉得多。      <br/>
+凡有系统的思想，在心里都很简单，仿佛只有一两句话。凡是大哲学家皆没有许多话说，总不过一两句。很复杂很沉重的宇宙，在他手心里是异常轻松的&#8212;-所谓举重若轻。      <br/>
+学问家如说肩背上负着多沉重的学问，那是不对的；如说当初觉得有什么，现在才晓得原来没有什么，那就对了。道理越看得明透，越觉得无甚话可说，还是一点不说的好。心里明白，口里讲不出来。       <br/>
+反过来说，学问浅的人说话愈多，思想不清楚的人名词越多。让一个没有学问的人看见，真要把他吓坏了！其实道理明透了，名词便可用，可不用，或随意拾用。</p>
+
+<h2>第六层境界：运用自如</h2>
+
+<p>如果外面或里面还有解决不了的问题，那学问必是没到家。如果学问已经通了，就没有问题。       <br/>
+真学问的人，学问可以完全归自己运用。假学问的人，学问在他的手里完全不会用。</p>
+
+<h2>第七层境界：一览众山小</h2>
+
+<p>学问里面的甘苦都尝过了，再看旁人的见解主张，其中得失长短都能够看出来。这个浅薄，那个到家，这个是什么分数，那个是什么程度，都知道得很清楚；因为自己从前也是这样，一切深浅精粗的层次都曾经过。</p>
+
+<h2>第八层境界：通透</h2>
+
+<p>思精理熟之后，心里就没有一点不透的了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[tmux]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/10/22/about-tmux/"/>
+    <updated>2013-10-22T09:17:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/10/22/about-tmux</id>
+    <content type="html"><![CDATA[<p>一直以来都是在screen上运行远程程序，偶然发现tmux也有这样的功能，我一直把tmux当分屏工具用，看来真是浪费了额。</p>
+
+<p>对比一下：</p>
+
+<pre><code>tmux attach -t baqiao    ===   screen -D -r baqiao
+
+tmux new -s baqiao       ===   screen -S baqiao
+
+tmux ls               ===   screen -list
+
+Ctrl + b, d           ===   Ctrl + a + d
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[python爬虫程序(多线程，get，post，代理，日志)]]></title>
