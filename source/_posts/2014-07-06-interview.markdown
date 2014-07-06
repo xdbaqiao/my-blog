@@ -110,11 +110,11 @@ categories: learning
 
 
 22\. 关于linux的runlevel              
-> runlevel 0 是 关机
-> runlevel 1 是 单用户模式
-> runlevel 3 是 多用户模式
-> runlevel 5 是 图形界面
-> runlevel 6 是 重启
-> runlevel s 是 单用户模式
-> 较旧的发行版 其位置为/etc/inittab
+> runlevel 0 是 关机        
+> runlevel 1 是 单用户模式         
+> runlevel 3 是 多用户模式         
+> runlevel 5 是 图形界面           
+> runlevel 6 是 重启               
+> runlevel s 是 单用户模式         
+> 较旧的发行版 其位置为/etc/inittab            
                   
