@@ -104,16 +104,15 @@ categories: learning
 18\. mysql, nginx, apache 优化              
 19\. 网站加速              
 > 1. 前端优化，静态页面加载速度快
-> 2. CDN分流，负载均衡
-> 3. 代理作cache
-
-
+> 2. CDN分发，负载均衡
+> 3. nginx, squid代理作cache加速
 
 20\. uwsgi 应用服务器              
+
 21\. ip route add default，网络配置相关              
 > archlinux 使用最新的网络管理工具包 iproute2，替代之前的nettools          
 >
-
+> ip raute add default 192.168.0.0/24 via 192.168.0.1 dev eth0
 
 22\. 关于linux的runlevel              
 > runlevel 0 是 关机        
@@ -127,4 +126,3 @@ categories: learning
 23\. load 的含义       
 > 分别表示1分钟、5分钟和15分钟的负载情况
 > 这个负载情况指的是最近时间内，在CPU中，正在运行与准备运行的平均进程数量
-
