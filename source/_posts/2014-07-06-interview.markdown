@@ -105,5 +105,16 @@ categories: learning
 19\. 网站加速              
 20\. uwsgi 应用服务器              
 21\. ip route add default，网络配置相关              
+> archlinux 使用最新的网络管理工具包 iproute2，替代之前的nettools          
+>
+
+
 22\. 关于linux的runlevel              
+> runlevel 0 是 关机
+> runlevel 1 是 单用户模式
+> runlevel 3 是 多用户模式
+> runlevel 5 是 图形界面
+> runlevel 6 是 重启
+> runlevel s 是 单用户模式
+> 较旧的发行版 其位置为/etc/inittab
                   
