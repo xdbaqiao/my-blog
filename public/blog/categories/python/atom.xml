@@ -4,14 +4,131 @@
   <title><![CDATA[Category: python | BaQiao]]></title>
   <link href="http://xdbaqiao.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://xdbaqiao.github.io/"/>
-  <updated>2013-09-02T20:42:52+08:00</updated>
+  <updated>2014-07-06T20:19:55+08:00</updated>
   <id>http://xdbaqiao.github.io/</id>
   <author>
-    <name><![CDATA[yexinjing]]></name>
+    <name><![CDATA[BaQiao]]></name>
     <email><![CDATA[yexj061761@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[我的django博客]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2014/06/08/my-django-blog/"/>
+    <updated>2014-06-08T23:06:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2014/06/08/my-django-blog</id>
+    <content type="html"><![CDATA[<p>用了两年Python，写了两年Python爬虫，水平一直停留在脚本层级。最近受工作的刺激，梳理了一下思绪，发现自己前端后端都有很大的发展潜力。所以先拿Django开刀，练练手。</p>
+
+<p>Linux和Python已经很熟悉了，所以代码写起来也很顺手。下面记录一下本博客的搭建过程。</p>
+
+<p>原来的博客是Octopress，基本上是嗟来之食，拿来就用，底层原理完全没有理会。现在用Django，感觉自然不一样，当然也学习到很多。</p>
+
+<p>我直接在自己的vps上操作，发行版是Debian。        <br/>
+首先，安装Django</p>
+
+<blockquote><p>pip install django</p></blockquote>
+
+<p>安装完成验证一下</p>
+
+<blockquote><p>python –c “import djang</p></blockquote>
+
+<p>如果没有输出，则表示安装成功了。     <br/>
+运行</p>
+
+<blockquote><p>django-admin.py startproject myblog</p></blockquote>
+
+<p>创建自己的第一个工程，发现在当前目录下，多了文件夹myblog，其中有manage.py，内置众多管理命令。而myblog/myblog 文件夹内也有urls.py, settings.py等关键文件。</p>
+
+<p>执行</p>
+
+<blockquote><p>python manage.py runserver 127.0.0.1:8080</p></blockquote>
+
+<p>就可以在本机浏览器访问了。当然也可以修改ip地址和端口，使远程访问，我就是这样的，因为我直接在vps上操作的。</p>
+
+<p>创建一个博客应用</p>
+
+<blockquote><p>python manage.py startapp sblog</p></blockquote>
+
+<p>会在myblog同级目录下新建sblog目录，里面有models.py, test.py, admin.py, views.py等重要文件。</p>
+
+<p>Django被称为MTV架构，我的理解是，他还是MVC架构，控制器就是整个Django框架，V就是view视图，M就是model进行事物处理，Django多了一个templat模板，模板用于前端展示。</p>
+
+<p><code>M：models.py 进行数据库操作</code>         <br/>
+<code>T：template 用于前端展示</code>        <br/>
+<code>V：views  用于视图逻辑处理</code></p>
+
+<p>另外urls.py用于解析url超链接，进行视图逻辑分发。</p>
+
+<p>首先我打开了admin，安装完Django之后，默认开启了settings.py 中的全部INSTALLED_APP应用（其中添加sblog应用）以及中间件MIDDLEWARE_CLASSES，其他我都没有修改，数据库使用默认的sqllite3</p>
+
+<p>执行</p>
+
+<blockquote><p>python manage.py syncdb</p></blockquote>
+
+<p>进行数据库同步，创建用户。这样就可以通过127.0.0.1:8080/admin访问管理工具了。</p>
+
+<p>为了使管理工具能管理博客，需要编辑models.py 文件，</p>
+
+<p>```
+from django.db import models
+from django.contrib import admin</p>
+
+<p>class BQBlog(models.Model):</p>
+
+<pre><code>title = models.CharField(max_length=200) 
+content = models.TextField() 
+</code></pre>
+
+<p>timestamp = models.DateTimeField()
+class BQBlogAdmin(admin.ModelAdmin)：
+list_display = ('title','timestamp')</p>
+
+<p>admin.site.register(BQBlog, BQBlogAdmin) //运行python manage.py syncdb前需注释
+```</p>
+
+<p>使保存在数据库中的博客有标题，内容和时间戳              <br/>
+这样就可以在Django管理工具中进行博客管理了。</p>
+
+<p>进入sblog目录，新建文件夹templates进行模板管理</p>
+
+<p>新建文件chapter.html</p>
+
+<pre><code>
+</code></pre>
+
+<p>在views.py 中添加视图逻辑</p>
+
+<p>```
+from django.shortcuts import render_to_response
+from sblog.models import BQBlog</p>
+
+<p>def chapter(request):</p>
+
+<pre><code>posts = BQBlog.objects.all() 
+return render_to_response("chapter.html", {'posts':posts}) 
+</code></pre>
+
+<p>```</p>
+
+<p>myblog文件夹urls.py 中添加url(r'<sup>$',</sup> include('blog.urls')),              <br/>
+sblog文件夹新建urls.py</p>
+
+<p>```
+from django.conf.urls import *
+from sblog.views import chapter</p>
+
+<p>urlpatterns = patterns('', url(r'<sup>$',</sup> chapter), ) <br/>
+```</p>
+
+<p>这样一个基本的、最简单的Django博客就出来了！</p>
+
+<p>最后需要对其进行简单润色。              <br/>
+见<a href="http://django-baqiao.tk/"><code>博客http://django-baqiao.tk</code></a></p>
+
+<p>太丑了！以后有时间再修改！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[python爬虫程序(多线程，get，post，代理，日志)]]></title>
@@ -500,334 +617,6 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordin
 尊严不值钱，却是我唯一真正拥有的！
 把理想运用到真实的事物上，便有了文明。
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python2 装饰器、魔术方法和元类]]></title>
-    <link href="http://xdbaqiao.github.io/blog/2013/06/30/about-python/"/>
-    <updated>2013-06-30T19:41:00+08:00</updated>
-    <id>http://xdbaqiao.github.io/blog/2013/06/30/about-python</id>
-    <content type="html"><![CDATA[<h2>装饰器</h2>
-
-<p>装饰器从字面上看，是一个起到装饰作用的工具，而这个工具其实还是函数，起到装饰函数的作用。也就是说，装饰器是一个用来装饰函数的函数，实现对函数的修改。来看一个例子。</p>
-
-<p>``` python
-def br(fn):</p>
-
-<pre><code>def wrapped():
-    return '&lt;br&gt;' + fn()+ '&lt;/br&gt;'
-return wrapped
-</code></pre>
-
-<p>def li(fn):</p>
-
-<pre><code>def wrapped():
-    return '&lt;li&gt;' + fn()+ '&lt;/li&gt;'
-return wrapped
-</code></pre>
-
-<p>@br
-@li
-def hello():</p>
-
-<pre><code>return 'Hello'
-</code></pre>
-
-<p>print hello()
-```</p>
-
-<p>输出的结果是：         <br/>
-<code>&lt;br&gt;&lt;li&gt;Hello&lt;/li&gt;&lt;/br&gt;</code></p>
-
-<p>@称之为语法糖，我们把
-```python
-@li
-@br
-def hello():</p>
-
-<pre><code>return 'Hello'
-</code></pre>
-
-<p>print hello()
-<code>      
-展开，可以等价为
-</code>python
-def hello():</p>
-
-<pre><code>return 'Hello'
-</code></pre>
-
-<p>print li(br(hello))()
-```   <br/>
-需要注意的是，装饰器的顺序很重要，装饰器必须在引用前定义，例子中的li和br如果在hello函数之后定义，运行的时候程序将会报错。</p>
-
-<p>装饰器说明了一个问题，在Python中，函数也是对象，所以函数可以被赋给变量，可以作为参数进行参数传递，可以返回函数，也可以在函数中定义函数。</p>
-
-<p>其实在python中，一切皆对象，类是对象，类中的方法也是对象，类实例的行为也可以表现的像函数一样。可以将类赋值给一个变量，类可以复制，可以增加属性，也可以作为参数传递。</p>
-
-<p>```python
-class student:</p>
-
-<pre><code>def __init__(self, name, age):
-    self.name = name
-    self.age = age
-    print 'Class initial.'
-    print name, age
-
-def __call__(self, sexy='Male'):
-    print 'Function is called.'
-    print 'Name=%s, Age=%s, Sexy=%s' % (self.name, self.age, sexy)
-</code></pre>
-
-<p>xiaoming = student('xiaoming', '8')
-xiaoming()
-```</p>
-
-<p>输出：</p>
-
-<pre><code>Class initial.          
-xiaoming 8            
-Function is called.               
-Name=xiaoming, Age=8, Sexy=Male              
-</code></pre>
-
-<p>可以看到xiaoming这个类实例表现的像函数一样，调用xiaoming()的结果是执行了__call__方法，这个前后都带双下划线的方法称为魔术方法。通过魔术方法__call__，类实例表现出了函数的特征。</p>
-
-<p>装饰器有很多用途，包括</p>
-
-<ul>
-<li>访问控制</li>
-<li>清除临时对象</li>
-<li>错误处理</li>
-<li>缓存</li>
-<li>日志</li>
-</ul>
-
-
-<p>来看一个缓存的例子：</p>
-
-<pre><code>&gt;&gt;&gt; def cache(func):
-...     c = {}
-...     def wrapper(*args):
-...         if args in c:
-...             return c[args]
-...         print 'Calling %s()' % func.__name__
-...         res = func(*args)
-...         c[args] = res
-...         return res
-...     return wrapper
-&gt;&gt;&gt; @cache
-... def mum(x,y):
-...     return x*y
-... 
-&gt;&gt;&gt; mum(6,7)
-Calling mum()
-42
-&gt;&gt;&gt; mum(6,7)
-42
-</code></pre>
-
-<h2>魔术方法</h2>
-
-<p>魔术方法很多，比如__enter__，__exit__。我们知道with函数的用法：    <br/>
-```python<br/>
-with open('test.txt') as f:</p>
-
-<pre><code>print 'Open file test.txt'
-</code></pre>
-
-<p>``` <br/>
-with函数会自动执行__enter__和__exit__方法，在with开始执行的时候，就会调用__enter__方法，而在with函数结束的时候调用__exit__方法，open的__exit__会自动关闭文件，省去了显式调用close方法的步骤。</p>
-
-<p>举个例子：</p>
-
-<p>```python
-class Vipsl：</p>
-
-<pre><code>def __init__(self):
-    print 'Class initial.'
-
-def __enter__(self):
-    print 'Enter Vipsl'
-
-def __exit__(self, val1, val2, val3):
-    print 'Exit.'
-</code></pre>
-
-<p>with Vipsl() as v:</p>
-
-<pre><code>print 'processing...'
-</code></pre>
-
-<p>```</p>
-
-<p>输出结果是：</p>
-
-<pre><code>Class initial.      
-Enter Vipsl      
-processing...    
-Exit.         
-</code></pre>
-
-<p>我们可以看到__exit__最后执行。</p>
-
-<p>上例有最基本的魔法函数__init__，在创建对象时调用，可以视为C++中的构造函数，而__del__视为析构器。其实__init__并不是类实例化时所调用的第一个方法，第一个调用的方法是__new__。</p>
-
-<p>当然也可以重载魔术方法：      <br/>
-```python</p>
-
-<h1>!/usr/bin/env python2</h1>
-
-<h1>coding: utf-8</h1>
-
-<p>from collections import defaultdict</p>
-
-<p>class my_dict():</p>
-
-<pre><code>def __init__(self):
-    self.d = defaultdict()
-
-def __contains__(self, name):
-    return self.d.__contains__(self.get_hash(name))
-
-def __getitem__(self, name):
-    return  self.d.__getitem__(self.get_hash(name))
-
-def __setitem__(self, name, value):
-    return self.d.__setitem__(self.get_hash(name), value)
-
-def get_hash(self, name):
-    return hash(name)
-
-def keys(self):
-    print self.d.keys()
-</code></pre>
-
-<p>class my_bag(dict):</p>
-
-<pre><code>def __init__(self, *args, **kwargs):
-    dict.__init__(self, *args, **kwargs)
-
-def __getattr__(self, name):
-    return self.get(name)
-
-def __setattr__(self, name, value):
-    if name:
-        self[name] = value
-</code></pre>
-
-<p>y = my_dict()
-y['test'] = 'Hello world!'
-y['test2'] = 'Hello world!'
-print y['test']
-print 'test' in y</p>
-
-<p>bag = my_bag()
-bag.name = 'hello bag'
-print bag.name
-print bag.fd
-print bag
-```
-输出</p>
-
-<pre><code> Hello world!         
- True        
- hello bag          
- None               
- {'name': 'hello bag'}       
-</code></pre>
-
-<h2>元类</h2>
-
-<p>说到__new__，就涉及到元类的概念了。     <br/>
-元类就是类的类。     <br/>
-我们知道类可以使用class关键字来定义，这时候python解释器会自动创建这个对象，但类也是对象，像其他对象一样，为了生成类，python也会提供一个手动处理的方法，这个方法就是type。type创建类的格式是：       <br/>
-<code>type(类名，父类元组，属性字典)</code></p>
-
-<p>举个例子：
-```python
-class student(person)：</p>
-
-<pre><code>SmallThan18 = True
-</code></pre>
-
-<p>```
-那么用type创建就是：</p>
-
-<p><code>student = type('student', ('person'), {'SmallThan18':True})</code></p>
-
-<p>可以看到，type创建了一个类。其实type就是元类，而且是python中创建所有类的元类。
-str是类，int也是类，从这些类中可以创建出字符串对象，整型对象，而str类和int类的元类也是type。</p>
-
-<p>我们可以从__class__属性中看出端倪。</p>
-
-<pre><code>&gt;&gt;&gt; a = 'hello world'
-&gt;&gt;&gt; a.__class__
-&lt;type 'str'&gt;
-&gt;&gt;&gt; a.__class__.__class__
-&lt;type 'type'&gt;
-</code></pre>
-
-<p>字符串a是从str类而来，str类来自元类type，那么a.__class__.__class__.__class__是什么呢？还是type。</p>
-
-<p>type是元类，当然我们可以创建自己的元类，这就是__metaclass__。如果指定了__metaclass__，那么，这个类将不会由type创建，而是由指定的__mataclass__创建，那么__metaclass__是什么呢？其实就是可以创建类的东西，可以是一个类（来自type），也可以是type。</p>
-
-<p>```python
-class mc(type):</p>
-
-<pre><code>def __init__(cls, name, base, dict):
-    if not hasattr(cls, 'nlist'):
-        cls.nlist = []
-    else:
-        cls.nlist.append(name)
-</code></pre>
-
-<p>class person:</p>
-
-<pre><code>__metaclass__ = mc
-</code></pre>
-
-<p>class student(person):</p>
-
-<pre><code>SmallThan18 = True
-</code></pre>
-
-<p>class gilrs(person):</p>
-
-<pre><code>Sexy = 'Female'
-</code></pre>
-
-<p>print student.nlist
-```</p>
-
-<p>输出：   <br/>
-<code>['student', 'gilrs']</code></p>
-
-<p>可以看到mc其实是type的子类，任意person的子类名，都会放到nlist里面。定义type的时候注意，要符合type的参数定义格式。就是：      <br/>
-<code>type(类名，父类元组，属性字典)</code></p>
-
-<p>回到__new__属性，记不记得前面讲的__call__，那么type是不是可以类实例函数化，所以     <br/>
-<code>type(类名，父类元组，属性字典)</code><br/>
-等价为     <br/>
-<code>type(类名).__call__(类名，父类元组，属性字典)</code></p>
-
-<p>而在__call__的实现中，是先尝试用__new__来创建类实例的，只有__new__返回了类的实例，__init__才会执行。
-可以这样表示：
-```python
-def <strong>call</strong>(cls, *args, **kwargs):</p>
-
-<pre><code>result = cls.__new__(cls, *args, **kwargs)
-if isinstance(result, cls):
-    type(result).__init__(result,*args,**kwargs)
-return result
-</code></pre>
-
-<p>```</p>
-
-<p>参考资料：   <br/>
-<a href="http://blog.danmarner.com/me/entry/python-new-metaclass-init-plugin-system/">http://blog.danmarner.com/me/entry/python-new-metaclass-init-plugin-system/</a>       <br/>
-<a href="http://blog.jobbole.com/21351/">http://blog.jobbole.com/21351/</a></p>
 ]]></content>
   </entry>
   

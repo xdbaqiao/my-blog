@@ -4,120 +4,108 @@
 <head>
 	<meta charset="utf-8">
 	<title>BaQiao</title>
-	<meta name="author" content="yexinjing">
-
+    <meta name="author" content="BaQiao">
+    
+	<meta name="description" content="Published on: Jul 6th, 2014 Tags: learning 1\. 讲述计算机启动过程？ 2\. 什么是MBR，有多大？ 3\. Linux 第一个进程叫什么名字？ 4\. http协议状态码，4XX有什么？ 5\. raid2,3,4用途？ 6\. &hellip;">
 	
-	<meta name="description" content="Sep 1st, 2013 python Python爬虫程序(多线程，get，post，代理，日志) 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35 &hellip;">
-	
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<link href="/atom.xml" rel="alternate" title="BaQiao" type="application/atom+xml">
-	
-	<link rel="canonical" href="http://xdbaqiao.github.io/">
-	<link href="/favicon.png" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
-	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href='http://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Amethysta' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <script src="/javascripts/ajaxify.js"></script>
+   
+    
+    
 
 </head>
 
 
 <body>
-	<div class="container">
-		<div class="left-col">
-			<div class="intrude-less">
-			<header id="header" class="inner"><div class="profilepic">	
-	<script src="/javascripts/md5.js"></script>
-	<script type="text/javascript">
-		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("yexj061761@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
-	</script>
-</div>
-<h1><a href="/">BaQiao</a></h1>
-<p class="subtitle"><br>XDU/NWPU/VIPSL/<br> Program/Python/Algorithm/<br> Linux/Arch/Embedded Linux/<br> Xi'an, Shannxi Province, China<br> <br><font color="#00DB00" size=+2>KEEP MOVING!</font></p>
-<nav id="main-nav"><ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        BaQiao
+    </div>
+</h1>
+<br>
+
+<ul id="social-links" style="text-align:center">
+  
+  <!-- GitHub -->
+  <li>
+  <a href="https://github.com/xdbaqiao" class="github" title="Github"></a>
+  </li>
+  
+  
+  <!-- Google Plus -->
+  <li>
+  <a href="http://plus.google.com/112081939216553363796?rel=author" class="google" title="Google+"></a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li>
+  <a href="http://www.twitter.com/yexinjing" class="twitter" title="Twitter"></a>
+  </li>
+  
+  
+  
+  
+  
 </ul>
-</nav>
-<nav id="sub-nav">
-	<div class="social">
-		
-		
-		<a class="google" href="https://plus.google.com/112081939216553363796" rel="author" title="Google+">Google+</a>
-		
-		
-		<a class="twitter" href="http://twitter.com/yexinjing" title="Twitter">Twitter</a>
-		
-		
-		<a class="github" href="https://github.com/xdbaqiao" title="GitHub">GitHub</a>
-		
-		
-		
-		
-		
-		
-		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
-		
-	</div>
-</nav>
-
-</header>				
-			</div>
-		</div>	
-		<div class="mid-col">
-			
-				
-			
-			<div class="mid-col-container">
-				<div id="content" class="inner">
-<div itemscope itemtype="http://schema.org/Blog">
 
 
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/blog/archives/index.html">Archives</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form method="get" action="/search.html" id="search">
+            <input name="query" type="text" placeholder="Search..." x-webkit-speech />
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload --> 
+    <div id="content" class="inner">
+        
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/07/06/interview/">
+		
+			常见的IT类面试题</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: 
 
 
 
@@ -129,19 +117,221 @@
   
 
 
-<time datetime="2013-09-01T15:58:00+08:00" data-updated="true" itemprop="datePublished">Sep 1<span>st</span>, 2013</time></div>
-		<div class="tags">
+<time datetime="2014-07-06T18:06:00+08:00" pubdate data-updated="true">Jul 6<span>th</span>, 2014</time></div>
+      <div class="tags">Tags: 
+
+
+	<a class='category' href='/blog/categories/learning/'>learning</a>
+
+
+</div>
+    </div>
+		<pre><code>1\. 讲述计算机启动过程？            
+2\. 什么是MBR，有多大？               
+3\. Linux 第一个进程叫什么名字？              
+4\. http协议状态码，4XX有什么？              
+5\. raid2,3,4用途？              
+6\. traceroute的基本原理是什么？              
+7\. 翻转字符串              
+8\. 字符串转数字              
+9\. crontab 同步时间              
+10\. mysql nginx apache 的配置文件位置              
+11\. C++中的容器              
+12\. 解释$0 $$ $# $! $@ $? $*              
+13\. python 生成器和修饰器              
+14\. iptables              
+15\. Django工作原理              
+16\. vim 替换1-10行字符
+17\. ls -al
+18\. mysql, nginx, apache 优化              
+19\. 网站加速              
+20\. uwsgi 应用服务器              
+21\. ip route add default，网络配置相关              
+22\. 关于linux的runlevel              
+</code></pre>
+
+<p><strong>我的解答</strong></p>
+
+<p>1. 讲述计算机启动过程？</p>
+
+<blockquote><p>计算机从BIOS中启动，BIOS一般位于主板的flash中，计算机上电之后，进入BIOS，进行硬件自检，并决定从哪里（可选u盘，硬盘等）启动计算机操作系统，接着BIOS把控制权交给设备，从设备中的前512字节中，读取MBR，即主引导记录，放入内存，里面保存有硬盘分区表等信息。接着进入启动管理器，常见的有grub，lilo等，交由用户决定启动哪个操作系统。</p></blockquote>
+
+<p>2. 什么是MBR，有多大？</p>
+
+<blockquote><p>Master Boot Record，MBR主引导记录，有512字节，前446个字节是主引导程序，将系统控制转交给用户制定的分区表中的系统;然后是四个分区表，用于记录磁盘分区状况，每个分区表16个字节;最后是结束标志AA55</p></blockquote>
+
+<p>3. Linux 第一个进程叫什么名字？</p>
+
+<blockquote><p>init(1)，是进程号为1的进程，用于开机初始化</p></blockquote>
+
+<p>4. http协议状态码，4XX有什么？</p>
+
+<blockquote><p>400：请求报文错误    401：未认证    403：Forbidden      <br/>
+404：not found等</p></blockquote>
+
+<p>5. raid2,3,4用途？</p>
+
+<blockquote><p>raid2 现在用的很少，因为他对大数据有很高读写性能，但少量读写性能不好。它是为超级计算机开发的磁盘阵列，带海明码，在2的n次幂磁盘中设立校验盘。基本思想是在IO到来之后，控制器将数据按位分割，并顺序将每一位数据放置在每一个磁盘中，这样任何数据都能并行读取，提高性能。但这样也不能实现并发IO，因为硬盘被占用。           <br/>
+raid3现在用的也很少，因为其校验盘很容易成为性能瓶颈，其将数据分成多“块”，放在N+1个磁盘上，N个磁盘存放数据，1个磁盘存放校验数据   <br/>
+raid4也用的很少，其校验也是放置在一个磁盘上，这个磁盘很容易成为性能瓶颈。  <br/>
+所以raid2,3,4基本很少见，其主要运用场景是大量数据读写，比如视频，影音等。</p></blockquote>
+
+<p>6. traceroute的基本原理是什么？</p>
+
+<blockquote><p>traceroute主要用于追踪数据包的路由路径，采用icmp协议，数据包经过一个路由器，TTL生存时间将会减一，直到数据包到达目的地或者TTL被置为零。</p></blockquote>
+
+<p>7. 翻转字符串            <br/>
+8. 字符串转数字            <br/>
+9. crontab 同步时间</p>
+
+<blockquote><p>10 10-16/2 * 7 *  /usr/bin/ntpd -s 133.100.9.2       <br/>
+7月十点十分到下午四点十分，每隔两个小时，进行时间同步       <br/>
+有面试官问，crontab同步失败，是什么原因，很有可能是环境变量设置有误，找不到相关命令</p></blockquote>
+
+<p>10. mysql nginx apache 的配置文件位置</p>
+
+<blockquote><p>我完全没有料到居然这也能考，不过我确实没有在意，因为平时凭肌肉记忆和自动补全就能找到相关文件，但笔试起来，我却是如此水。。。。       <br/>
+自动补全是如此关键，另外我觉得这真没什么可考的。。。      <br/>
+以archlinux为例，我在自动补全的帮助下，轻轻松松找到。。。         <br/>
+/etc/mysql/my.cnf   /etc/nginx/nginx.conf    /etc/apache2/httpd.conf</p></blockquote>
+
+<p>11. C++中的容器</p>
+
+<blockquote><p>包括顺序容器和关联容器，顺序容器有vector,list,queue,deque,stack等，其属性和操作包括，size,pop,push,top,insert,erase等，关联容器有map，set等，其属性和操作包括insert,find,count,erase等。</p></blockquote>
+
+<p>12. $0 $$ $# $! $@ $? $*</p>
+
+<blockquote><p>$0 程序名     <br/>
+$$ 当前进程进程号     <br/>
+$# 参数个数           <br/>
+$! 后台运行最后一个进行进程号           <br/>
+$@ 输入参数组合，形如(&#8220;$1&#8221;, &#8220;$2&#8221;, &#8220;$3&#8221;)        <br/>
+$? 前一命令返回码                 <br/>
+$* 输入参数组合，形如(&#8220;$1 $2 $3&#8221;)</p></blockquote>
+
+<p>13. python 生成器和修饰器</p>
+
+<blockquote><p>python的生成器就是yield，表示带yield的函数，其实很简单，类似一个list，不同的是，生成器在使用之后会消耗</p></blockquote>
+
+<p>14. iptables</p>
+
+<blockquote><p>iptables有三表五链，分别是nat、filter、mangle表，prerouting、postrouting、output、input、forward链      <br/>
+nat表用于DNAT与SNAT，包含两个链，prerouting、postrouting       <br/>
+filter表是默认表，包含input、output、forward链      <br/>
+mangle表包含postrouting、prerouting和forward链       <br/>
+可以分三种情况理解防火墙。第一种是进入的数据，先通过prerouting链，进行地址变换，然后进行路由判断，如果目的地址是本机，则通过input链处理;如果目的地不是本机，则是第二种情况，转发的数据，则先通过forward链处理，判断是否拦截或转发，然后交给postrouting链进行处理;第三种情况是出站的数据，首先通过output链，然后进行路由判断，最后通过postrouting，进行SNAT。</p></blockquote>
+
+<p>15. Django工作原理</p>
+
+<blockquote></blockquote>
+
+<p>16. vim 替换1-10行字符</p>
+
+<blockquote><p>:1,10s/www/wwww/g</p></blockquote>
+
+<p>17. ls -al</p>
+
+<blockquote><p>命令第二列表示，子文件夹数量或者文件硬链接数量</p></blockquote>
+
+<p>18. mysql, nginx, apache 优化            <br/>
+19. 网站加速            <br/>
+20. uwsgi 应用服务器            <br/>
+21. ip route add default，网络配置相关            <br/>
+22. 关于linux的runlevel</p>
+
+		
+		
+	</div>
+
+<div class="meta">
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/06/08/my-django-blog/">
+		
+			我的django博客</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: 
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-08T23:06:00+08:00" pubdate data-updated="true">Jun 8<span>th</span>, 2014</time></div>
+      <div class="tags">Tags: 
 
 
 	<a class='category' href='/blog/categories/python/'>python</a>
 
 
 </div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/01/python-scrape/" itemprop="url">Python爬虫程序(多线程，get，post，代理，日志)</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    </div>
+		<p>用了两年Python，写了两年Python爬虫，水平一直停留在脚本层级。最近受工作的刺激，梳理了一下思绪，发现自己前端后端都有很大的发展潜力。所以先拿Django开刀，练练手。</p>
+
+<p>Linux和Python已经很熟悉了，所以代码写起来也很顺手。下面记录一下本博客的搭建过程。</p>
+
+<p>原来的博客是Octopress，基本上是嗟来之食，拿来就用，底层原理完全没有理会。现在用Django，感觉自然不一样，当然也学习到很多。</p>
+
+<p>我直接在自己的vps上操作，发行版是Debian。        <br/>
+首先，安装Django</p>
+
+<blockquote><p>pip install django</p></blockquote>
+
+<p>安装完成验证一下</p>
+
+<blockquote><p>python –c “import djang</p></blockquote>
+
+<p>如果没有输出，则表示安装成功了。     <br/>
+运行</p>
+
+<blockquote><p>django-admin.py startproject myblog</p></blockquote>
+
+<p>创建自己的第一个工程，发现在当前目录下，多了文件夹myblog，其中有manage.py，内置众多管理命令。而myblog/myblog 文件夹内也有urls.py, settings.py等关键文件。</p>
+
+<p>执行</p>
+
+<blockquote><p>python manage.py runserver 127.0.0.1:8080</p></blockquote>
+
+<p>就可以在本机浏览器访问了。当然也可以修改ip地址和端口，使远程访问，我就是这样的，因为我直接在vps上操作的。</p>
+
+<p>创建一个博客应用</p>
+
+<blockquote><p>python manage.py startapp sblog</p></blockquote>
+
+<p>会在myblog同级目录下新建sblog目录，里面有models.py, test.py, admin.py, views.py等重要文件。</p>
+
+<p>Django被称为MTV架构，我的理解是，他还是MVC架构，控制器就是整个Django框架，V就是view视图，M就是model进行事物处理，Django多了一个templat模板，模板用于前端展示。</p>
+
+<p><code>M：models.py 进行数据库操作</code>         <br/>
+<code>T：template 用于前端展示</code>        <br/>
+<code>V：views  用于视图逻辑处理</code></p>
+
+<p>另外urls.py用于解析url超链接，进行视图逻辑分发。</p>
+
+<p>首先我打开了admin，安装完Django之后，默认开启了settings.py 中的全部INSTALLED_APP应用（其中添加sblog应用）以及中间件MIDDLEWARE_CLASSES，其他我都没有修改，数据库使用默认的sqllite3</p>
+
+<p>执行</p>
+
+<blockquote><p>python manage.py syncdb</p></blockquote>
+
+<p>进行数据库同步，创建用户。这样就可以通过127.0.0.1:8080/admin访问管理工具了。</p>
+
+<p>为了使管理工具能管理博客，需要编辑models.py 文件，</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -152,325 +342,82 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python2</span>
-</span><span class='line'><span class="c">#coding: utf-8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>from django.db import models
+</span><span class='line'>from django.contrib import admin
 </span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">re</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">string</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">urllib</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">logging</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">cookielib</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">threading</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+</span><span class='line'>class BQBlog(models.Model):
+</span><span class='line'>    title = models.CharField(max_length=200) 
+</span><span class='line'>    content = models.TextField() 
+</span><span class='line'>timestamp = models.DateTimeField()
+</span><span class='line'>class BQBlogAdmin(admin.ModelAdmin)：
+</span><span class='line'>list_display = ('title','timestamp')
 </span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">set_log</span><span class="p">():</span>
-</span><span class='line'>    <span class="n">FMT</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%(asctime)s</span><span class="s">-</span><span class="si">%(levelname)s</span><span class="se">\t</span><span class="si">%(message)s</span><span class="s">&#39;</span>
-</span><span class='line'>    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="n">FMT</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">&#39;downloading.log&#39;</span><span class="p">,</span> <span class="n">filemode</span><span class="o">=</span><span class="s">&#39;a&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">download</span><span class="p">:</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first_url</span><span class="p">,</span> <span class="n">proxy</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">user_agent</span> <span class="o">=</span> <span class="s">&#39;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0&#39;</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_agent</span><span class="p">,</span> <span class="s">&#39;Accept-encoding&#39;</span><span class="p">:</span><span class="s">&#39;gzip, deflate&#39;</span><span class="p">,</span> <span class="s">&#39;Referer&#39;</span><span class="p">:</span> <span class="n">first_url</span><span class="p">}</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">opener</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">build_opener</span><span class="p">()</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">proxy</span> <span class="o">=</span> <span class="n">proxy</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">add_proxy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">proxy</span><span class="p">):</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">proxy</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;https&#39;</span><span class="p">):</span>
-</span><span class='line'>                <span class="bp">self</span><span class="o">.</span><span class="n">opener</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">({</span><span class="s">&#39;https&#39;</span><span class="p">:</span> <span class="n">proxy</span><span class="p">}))</span>
-</span><span class='line'>            <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>                <span class="bp">self</span><span class="o">.</span><span class="n">opener</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">({</span><span class="s">&#39;http&#39;</span><span class="p">:</span> <span class="n">proxy</span><span class="p">}))</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">add_proxy</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">proxy</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">html</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">html</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">add_proxy</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">proxy</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-</span><span class='line'>            <span class="n">data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">html</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">html</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">fetch</span><span class="p">():</span>
-</span><span class='line'>    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://medboard.nv.gov/verification/&#39;</span>
-</span><span class='line'>    <span class="n">surl</span> <span class="o">=</span> <span class="s">&#39;http://medboard.nv.gov/verification/Search.aspx&#39;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">lowercase</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">worker</span><span class="p">():</span>
-</span><span class='line'>        <span class="n">D</span> <span class="o">=</span> <span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">D</span><span class="o">.</span><span class="n">opener</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">HTTPCookieProcessor</span><span class="p">(</span><span class="n">cookielib</span><span class="o">.</span><span class="n">MozillaCookieJar</span><span class="p">()))</span>
-</span><span class='line'>        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">try</span><span class="p">:</span>
-</span><span class='line'>                <span class="n">letter</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
-</span><span class='line'>            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-</span><span class='line'>                <span class="k">break</span>
-</span><span class='line'>            <span class="n">html</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="n">post_data</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span class='line'>            <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&#39;__VIEWSTATE&quot;\svalue=&quot;([^&quot;]+)&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="o">|</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">post_data</span><span class="p">[</span><span class="s">&#39;__VIEWSTATE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">m</span> <span class="k">else</span> <span class="s">&#39;&#39;</span>
-</span><span class='line'>            <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&#39;__EVENTVALIDATION&quot;\svalue=&quot;([^&quot;]+)&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="o">|</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">post_data</span><span class="p">[</span><span class="s">&#39;__EVENTVALIDATION&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">m</span> <span class="k">else</span> <span class="s">&#39;&#39;</span>
-</span><span class='line'>            <span class="n">post_data</span><span class="p">[</span><span class="s">&#39;t_web_lookup__license_type_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Medical Doctor&#39;</span>
-</span><span class='line'>            <span class="n">post_data</span><span class="p">[</span><span class="s">&#39;t_web_lookup__first_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">letter</span>
-</span><span class='line'>            <span class="n">post_data</span><span class="p">[</span><span class="s">&#39;sch_button&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Search&#39;</span>
-</span><span class='line'>            <span class="n">html</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">surl</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">post_data</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">muilt_thread</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">muilt_thread</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">num_threads</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">threads</span> <span class="o">=</span> <span class="p">[</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_threads</span><span class="p">)]</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">wait</span><span class="p">:</span>
-</span><span class='line'>        <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">set_log</span><span class="p">()</span>
-</span><span class='line'>    <span class="n">fetch</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>admin.site.register(BQBlog, BQBlogAdmin) //运行python manage.py syncdb前需注释</span></code></pre></td></tr></table></div></figure>
 
 
-		
-		
-	</div>
+<p>使保存在数据库中的博客有标题，内容和时间戳              <br/>
+这样就可以在Django管理工具中进行博客管理了。</p>
 
-</article>
+<p>进入sblog目录，新建文件夹templates进行模板管理</p>
 
+<p>新建文件chapter.html</p>
 
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
+<p>在views.py 中添加视图逻辑</p>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-15T15:53:00+08:00" data-updated="true" itemprop="datePublished">Aug 15<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/08/15/webserver/" itemprop="url">Python与gnuplot</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>写了一个测试web服务器性能的简单脚本，运用了apache中的测试工具ab，代码如下：        <br/>
-额，这不是什么机密吧，只是一个框架，以后可以加cache机制，加config或者argv，领导不要抓我。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/python</span>
-</span><span class='line'><span class="c">#coding:utf-8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>from django.shortcuts import render_to_response 
+</span><span class='line'>from sblog.models import BQBlog
 </span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">re</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">commands</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">Gnuplot</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">nginxTest</span><span class="p">:</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">request_finish_time</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="s">&#39;ab -n </span><span class="si">%s</span><span class="s"> -c 10 -k http://localhost/&#39;</span> <span class="c"># 把localhost 换成www.google.com，让暴风雨来的猛烈些吧</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="k">for</span> <span class="n">i_num</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">):</span>
-</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">getOutput</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">parseOutput</span><span class="p">()</span>
-</span><span class='line'>            <span class="k">print</span> <span class="s">&#39;Total </span><span class="si">%s</span><span class="s">, finish </span><span class="si">%s</span><span class="s">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="n">i_num</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">getOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
-</span><span class='line'>        <span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">)</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">getstatusoutput</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">parseOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">&#39;Time taken for tests:\s+([\.\d]+)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">rft</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">request_finish_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rft</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">gnuplot</span><span class="p">:</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="n">Gnuplot</span><span class="o">.</span><span class="n">Gnuplot</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">d</span> <span class="o">=</span> <span class="n">Gnuplot</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">with_</span><span class="o">=</span><span class="s">&#39;lines&#39;</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;times&#39;</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">hardcopy</span><span class="p">(</span><span class="s">&#39;./</span><span class="si">%s</span><span class="s">.ps&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">enhanced</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">45</span><span class="p">)]</span>
-</span><span class='line'>    <span class="n">n</span> <span class="o">=</span> <span class="n">nginxTest</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="n">times</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">n</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</span><span class='line'>    <span class="n">gnuplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">times</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">n</span><span class="o">.</span><span class="n">request_finish_time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&#39;request finish time&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>def chapter(request):
+</span><span class='line'>    posts = BQBlog.objects.all() 
+</span><span class='line'>    return render_to_response("chapter.html", {'posts':posts}) </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>The result is following</strong></p>
+<p>myblog文件夹urls.py 中添加url(r&#8217;<sup>$&#8217;,</sup> include(&#8216;blog.urls&#8217;)),              <br/>
+sblog文件夹新建urls.py</p>
 
-<p><img src="http://imgur.com/okeEBq1.png" alt="request_finish_time" /></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>from django.conf.urls import * 
+</span><span class='line'>from sblog.views import chapter
+</span><span class='line'>
+</span><span class='line'>urlpatterns = patterns('', url(r'^$', chapter), )   </span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样一个基本的、最简单的Django博客就出来了！</p>
+
+<p>最后需要对其进行简单润色。              <br/>
+见<a href="http://django-baqiao.tk/"><code>博客http://django-baqiao.tk</code></a></p>
+
+<p>太丑了！以后有时间再修改！</p>
 
 		
 		
 	</div>
 
+<div class="meta">
+	
+</div>
 </article>
 
 
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/11/19/zuoxuewen/">
+		
+			梁漱溟：做学问</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: 
 
 
 
@@ -482,186 +429,100 @@
   
 
 
-<time datetime="2013-08-09T20:36:00+08:00" data-updated="true" itemprop="datePublished">Aug 9<span>th</span>, 2013</time></div>
-		<div class="tags">
+<time datetime="2013-11-19T22:46:00+08:00" pubdate data-updated="true">Nov 19<span>th</span>, 2013</time></div>
+      <div class="tags">Tags: 
 
 
-	<a class='category' href='/blog/categories/python/'>python</a>
+	<a class='category' href='/blog/categories/learning/'>learning</a>
 
 
 </div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/08/09/coding-problem/" itemprop="url">Python2 的编码问题</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>编码涉及到很多问题，本文简单讲一讲</p>
+    </div>
+		<p><strong>节选自<a href="http://www.ruanyifeng.com/blog/2013/09/liang_shuming.html">阮一峰的网络日志</a></strong></p>
 
-<p>写python脚本的时候，头两行的常见格式是：</p>
+<p>所谓学问，就是对问题说得出道理，有自己的想法。     <br/>
+想法似乎人人都是有的，但又等于没有。因为大多数人的头脑杂乱无章，人云亦云，对于不同的观点意见，他都点头称是，等于没有想法。     <br/>
+我从来没有想过要做学问，走上现在这条路，只是因为我喜欢提问题。大约从十四岁开始，总有问题占据在我的心里，从一个问题转入另一个问题，一直想如何解答，解答不完就欲罢不能，就一路走了下来。     <br/>
+提得出问题，然后想要解决它，这大概是做学问的起点吧。      <br/>
+以下分八层来说明我走的一条路：</p>
 
-<pre><code>#!/usr/bin/env python2                  
-#coding:utf-8               
-</code></pre>
+<h2>第一层境界：形成主见</h2>
 
-<p>第一行的意义是在Linux下，当脚本是可执行文件是，以&#8221;./*.py&#8221;执行程序时需要调用的命令，如果以命令&#8217;python  *.py&#8217;执行程序，则第一行是没有意义的              <br/>
-第二行涉及到python编码问题，它指定脚本内容的编码方式。这一行的写法很灵活，但必须包含三项内容，即&#8221;#&#8221;, &#8220;coding&#8221; 和编码   <br/>
-所以，也可以写作<code># -*- coding: UTF-8 -*-</code></p>
+<p>用心想一个问题，便会对这个问题有主见，形成自己的判断。        <br/>
+说是主见，称之为偏见亦可。我们的主见也许是很浅薄的，但即使浅薄，也终究是你自己的意见。       <br/>
+许多哲学家的哲学也很浅，就因为浅便行了，胡适之先生的哲学很浅，亦很行。因为这是他自己的，纵然不高深，却是心得，而亲切有味。所以说出来便能够动人，能动人就行了！他就能自成一派，其他人不行，就是因为其他人连浅薄的哲学都没有。</p>
 
-<p><strong>基本知识</strong>               <br/>
-在讲python编码之前，需要了解一些基本知识：         <br/>
-1. python有两种字符串类型，str和unicode，例如</p>
+<h2>第二层境界：发现不能解释的事情</h2>
 
-<pre><code>&gt;&gt;&gt; a = u'你好'          
-&gt;&gt;&gt; a.__class__             
-&lt;type 'unicode'&gt;           
-&gt;&gt;&gt; a = '你好'           
-&gt;&gt;&gt; a.__class__      
-&lt;type 'str'&gt;          
-</code></pre>
+<p>有主见，才有你自己；有自己，才有旁人，才会发觉前后左右都是与我意见不同的人。     <br/>
+这时候，你感觉到种种冲突，种种矛盾，种种没有道理，又种种都是道理。于是就不得不第二步地用心思。       <br/>
+面对各种问题，你自己说不出道理，不甘心随便跟着人家说，也不敢轻易自信，这时你就走上求学问的正确道路了。</p>
 
-<p>2. python里       <br/>
-encode是指将unicode 转换成  其他编码</p>
+<h2>第三层境界：融汇贯通</h2>
 
-<pre><code>encode： unicode  --&gt;  other            
-</code></pre>
+<p>从此以后，前人的主张、今人的言论，你不会轻易放过，稍有与自己不同处，便知道加以注意。        <br/>
+你看到与自己想法相同的，感到亲切；看到与自己想法不同的，感到隔膜。有不同，就非求解决不可；有隔膜，就非求了解不可。于是，古人今人所曾用过的心思，慢慢融汇到你自己。          <br/>
+你最初的一点主见，成为以后大学问的萌芽。从这点萌芽，你才可以吸收养料，才可以向上生枝发叶，向下入土生根。待得上边枝叶扶疏，下边根深蒂固，学问便成了。     <br/>
+这是读书唯一正确的方法，不然读书也没用处。会读书的人说话时，说他自己的话，不堆砌名词，不旁征博引；反之，引书越多的人越不会读书。</p>
 
-<p>decode 是将其他编码  转换成 unicode</p>
+<h2>第四层境界：知不足</h2>
 
-<pre><code>decode ： other   --&gt;  unicode               
-</code></pre>
+<p>用心之后，就知道要虚心了。自己当初一点见解之浮浅，不足以解决问题。      <br/>
+学问的进步，不单是见解有进步，还表现在你的心思头脑锻炼得精密了，心气态度锻炼得谦虚了。      <br/>
+心虚思密是求学的必要条件。          <br/>
+对于前人之学，总不要说自己都懂。因为自己觉得不懂，就可以除去一切浮见，完全虚心地先求了解它。       <br/>
+遇到不同的意见思想，我总疑心他比我高明，疑心他必有我所未及的见闻，不然，他何以不和我作同样判断呢？疑心他必有精思深悟过于我，不然，何以我所见如此而他所见如彼呢？</p>
 
-<p>3. 注意区分字符集和字符编码。</p>
+<h2>第五层境界：以简御繁</h2>
 
-<pre><code>字符集是一个系统支持的所有抽象字符的集合，包括各种文字和符号。         
-字符编码是一套法则，使用该法则，将一个字符集与另一个集合配对。       
-字符集包括ASCII字符集，GB2312字符集，BIG5字符集，UNICODE字符集等        
-</code></pre>
+<p>你见到的意见越多，专研得愈深，这时候零碎的知识，片段的见解都没有了；心里全是一贯的系统，整个的组织。如此，就可以算成功了。到了这时候，才能以简御繁，才可以学问多而不觉得多。      <br/>
+凡有系统的思想，在心里都很简单，仿佛只有一两句话。凡是大哲学家皆没有许多话说，总不过一两句。很复杂很沉重的宇宙，在他手心里是异常轻松的&#8212;-所谓举重若轻。      <br/>
+学问家如说肩背上负着多沉重的学问，那是不对的；如说当初觉得有什么，现在才晓得原来没有什么，那就对了。道理越看得明透，越觉得无甚话可说，还是一点不说的好。心里明白，口里讲不出来。       <br/>
+反过来说，学问浅的人说话愈多，思想不清楚的人名词越多。让一个没有学问的人看见，真要把他吓坏了！其实道理明透了，名词便可用，可不用，或随意拾用。</p>
 
-<p>4. UNICODE是字符集，UTF-8,UTF-16,UTF-32是三种字符编码方案。</p>
+<h2>第六层境界：运用自如</h2>
 
-<p><strong>python的编码问题</strong></p>
+<p>如果外面或里面还有解决不了的问题，那学问必是没到家。如果学问已经通了，就没有问题。       <br/>
+真学问的人，学问可以完全归自己运用。假学问的人，学问在他的手里完全不会用。</p>
 
-<p>python在安装的时候，默认的编码是ASCII码(python3 的默认编码是UTF8)，当程序中出现非ASCII码时，程序会报错.          <br/>
-在终端里，运行</p>
+<h2>第七层境界：一览众山小</h2>
 
-<pre><code>&gt;&gt;&gt; import sys
-&gt;&gt;&gt; sys.getdefaultencoding()
-'ascii'
-</code></pre>
+<p>学问里面的甘苦都尝过了，再看旁人的见解主张，其中得失长短都能够看出来。这个浅薄，那个到家，这个是什么分数，那个是什么程度，都知道得很清楚；因为自己从前也是这样，一切深浅精粗的层次都曾经过。</p>
 
-<p>可以看到，默认编码是ASCII码，看看&#8221;你好&#8221;是怎么编码的</p>
+<h2>第八层境界：通透</h2>
 
-<pre><code>&gt;&gt;&gt; a = '你好'
-&gt;&gt;&gt; a
-'\xe4\xbd\xa0\xe5\xa5\xbd'
-</code></pre>
-
-<p>这是&#8221;你好&#8221;的<strong>utf-8</strong>编码，如果对a解码呢，解码就是转换成unicode</p>
-
-<pre><code>&gt;&gt;&gt; a.decode('utf8')
-u'\u4f60\u597d'
-&gt;&gt;&gt; a = u'你好'
-&gt;&gt;&gt; a
-u'\u4f60\u597d'
-</code></pre>
-
-<p>可以看到，a被解码成unicode了，那对a编码呢，编码的定义是将unicode转换成其他编码，看看python会怎么处理</p>
-
-<pre><code>&gt;&gt;&gt; a = '你好'
-&gt;&gt;&gt; a.encode('utf8')
-Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal not in range(128)
-</code></pre>
-
-<p><strong>报错了</strong>！为什么会报错呢？这是因为对a进行encode操作，实际的代码是</p>
-
-<pre><code>unicode(a).encode('utf-8')
-</code></pre>
-
-<p>会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，<strong>解码</strong>出错。         <br/>
-而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，<strong>编码</strong>出错。</p>
-
-<pre><code>&gt;&gt;&gt; a = u'你好'
-&gt;&gt;&gt; a.decode('utf8')
-Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "/usr/lib/python2.7/encodings/utf_8.py", line 16, in decode
-    return codecs.utf_8_decode(input, errors, True)
-UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordinal not in range(128)
-</code></pre>
-
-<p>所以，<strong>最好对unicode对象只做encode操作，对str对象只做decode操作</strong>            <br/>
-前面都没有用print函数打印，这时因为print会对编码进行自动处理</p>
-
-<pre><code>&gt;&gt;&gt; a = '你好'
-&gt;&gt;&gt; print a.decode('utf8')
-你好
-</code></pre>
-
-<p>因为print函数对编码做了自动处理，所以显示汉字，这个操作系统环境变量设置有关。</p>
-
-<pre><code>&gt;&gt;&gt; a.decode('utf-8').encode('utf-8')
-'\xe4\xbd\xa0\xe5\xa5\xbd'
-&gt;&gt;&gt; print a.decode('utf8').encode('utf-8')
-你好
-</code></pre>
-
-<p>系统默认编码是ASCII码，那怎么修改系统默认编码呢：</p>
-
-<pre><code>&gt;&gt;&gt; import sys
-&gt;&gt;&gt; reload(sys)
-&gt;&gt;&gt; sys.setdefaultencoding('utf-8')
-</code></pre>
-
-<p>这样系统默认编码就是utf-8了。</p>
-
-<pre><code>&gt;&gt;&gt; sys.getdefaultencoding()
-'utf-8'
-</code></pre>
-
-<p>而在脚本文件里，如果没有<code>#coding:utf-8</code>，会发生什么情况呢？</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python2</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-</span><span class='line'>    <span class="k">print</span> <span class="s">&#39;你好&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>运行程序，会报错：             <br/>
-<code>SyntaxError: Non-ASCII character '\xe4' in file 1.py on line 4, but no encoding declared;</code>              <br/>
-第四行不是ASCII码，出错，由打印的错误信息也可以看出系统默认编码是ASCII码</p>
-
-<p>如果加上<code>#coding:utf-8</code>，则会默认将非ASCII码，编码成utf-8</p>
-
-<p>OK，今天的研究就到这，以后有空再深入研究</p>
+<p>思精理熟之后，心里就没有一点不透的了。</p>
 
 		
 		
 	</div>
 
+<div class="meta">
+	
+</div>
 </article>
 
-</div>
 <nav id="pagenavi">
     
     
         <a href="/page/2/" class="next">Next</a>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
-</nav></div>
-			</div>
-			<footer id="footer" class="inner"><p>
-  Copyright &copy; 2013 - yexinjing -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
+</nav>
 
-Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
-			<script src="/javascripts/slash.js"></script>
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2014
+
+    BaQiao
+. Powered by <a href="http://octopress.org">Octopress</a> | 
+    Theme <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
 <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){
@@ -687,8 +548,14 @@ Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Sha
 
 
 
-
-		</div>
-	</div>
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
 </body>
 </html>

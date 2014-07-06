@@ -95,6 +95,7 @@ figure.code{
 		}
 	}
 	code, pre{
+		font-size: 0.9em;
 		background: none;
 		border: none;
 		padding: 0;
@@ -121,6 +122,7 @@ figure.code{
 	td.code{
 		width: 100%;
 		padding-left: 15px;
+		overflow-x: auto;
 	}
 }
 .entry-content .gist{
@@ -140,6 +142,7 @@ figure.code{
 			pre{
 				font: 0.9em $font-mono;
 				line-height: 1.5;
+        text-align: left;
 			}
 		}
 		.gist-meta{

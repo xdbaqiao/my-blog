@@ -1,0 +1,288 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>常见的IT类面试题 - BaQiao</title>
+    <meta name="author" content="BaQiao">
+    
+	<meta name="description" content="1\. 讲述计算机启动过程？ 2\. 什么是MBR，有多大？ 3\. Linux 第一个进程叫什么名字？ 4\. http协议状态码，4XX有什么？ 5\. raid2,3,4用途？ 6\. traceroute的基本原理是什么？ 7\. 翻转字符串 8\. 字符串转数字 9\. crontab &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="BaQiao" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href='http://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Amethysta' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <script src="/javascripts/ajaxify.js"></script>
+   
+    
+    
+
+</head>
+
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        BaQiao
+    </div>
+</h1>
+<br>
+
+<ul id="social-links" style="text-align:center">
+  
+  <!-- GitHub -->
+  <li>
+  <a href="https://github.com/xdbaqiao" class="github" title="Github"></a>
+  </li>
+  
+  
+  <!-- Google Plus -->
+  <li>
+  <a href="http://plus.google.com/112081939216553363796?rel=author" class="google" title="Google+"></a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li>
+  <a href="http://www.twitter.com/yexinjing" class="twitter" title="Twitter"></a>
+  </li>
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/blog/archives/index.html">Archives</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form method="get" action="/search.html" id="search">
+            <input name="query" type="text" placeholder="Search..." x-webkit-speech />
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload --> 
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">常见的IT类面试题</h2>
+	<div class="entry-content"><pre><code>1\. 讲述计算机启动过程？            
+2\. 什么是MBR，有多大？               
+3\. Linux 第一个进程叫什么名字？              
+4\. http协议状态码，4XX有什么？              
+5\. raid2,3,4用途？              
+6\. traceroute的基本原理是什么？              
+7\. 翻转字符串              
+8\. 字符串转数字              
+9\. crontab 同步时间              
+10\. mysql nginx apache 的配置文件位置              
+11\. C++中的容器              
+12\. 解释$0 $$ $# $! $@ $? $*              
+13\. python 生成器和修饰器              
+14\. iptables              
+15\. Django工作原理              
+16\. vim 替换1-10行字符
+17\. ls -al
+18\. mysql, nginx, apache 优化              
+19\. 网站加速              
+20\. uwsgi 应用服务器              
+21\. ip route add default，网络配置相关              
+22\. 关于linux的runlevel              
+</code></pre>
+
+<p><strong>我的解答</strong></p>
+
+<p>1. 讲述计算机启动过程？</p>
+
+<blockquote><p>计算机从BIOS中启动，BIOS一般位于主板的flash中，计算机上电之后，进入BIOS，进行硬件自检，并决定从哪里（可选u盘，硬盘等）启动计算机操作系统，接着BIOS把控制权交给设备，从设备中的前512字节中，读取MBR，即主引导记录，放入内存，里面保存有硬盘分区表等信息。接着进入启动管理器，常见的有grub，lilo等，交由用户决定启动哪个操作系统。</p></blockquote>
+
+<p>2. 什么是MBR，有多大？</p>
+
+<blockquote><p>Master Boot Record，MBR主引导记录，有512字节，前446个字节是主引导程序，将系统控制转交给用户制定的分区表中的系统;然后是四个分区表，用于记录磁盘分区状况，每个分区表16个字节;最后是结束标志AA55</p></blockquote>
+
+<p>3. Linux 第一个进程叫什么名字？</p>
+
+<blockquote><p>init(1)，是进程号为1的进程，用于开机初始化</p></blockquote>
+
+<p>4. http协议状态码，4XX有什么？</p>
+
+<blockquote><p>400：请求报文错误    401：未认证    403：Forbidden      <br/>
+404：not found等</p></blockquote>
+
+<p>5. raid2,3,4用途？</p>
+
+<blockquote><p>raid2 现在用的很少，因为他对大数据有很高读写性能，但少量读写性能不好。它是为超级计算机开发的磁盘阵列，带海明码，在2的n次幂磁盘中设立校验盘。基本思想是在IO到来之后，控制器将数据按位分割，并顺序将每一位数据放置在每一个磁盘中，这样任何数据都能并行读取，提高性能。但这样也不能实现并发IO，因为硬盘被占用。           <br/>
+raid3现在用的也很少，因为其校验盘很容易成为性能瓶颈，其将数据分成多“块”，放在N+1个磁盘上，N个磁盘存放数据，1个磁盘存放校验数据   <br/>
+raid4也用的很少，其校验也是放置在一个磁盘上，这个磁盘很容易成为性能瓶颈。  <br/>
+所以raid2,3,4基本很少见，其主要运用场景是大量数据读写，比如视频，影音等。</p></blockquote>
+
+<p>6. traceroute的基本原理是什么？</p>
+
+<blockquote><p>traceroute主要用于追踪数据包的路由路径，采用icmp协议，数据包经过一个路由器，TTL生存时间将会减一，直到数据包到达目的地或者TTL被置为零。</p></blockquote>
+
+<p>7. 翻转字符串            <br/>
+8. 字符串转数字            <br/>
+9. crontab 同步时间</p>
+
+<blockquote><p>10 10-16/2 * 7 *  /usr/bin/ntpd -s 133.100.9.2       <br/>
+7月十点十分到下午四点十分，每隔两个小时，进行时间同步       <br/>
+有面试官问，crontab同步失败，是什么原因，很有可能是环境变量设置有误，找不到相关命令</p></blockquote>
+
+<p>10. mysql nginx apache 的配置文件位置</p>
+
+<blockquote><p>我完全没有料到居然这也能考，不过我确实没有在意，因为平时凭肌肉记忆和自动补全就能找到相关文件，但笔试起来，我却是如此水。。。。       <br/>
+自动补全是如此关键，另外我觉得这真没什么可考的。。。      <br/>
+以archlinux为例，我在自动补全的帮助下，轻轻松松找到。。。         <br/>
+/etc/mysql/my.cnf   /etc/nginx/nginx.conf    /etc/apache2/httpd.conf</p></blockquote>
+
+<p>11. C++中的容器</p>
+
+<blockquote><p>包括顺序容器和关联容器，顺序容器有vector,list,queue,deque,stack等，其属性和操作包括，size,pop,push,top,insert,erase等，关联容器有map，set等，其属性和操作包括insert,find,count,erase等。</p></blockquote>
+
+<p>12. $0 $$ $# $! $@ $? $*</p>
+
+<blockquote><p>$0 程序名     <br/>
+$$ 当前进程进程号     <br/>
+$# 参数个数           <br/>
+$! 后台运行最后一个进行进程号           <br/>
+$@ 输入参数组合，形如(&#8220;$1&#8221;, &#8220;$2&#8221;, &#8220;$3&#8221;)        <br/>
+$? 前一命令返回码                 <br/>
+$* 输入参数组合，形如(&#8220;$1 $2 $3&#8221;)</p></blockquote>
+
+<p>13. python 生成器和修饰器</p>
+
+<blockquote><p>python的生成器就是yield，表示带yield的函数，其实很简单，类似一个list，不同的是，生成器在使用之后会消耗</p></blockquote>
+
+<p>14. iptables</p>
+
+<blockquote><p>iptables有三表五链，分别是nat、filter、mangle表，prerouting、postrouting、output、input、forward链      <br/>
+nat表用于DNAT与SNAT，包含两个链，prerouting、postrouting       <br/>
+filter表是默认表，包含input、output、forward链      <br/>
+mangle表包含postrouting、prerouting和forward链       <br/>
+可以分三种情况理解防火墙。第一种是进入的数据，先通过prerouting链，进行地址变换，然后进行路由判断，如果目的地址是本机，则通过input链处理;如果目的地不是本机，则是第二种情况，转发的数据，则先通过forward链处理，判断是否拦截或转发，然后交给postrouting链进行处理;第三种情况是出站的数据，首先通过output链，然后进行路由判断，最后通过postrouting，进行SNAT。</p></blockquote>
+
+<p>15. Django工作原理</p>
+
+<blockquote></blockquote>
+
+<p>16. vim 替换1-10行字符</p>
+
+<blockquote><p>:1,10s/www/wwww/g</p></blockquote>
+
+<p>17. ls -al</p>
+
+<blockquote><p>命令第二列表示，子文件夹数量或者文件硬链接数量</p></blockquote>
+
+<p>18. mysql, nginx, apache 优化            <br/>
+19. 网站加速            <br/>
+20. uwsgi 应用服务器            <br/>
+21. ip route add default，网络配置相关            <br/>
+22. 关于linux的runlevel</p>
+</div>
+
+<div class="meta">
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2014
+
+    BaQiao
+. Powered by <a href="http://octopress.org">Octopress</a> | 
+    Theme <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'xdbaqiao';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xdbaqiao.github.io/blog/2014/07/06/interview/';
+        var disqus_url = 'http://xdbaqiao.github.io/blog/2014/07/06/interview/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
+</body>
+</html>

@@ -4,14 +4,34 @@
   <title><![CDATA[Category: linux | BaQiao]]></title>
   <link href="http://xdbaqiao.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://xdbaqiao.github.io/"/>
-  <updated>2013-09-02T20:42:52+08:00</updated>
+  <updated>2014-07-06T20:19:55+08:00</updated>
   <id>http://xdbaqiao.github.io/</id>
   <author>
-    <name><![CDATA[yexinjing]]></name>
+    <name><![CDATA[BaQiao]]></name>
     <email><![CDATA[yexj061761@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[tmux]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/10/22/about-tmux/"/>
+    <updated>2013-10-22T09:17:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/10/22/about-tmux</id>
+    <content type="html"><![CDATA[<p>一直以来都是在screen上运行远程程序，偶然发现tmux也有这样的功能，我一直把tmux当分屏工具用，看来真是浪费了额。</p>
+
+<p>对比一下：</p>
+
+<pre><code>tmux attach -t baqiao    ===   screen -D -r baqiao
+
+tmux new -s baqiao       ===   screen -S baqiao
+
+tmux ls               ===   screen -list
+
+Ctrl + b, d           ===   Ctrl + a + d
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ubuntu Touch Developer Preview Runs in My Galaxy Nexus]]></title>
