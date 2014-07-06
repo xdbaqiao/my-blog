@@ -95,14 +95,20 @@ categories: learning
 15\. Django工作原理              
 > 
 
-16\. vim 替换1-10行字符
+16\. vim 替换1-10行字符      
 > :1,10s/www/wwww/g              
 
-17\. ls -al
+17\. ls -al      
 > 命令第二列表示，子文件夹数量或者文件硬链接数量              
 
 18\. mysql, nginx, apache 优化              
 19\. 网站加速              
+> 1. 前端优化，静态页面加载速度快
+> 2. CDN分流，负载均衡
+> 3. 代理作cache
+
+
+
 20\. uwsgi 应用服务器              
 21\. ip route add default，网络配置相关              
 > archlinux 使用最新的网络管理工具包 iproute2，替代之前的nettools          
@@ -117,4 +123,8 @@ categories: learning
 > runlevel 6 是 重启               
 > runlevel s 是 单用户模式         
 > 较旧的发行版 其位置为/etc/inittab            
-                  
+
+23\. load 的含义       
+> 分别表示1分钟、5分钟和15分钟的负载情况
+> 这个负载情况指的是最近时间内，在CPU中，正在运行与准备运行的平均进程数量
+
