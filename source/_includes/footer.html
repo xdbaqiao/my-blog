@@ -1,1 +1,32 @@
-{% include custom/footer.html %}
+<div id="footer">
+  <div class="panels">
+    <div class="license">
+      <h2>License</h2>
+      <p>如非特别声明，本 Blog 的文章由 {{ site.author }} 创作，采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 Unported 许可协议</a>进行许可。</p>
+    </div>
+
+    <div class="posts">
+      <h2>Recent Posts</h2>
+      <ul>
+        {% for post in site.posts limit: site.recent_posts %}
+          <li>
+            <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="douban">
+      <h2>Google+</h2>
+      {% if site.googleplus_user %}
+      <a href="https://plus.google.com/{{ site.googleplus_user }}">xdbaqiao on Google+</a>
+      {% else %}
+        <p>Please set your Douban ID in _config.yml</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <p class="powered">
+    Powered by <a href="https://github.com/xdbaqiao">xdbaqiao</a>
+  </p>
+</div>

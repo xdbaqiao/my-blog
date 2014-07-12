@@ -1,0 +1,307 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>学习 - BaQiao的博客</title>
+
+  <meta name="author" content="BaQiao">
+  
+  <meta name="description" content="学习 Mar 24th, 2014 总结一下最近学习的东西，有点乱。。。 1. keep-alive http基于tcp协议，是一种请求响应机制的协议。 所以，它的请求过程是： 建立连接（三次握手），请求，响应，断开连接（四次挥手） 而如果包含keep-alive属性， &hellip;">
+  
+  
+
+  <link rel="canonical" href="http://xdbaqiao.github.io/blog/2014/03/24/recent-learn">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="BaQiao的博客" type="application/atom+xml">
+</head>
+  
+<body class="default">
+  <div id="wrapper">
+    <div id="header">
+  <h1><a href="/">BaQiao的博客</a></h1>
+  
+</div>
+<ul id="social-links">
+  
+  
+  
+    <li><a class="twitter" href="http://twitter.com/yexinjing" title="Twitter">Twitter</a></li>
+  
+  
+    <li> <a class="github" href="https://github.com/xdbaqiao" title="GitHub">GitHub</a> </li>
+  
+</ul>
+<div class="clear"></div>
+<ul id="nav">
+  
+    <li> <a href="/">blog</a> </li>
+  
+
+  
+    <li><a href="/blog/archives">archives</a></li>
+  
+</ul>
+
+    <div id="main"> <div class="post-header">
+  
+    <h1 class="post-title">学习</h1>
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-24T19:45:00+08:00" pubdate data-updated="true">Mar 24<span>th</span>, 2014</time>
+</div>
+
+
+<div class="post-content"><p>总结一下最近学习的东西，有点乱。。。</p>
+
+<h2>1. keep-alive              </h2>
+
+<p>http基于tcp协议，是一种请求响应机制的协议。       <br/>
+所以，它的请求过程是：        <br/>
+建立连接（三次握手），请求，响应，断开连接（四次挥手）        <br/>
+而如果包含keep-alive属性，则他的请求过程将节省建立连接的过程：          <br/>
+建立连接，请求，响应，请求，响应，请求，响应&#8230;.断开连接</p>
+
+<h2>2. 数据库性能优化           </h2>
+
+<p>使用MyISAM存储引擎，加上唯一索引，设置主键         <br/>
+（其实可以考虑用innoDB存储引擎，便于设置外键，而且是事务存储引擎）</p>
+
+<p>存储引擎：MyISAM, innoDB, Falcon, Memory, ARCHIVE, CSV, EXAMPLE, MERGE等         <br/>
+索引类型：普通索引，唯一索引，Fulltext索引，Hash索引等         <br/>
+数据类型的选择，int? tinyint? mediumint? float?double?         <br/>
+blob和text 数据列里面的值在长度方面往往差距巨大，所以对他们的删除和修改操作容易产生大量的碎片。</p>
+
+<p>对数据库的某个字段进行检索，加上唯一索引与不加，速度上至少相差一个数量级！</p>
+
+<h2>3. 传输文件           </h2>
+
+<p>高效的文件传输工具rsync         <br/>
+<code>rsync -avzSHP --exclude "*.LJPEG" * root@192.168.0.101:/mnt/file_dir</code></p>
+
+<h2>4. HTTP协议相关</h2>
+
+<p>Internet 最基本的通讯单元是数据包，http最基本的单元是消息，http协议有四个重要术语，消息，实体，资源，用户代理。</p>
+
+<p>消息</p>
+
+<pre><code>    1.请求消息：包括请求行，常规标头，请求标头（标头是自由格式的ASCII字符串）          
+    2.响应消息：包括响应行，常规标头，响应标头          
+</code></pre>
+
+<p>实体，表示封装在消息中的一个资源，实体由标头和可选的主体组成。        <br/>
+用户代理，表示客户机，可以是浏览器，爬虫等。用户代理信息会作为请求的一部分，在User-Agent标头中发送。</p>
+
+<p>标头：自由格式的ASCII字符串</p>
+
+<pre><code>       常规标头：Date，Pragma(伪指令，发送给消息接收方，唯一的伪指令pragma：no-cache)
+       请求标头：Authorization，From，If-Modified-Since，Referer，User-Agent
+       响应标头：Location（将请求重定向可找到资源的地方），Server，WWW-Authorization
+       实体标头：Allow，Content-Type，Content-Coding，Content-Length，Expires，Last-Modified
+</code></pre>
+
+<p>信息类：1xx                        成功类： 2xx           <br/>
+重定向类： 3xx                    客户机错误类：4xx            <br/>
+服务器错误类：  5xx</p>
+
+<h2>5.装饰器的用途          </h2>
+
+<p>•  Access control         <br/>
+•  Cleanup of temporary objects         <br/>
+•  Error handling         <br/>
+•  Caching         <br/>
+•  Logging</p>
+
+<pre><code>&gt;&gt;&gt; def mom(func):
+...     cache = {}
+...     def wrapper(*args):
+...         if args in cache:
+...             return cache[args]
+...         print 'Calling %s()' % func.__name__
+...         res = func(*args)
+...         cache[args] = res
+...         return res
+...     return wrapper
+&gt;&gt;&gt; @mom
+... def mum(x,y):
+...     return x*y
+... 
+&gt;&gt;&gt; mum(6,7)
+Calling mum()
+42
+&gt;&gt;&gt; mum(6,7)
+42 
+</code></pre>
+
+<h2>6.生成器 yield</h2>
+
+<p>yield 就像return， 但不会终止程序，他将值推出函数体，当生成器被call时，这个值被消耗。</p>
+
+<pre><code>&gt;&gt;&gt; def test():
+...     for i in range(2):
+...         yield i
+&gt;&gt;&gt; t=test()
+&gt;&gt;&gt; t
+&lt;generator object test at 0x7f5609846910&gt;
+&gt;&gt;&gt; list(t)
+[0, 1, 2]
+&gt;&gt;&gt; list(t)
+[]
+</code></pre>
+
+<h2>7. @property        </h2>
+
+<p>使得类中的方法可以像类属性一样访问（build_in decorator），但不能写，如果要写的话，如下例用@name.setter修饰符，还可以用@name.deleter 删除方法属性</p>
+
+<pre><code>&gt;&gt;&gt; class person:
+...     def __init__(self, first_name, last_name):
+...         self.f = first_name
+...         self.l = last_name
+...     @property
+...     def name(self):
+...         return '%s %s' % (self.f, self.l)
+...     @name.setter   #修饰之后，返回value值
+...     def name(self, value):
+...         return '%s %s' % (self.f, self.l) #所以这句话没意义了
+... 
+&gt;&gt;&gt; p = person('hello', 'world')
+&gt;&gt;&gt; p.name    #不是p.name()
+'hello world’
+</code></pre>
+</div>
+
+
+
+<div class="post-single">
+  <div class="post-meta">
+    
+
+<span class="categories">
+  Categories:
+  
+    <a class='category' href='/blog/categories/learning/'>learning</a>
+  
+</span>
+
+
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://xdbaqiao.github.io/blog/2014/03/24/recent-learn/" data-via="yexinjing" data-counturl="http://xdbaqiao.github.io/blog/2014/03/24/recent-learn/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+  </div>
+  <div class="clear"></div>
+
+  
+    <div id="comments">
+      <h2>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"></div>
+    </div>
+  
+</div>
+ </div>
+    <div id="footer">
+  <div class="panels">
+    <div class="license">
+      <h2>License</h2>
+      <p>如非特别声明，本 Blog 的文章由 BaQiao 创作，采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 Unported 许可协议</a>进行许可。</p>
+    </div>
+
+    <div class="posts">
+      <h2>Recent Posts</h2>
+      <ul>
+        
+          <li>
+            <a href="/blog/2014/07/12/scrape-cost-engineer-info/">某网站造价工程师数据采集</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/07/06/interview/">常见的IT类面试题[未完]</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/06/08/my-django-blog/">我的django博客</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/03/24/recent-learn/">学习</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2013/11/19/zuoxuewen/">梁漱溟：做学问</a>
+          </li>
+        
+      </ul>
+    </div>
+
+    <div class="douban">
+      <h2>Google+</h2>
+      
+      <a href="https://plus.google.com/112081939216553363796">xdbaqiao on Google+</a>
+      
+    </div>
+  </div>
+
+  <p class="powered">
+    Powered by <a href="https://github.com/xdbaqiao">xdbaqiao</a>
+  </p>
+</div>
+
+  </div> <!-- #wrapper end -->
+
+  
+
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'xdbaqiao';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xdbaqiao.github.io/blog/2014/03/24/recent-learn/';
+        var disqus_url = 'http://xdbaqiao.github.io/blog/2014/03/24/recent-learn/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+</body>
+</html>

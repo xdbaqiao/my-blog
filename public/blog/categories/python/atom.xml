@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: python | BaQiao的博客]]></title>
+  <link href="http://xdbaqiao.github.io/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://xdbaqiao.github.io/"/>
+  <updated>2014-07-13T00:14:33+08:00</updated>
+  <id>http://xdbaqiao.github.io/</id>
+  <author>
+    <name><![CDATA[BaQiao]]></name>
+    <email><![CDATA[yexj061761@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[某网站造价工程师数据采集]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2014/07/12/scrape-cost-engineer-info/"/>
+    <updated>2014-07-12T23:35:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2014/07/12/scrape-cost-engineer-info</id>
+    <content type="html"><![CDATA[<p>此次采集共完成4415个数据，包括全国部分城市造价工程师的姓名、性别、出生年月、手机、QQ等个人信息，本次数据全部来自互联网，请合法合理使用数据，本人保留权利拒绝任何人将数据用于非法目的。</p>
+
+<p><strong>采集部分数据如下，如有需要全部数据，请联系本人</strong></p>
+
+<pre><code>"会员名称","姓名","性别","出生年月","联系电话","手机","QQ","毕业院校","学历","职称","执业资格","求职类型","注册情况","工作经验","资格证专业","所在地区","希望月薪","登陆IP","个人特长","转会要求","个人简历"             
+"zhanghao...","zhanghao","女","——","","13834732962","550254720","","大专","其他","建设部造价师","挂职","初始注册","5年以上","土建","山西省--太原","2000-5000","218.26.223.*","","挂造价，初注。期望年薪：3-3.5万元，土建专业，挂靠地区最好在山西省或周边省市（河北、北京、天津、陕西等）。每三年一付，或两年一付。","本人1997年毕业于太原工业大学，一直从事造价工作，有丰富的实际工作经验。联系：13834732962"             
+"2280767","李兵","女","——","04582282218","13845841531","","哈尔滨建筑大学","本科","工程师","建设部造价师","挂职","初始注册","5年以上","土建","黑龙江省--伊春","面议","113.3.91.*","","",""             
+"caoyue80...","曹先生","男","1986-12-19","","18502723157","289038025","","本科","工程师","建设部造价师","挂职","初始注册","5年以上","土建","湖北省--武汉","2000-5000","113.57.129.*","","上班时间最好加个qq 请尽量下班以后联系 下午5点半以后 最好是武汉地区的，，外地的跑得累",""             
+"ljtmblyp","蓝天","男","——","","15212451538","21595587","","本科","工程师","建设部造价师","挂职","变更注册","5年以上","土建","浙江省--**","2000-5000","60.8.103.*","","造价师内地挂证、转注册、全年社保、三年10.5万、定金3万办转出，办好转出付余款。 可信单位也可0定金办转出。非诚勿扰，谢绝中介！","转注册速度快，可靠，手续简单，即转即用。 明码标价，诚心实意，欢迎单位前来面谈，或者QQ21595587洽谈，一定热情接待陪同！"             
+"zlp2001","张立苹","女","1972-10-01","","13820960922","903164216","天津财经学院","本科","其他","建设部造价师","挂职","初始注册","5年以上","土建","天津市--和平","面议","221.238.143.*","","",""             
+"liaoxiao...","廖工","女","1981-09-26","","15072045188","443588581","长春工程学院","大专","其他","建设部造价师","挂职","变更注册","5年以上","土建","陕西省--延安","2000-5000","119.100.122.*","","挂湖北武汉地区",""             
+"qingyun","qingyun","男","——","","13406906252","2371663052","","本科","工程师","建设部造价师","挂职","初始注册","1-3年","土建","山东省--**","面议","182.39.148.*","","","2013年通过考试"             
+"dlf123","豆","男","1987-03-07","","15961054910","123456","","大专","工程师","建设部造价师","全职","初始注册","1-3年","土建","江苏省--徐州","面议","114.233.183.*","","",""             
+"tlj369","田工","男","1973-03-29","05468531167","15254616826","2235682416","石油大学","研究生","高级工程师","建设部造价师","挂职","初始注册","5年以上","土建","山东省--东营","2000-5000","202.102.151.*","","期望年薪3-4.5万元。有2本初始证书（土建、安装各一本），最好挂在同一单位。挂靠地区最好在江苏、广东、浙江、安徽、河北、北京或天津。造价师+中级3.5万元左右(两年一付7万元，三年一付10万元，最好是甲级或乙级资质单位)；造价师+高级4万元左右,(一年一付5万元，两年一付9万元，三年一付12万元，最好是甲级或乙级资质单位)。","本人拥有高级会计师和高级审计师职称。最好挂证不挂章。证书已领取，可以进行注册了"             
+"fas109","王建新","男","1982-06-12","","15022283826","85851961","华北电力大学","大专","助理工程师","建设部造价师","挂职","初始注册","5年以上","土建","天津市--北辰","面议","221.238.164.*","","","6月5日下证"             
+"yylj99","刘女士","女","1983-05-03","","13809025226","185689563","东南大学","研究生","工程师","建设部造价师","挂职","初始注册","1-3年","土建","江苏省--南京","面议","180.109.21.*","","",""             
+"11857658...","王慧","女","1982-12-21","","15940024469","1185765853","","大专","工程师","建设部造价师","全职","变更注册","5年以上","土建","辽宁省--沈阳","面议","101.46.204.*","","",""             
+"andong_1...","滑跃娟","女","——","","13833664273","362613121","","大专","不限","建设部造价师","挂职","初始注册","5年以上","土建","河北省--廊坊","面议","222.222.79.*","","",""             
+"xusumei","徐女士（高级职称）","女","——","13501","13501171019","1052516397","哈尔滨建筑工程学院","本科；职称：北京市给排水高级工程师；注册资格：安装专业注册造价工程师。因经常会到上海出差，希望挂靠上海的单位。","学历：本科；北京市给排水高级工程师；注册资格：安装专业注册造价工程师。因经常会到上海出差，希望挂靠上海的单位。","建设部造价师","挂职","初始注册","不限","安装","北京市--朝阳","面议","49.4.146.*","","希望注册单位在上海。","学历：本科；职称：北京市给排水高级工程师；注册资格：安装专业注册造价工程师。因经常会到上海出差，希望挂靠上海的单位。"             
+"76250644","沈工","男","——","","13998785996","76250644","","本科","工程师","建设部造价师","挂职","变更注册","5年以上","安装","辽宁省--盘锦","面议","59.45.15.*","","",""             
+"adsyh88","孙妍","女","1974-01-26","","15145985582","2235622890","大庆石油学院","大专","工程师","建设部造价师","挂职","初始注册","5年以上","土建","黑龙江省--绥化","面议","60.15.234.*","","",""             
+"criss","朱延刚","男","1978-08-18","","18600660986","285498191","","研究生","其他","建设部造价师","挂职","初始注册","5年以上","土建","北京市--朝阳","面议","106.39.1.*","","",""             
+"hblzj168","李先生","男","——","13522290391","010-69076676","1534819747","","大专","工程师","建设部造价师","挂职","初始注册","1-3年","安装","河北省--唐山","面议","221.222.112.*","","","已经注册完毕"             
+"skywolf8...","曹工","男","1983-08-14","","15202890110","240503840","","本科","其他","建设部造价师","挂职","初始注册","5年以上","土建","四川省--成都","面议","125.71.217.*","","3年10万一次性付，寻四川除成都外企业挂靠（重庆的条件优厚可考虑）",""             
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[我的django博客]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2014/06/08/my-django-blog/"/>
+    <updated>2014-06-08T23:06:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2014/06/08/my-django-blog</id>
+    <content type="html"><![CDATA[<p>用了两年Python，写了两年Python爬虫，水平一直停留在脚本层级。最近受工作的刺激，梳理了一下思绪，发现自己前端后端都有很大的发展潜力。所以先拿Django开刀，练练手。</p>
+
+<p>Linux和Python已经很熟悉了，所以代码写起来也很顺手。下面记录一下本博客的搭建过程。</p>
+
+<p>原来的博客是Octopress，基本上是嗟来之食，拿来就用，底层原理完全没有理会。现在用Django，感觉自然不一样，当然也学习到很多。</p>
+
+<p>我直接在自己的vps上操作，发行版是Debian。        <br/>
+首先，安装Django</p>
+
+<blockquote><p>pip install django</p></blockquote>
+
+<p>安装完成验证一下</p>
+
+<blockquote><p>python –c “import djang</p></blockquote>
+
+<p>如果没有输出，则表示安装成功了。     <br/>
+运行</p>
+
+<blockquote><p>django-admin.py startproject myblog</p></blockquote>
+
+<p>创建自己的第一个工程，发现在当前目录下，多了文件夹myblog，其中有manage.py，内置众多管理命令。而myblog/myblog 文件夹内也有urls.py, settings.py等关键文件。</p>
+
+<p>执行</p>
+
+<blockquote><p>python manage.py runserver 127.0.0.1:8080</p></blockquote>
+
+<p>就可以在本机浏览器访问了。当然也可以修改ip地址和端口，使远程访问，我就是这样的，因为我直接在vps上操作的。</p>
+
+<p>创建一个博客应用</p>
+
+<blockquote><p>python manage.py startapp sblog</p></blockquote>
+
+<p>会在myblog同级目录下新建sblog目录，里面有models.py, test.py, admin.py, views.py等重要文件。</p>
+
+<p>Django被称为MTV架构，我的理解是，他还是MVC架构，控制器就是整个Django框架，V就是view视图，M就是model进行事物处理，Django多了一个templat模板，模板用于前端展示。</p>
+
+<p><code>M：models.py 进行数据库操作</code>         <br/>
+<code>T：template 用于前端展示</code>        <br/>
+<code>V：views  用于视图逻辑处理</code></p>
+
+<p>另外urls.py用于解析url超链接，进行视图逻辑分发。</p>
+
+<p>首先我打开了admin，安装完Django之后，默认开启了settings.py 中的全部INSTALLED_APP应用（其中添加sblog应用）以及中间件MIDDLEWARE_CLASSES，其他我都没有修改，数据库使用默认的sqllite3</p>
+
+<p>执行</p>
+
+<blockquote><p>python manage.py syncdb</p></blockquote>
+
+<p>进行数据库同步，创建用户。这样就可以通过127.0.0.1:8080/admin访问管理工具了。</p>
+
+<p>为了使管理工具能管理博客，需要编辑models.py 文件，</p>
+
+<p>```
+from django.db import models
+from django.contrib import admin</p>
+
+<p>class BQBlog(models.Model):</p>
+
+<pre><code>title = models.CharField(max_length=200) 
+content = models.TextField() 
+</code></pre>
+
+<p>timestamp = models.DateTimeField()
+class BQBlogAdmin(admin.ModelAdmin)：
+list_display = ('title','timestamp')</p>
+
+<p>admin.site.register(BQBlog, BQBlogAdmin) //运行python manage.py syncdb前需注释
+```</p>
+
+<p>使保存在数据库中的博客有标题，内容和时间戳              <br/>
+这样就可以在Django管理工具中进行博客管理了。</p>
+
+<p>进入sblog目录，新建文件夹templates进行模板管理</p>
+
+<p>新建文件chapter.html</p>
+
+<pre><code>
+</code></pre>
+
+<p>在views.py 中添加视图逻辑</p>
+
+<p>```
+from django.shortcuts import render_to_response
+from sblog.models import BQBlog</p>
+
+<p>def chapter(request):</p>
+
+<pre><code>posts = BQBlog.objects.all() 
+return render_to_response("chapter.html", {'posts':posts}) 
+</code></pre>
+
+<p>```</p>
+
+<p>myblog文件夹urls.py 中添加url(r'<sup>$',</sup> include('blog.urls')),              <br/>
+sblog文件夹新建urls.py</p>
+
+<p>```
+from django.conf.urls import *
+from sblog.views import chapter</p>
+
+<p>urlpatterns = patterns('', url(r'<sup>$',</sup> chapter), ) <br/>
+```</p>
+
+<p>这样一个基本的、最简单的Django博客就出来了！</p>
+
+<p>最后需要对其进行简单润色。              <br/>
+见<a href="http://django-baqiao.tk/"><code>博客http://django-baqiao.tk</code></a></p>
+
+<p>太丑了！以后有时间再修改！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[python爬虫程序(多线程，get，post，代理，日志)]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/09/01/python-scrape/"/>
+    <updated>2013-09-01T15:58:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/09/01/python-scrape</id>
+    <content type="html"><![CDATA[<p>```python</p>
+
+<h1>!/usr/bin/env python2</h1>
+
+<h1>coding: utf-8</h1>
+
+<p>import re
+import string
+import urllib
+import urllib2
+import logging
+import cookielib
+import threading
+from collections import deque</p>
+
+<p>def set_log():</p>
+
+<pre><code>FMT = '%(asctime)s-%(levelname)s\t%(message)s'
+logging.basicConfig(format=FMT, level=logging.INFO, filename='downloading.log', filemode='a')
+</code></pre>
+
+<p>class download:</p>
+
+<pre><code>def __init__(self, first_url, proxy=None):
+    self.user_agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0'
+    self.headers = {'User-Agent': self.user_agent, 'Accept-encoding':'gzip, deflate', 'Referer': first_url}
+    self.opener = urllib2.build_opener()
+    self.proxy = proxy
+
+def add_proxy(self, url, proxy):
+    if proxy:
+        if url.startswith('https'):
+            self.opener.add_handler(urllib2.ProxyHandler({'https': proxy}))
+        else:
+            self.opener.add_handler(urllib2.ProxyHandler({'http': proxy}))
+
+def get(self, url):
+    self.add_proxy(url, self.proxy)
+    request = urllib2.Request(url)
+    response = self.opener.open(request)
+    html = response.read()
+    return html
+
+def post(self, url, data):
+    self.add_proxy(url, self.proxy)
+    if isinstance(data, dict):
+        data = urllib.urlencode(data)
+    request = urllib2.Request(url, data, self.headers)
+    response = self.opener.open(request)
+    html = response.read()
+    return html
+</code></pre>
+
+<p>def fetch():</p>
+
+<pre><code>url = 'http://medboard.nv.gov/verification/'
+surl = 'http://medboard.nv.gov/verification/Search.aspx'
+
+name = deque()
+for i in string.lowercase:
+    name.append(i)
+
+def worker():
+    D = download(url)
+    D.opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookielib.MozillaCookieJar()))
+    while True:
+        try:
+            letter = name.popleft()
+        except IndexError:
+            break
+        html = D.get(url=url)
+
+        post_data = {}
+        m = re.compile(r'__VIEWSTATE"\svalue="([^"]+)', re.DOTALL|re.IGNORECASE).search(html)
+        post_data['__VIEWSTATE'] = m.groups()[0] if m else ''
+        m = re.compile(r'__EVENTVALIDATION"\svalue="([^"]+)', re.DOTALL|re.IGNORECASE).search(html)
+        post_data['__EVENTVALIDATION'] = m.groups()[0] if m else ''
+        post_data['t_web_lookup__license_type_name'] = 'Medical Doctor'
+        post_data['t_web_lookup__first_name'] = letter
+        post_data['sch_button'] = 'Search'
+        html = D.post(url=surl, data=post_data)
+        logging.info(html)
+
+muilt_thread(worker, 30)
+</code></pre>
+
+<p>def muilt_thread(target, num_threads, wait=True):</p>
+
+<pre><code>threads = [threading.Thread(target=target) for i in range(num_threads)]
+for thread in threads:
+    thread.start()
+if wait:
+    for thread in threads:
+        thread.join()
+</code></pre>
+
+<p>if <strong>name</strong> == '<strong>main</strong>':</p>
+
+<pre><code>set_log()
+fetch()
+</code></pre>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[python与gnuplot]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/08/15/webserver/"/>
+    <updated>2013-08-15T15:53:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/08/15/webserver</id>
+    <content type="html"><![CDATA[<p>写了一个测试web服务器性能的简单脚本，运用了apache中的测试工具ab，代码如下：        <br/>
+额，这不是什么机密吧，只是一个框架，以后可以加cache机制，加config或者argv，领导不要抓我。
+```python</p>
+
+<h1>!/usr/bin/python</h1>
+
+<h1>coding:utf-8</h1>
+
+<p>import re
+import commands
+import Gnuplot</p>
+
+<p>class nginxTest:</p>
+
+<pre><code>def __init__(self, num):
+    self.request_finish_time = []
+    self.command = 'ab -n %s -c 10 -k http://localhost/' # 把localhost 换成www.google.com，让暴风雨来的猛烈些吧
+    self.num = num
+
+def start(self):
+    for i_num, i in enumerate(self.num): 
+        self.getOutput(i)
+        self.parseOutput()
+        print 'Total %s, finish %s.' % (str(len(self.num)), str(i_num+1))
+
+def getOutput(self, num):
+    (status, self.output) = commands.getstatusoutput(self.command % num)
+
+def parseOutput(self):
+    m = re.compile('Time taken for tests:\s+([\.\d]+)').search(self.output)
+    if m:
+        rft = m.groups()[0]
+        self.request_finish_time.append(rft)
+</code></pre>
+
+<p>class gnuplot:</p>
+
+<pre><code>def __init__(self, x, y, title):
+    self.x = x
+    self.y = y
+    self.title = title
+    self.plot()
+
+def plot(self):
+    self.g = Gnuplot.Gnuplot(debug=1)
+    d = Gnuplot.Data(self.x, self.y, with_='lines')
+    self.g.title(self.title)
+    self.g.xlabel('times')
+    self.g.ylabel('%s' % self.title)
+    self.g.plot(d)
+    self.g.hardcopy('./%s.ps' % self.title, enhanced=1, color=1)
+</code></pre>
+
+<p>if <strong>name</strong> == '<strong>main</strong>':</p>
+
+<pre><code>times = [i for i in range(10, 45)]
+n = nginxTest(num=times)
+n.start()
+gnuplot(x=times, y=n.request_finish_time, title='request finish time')
+</code></pre>
+
+<p>```</p>
+
+<p><strong>The result is following</strong></p>
+
+<p><img src="http://imgur.com/okeEBq1.png" alt="request_finish_time" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[python2 的编码问题]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/08/09/coding-problem/"/>
+    <updated>2013-08-09T20:36:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/08/09/coding-problem</id>
+    <content type="html"><![CDATA[<p>编码涉及到很多问题，本文简单讲一讲</p>
+
+<p>写python脚本的时候，头两行的常见格式是：</p>
+
+<pre><code>#!/usr/bin/env python2                  
+#coding:utf-8               
+</code></pre>
+
+<p>第一行的意义是在Linux下，当脚本是可执行文件是，以"./*.py"执行程序时需要调用的命令，如果以命令'python  *.py'执行程序，则第一行是没有意义的              <br/>
+第二行涉及到python编码问题，它指定脚本内容的编码方式。这一行的写法很灵活，但必须包含三项内容，即"#", "coding" 和编码   <br/>
+所以，也可以写作<code># -*- coding: UTF-8 -*-</code></p>
+
+<p><strong>基本知识</strong>               <br/>
+在讲python编码之前，需要了解一些基本知识：         <br/>
+1. python有两种字符串类型，str和unicode，例如</p>
+
+<pre><code>&gt;&gt;&gt; a = u'你好'          
+&gt;&gt;&gt; a.__class__             
+&lt;type 'unicode'&gt;           
+&gt;&gt;&gt; a = '你好'           
+&gt;&gt;&gt; a.__class__      
+&lt;type 'str'&gt;          
+</code></pre>
+
+<p>2. python里       <br/>
+encode是指将unicode 转换成  其他编码</p>
+
+<pre><code>encode： unicode  --&gt;  other            
+</code></pre>
+
+<p>decode 是将其他编码  转换成 unicode</p>
+
+<pre><code>decode ： other   --&gt;  unicode               
+</code></pre>
+
+<p>3. 注意区分字符集和字符编码。</p>
+
+<pre><code>字符集是一个系统支持的所有抽象字符的集合，包括各种文字和符号。         
+字符编码是一套法则，使用该法则，将一个字符集与另一个集合配对。       
+字符集包括ASCII字符集，GB2312字符集，BIG5字符集，UNICODE字符集等        
+</code></pre>
+
+<p>4. UNICODE是字符集，UTF-8,UTF-16,UTF-32是三种字符编码方案。</p>
+
+<p><strong>python的编码问题</strong></p>
+
+<p>python在安装的时候，默认的编码是ASCII码(python3 的默认编码是UTF8)，当程序中出现非ASCII码时，程序会报错.          <br/>
+在终端里，运行</p>
+
+<pre><code>&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.getdefaultencoding()
+'ascii'
+</code></pre>
+
+<p>可以看到，默认编码是ASCII码，看看"你好"是怎么编码的</p>
+
+<pre><code>&gt;&gt;&gt; a = '你好'
+&gt;&gt;&gt; a
+'\xe4\xbd\xa0\xe5\xa5\xbd'
+</code></pre>
+
+<p>这是"你好"的<strong>utf-8</strong>编码，如果对a解码呢，解码就是转换成unicode</p>
+
+<pre><code>&gt;&gt;&gt; a.decode('utf8')
+u'\u4f60\u597d'
+&gt;&gt;&gt; a = u'你好'
+&gt;&gt;&gt; a
+u'\u4f60\u597d'
+</code></pre>
+
+<p>可以看到，a被解码成unicode了，那对a编码呢，编码的定义是将unicode转换成其他编码，看看python会怎么处理</p>
+
+<pre><code>&gt;&gt;&gt; a = '你好'
+&gt;&gt;&gt; a.encode('utf8')
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal not in range(128)
+</code></pre>
+
+<p><strong>报错了</strong>！为什么会报错呢？这是因为对a进行encode操作，实际的代码是</p>
+
+<pre><code>unicode(a).encode('utf-8')
+</code></pre>
+
+<p>会先将a解码成unicode，但没有指定解码方式，会使用系统默认的ASCII码，进行解码，<strong>解码</strong>出错。         <br/>
+而对unicode类型的字符串进行解码也是一样的道理，会先将unicode编码成ASCII码，<strong>编码</strong>出错。</p>
+
+<pre><code>&gt;&gt;&gt; a = u'你好'
+&gt;&gt;&gt; a.decode('utf8')
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "/usr/lib/python2.7/encodings/utf_8.py", line 16, in decode
+    return codecs.utf_8_decode(input, errors, True)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordinal not in range(128)
+</code></pre>
+
+<p>所以，<strong>最好对unicode对象只做encode操作，对str对象只做decode操作</strong>            <br/>
+前面都没有用print函数打印，这时因为print会对编码进行自动处理</p>
+
+<pre><code>&gt;&gt;&gt; a = '你好'
+&gt;&gt;&gt; print a.decode('utf8')
+你好
+</code></pre>
+
+<p>因为print函数对编码做了自动处理，所以显示汉字，这个操作系统环境变量设置有关。</p>
+
+<pre><code>&gt;&gt;&gt; a.decode('utf-8').encode('utf-8')
+'\xe4\xbd\xa0\xe5\xa5\xbd'
+&gt;&gt;&gt; print a.decode('utf8').encode('utf-8')
+你好
+</code></pre>
+
+<p>系统默认编码是ASCII码，那怎么修改系统默认编码呢：</p>
+
+<pre><code>&gt;&gt;&gt; import sys
+&gt;&gt;&gt; reload(sys)
+&gt;&gt;&gt; sys.setdefaultencoding('utf-8')
+</code></pre>
+
+<p>这样系统默认编码就是utf-8了。</p>
+
+<pre><code>&gt;&gt;&gt; sys.getdefaultencoding()
+'utf-8'
+</code></pre>
+
+<p>而在脚本文件里，如果没有<code>#coding:utf-8</code>，会发生什么情况呢？          <br/>
+```python</p>
+
+<h1>!/usr/bin/env python2</h1>
+
+<p>if <strong>name</strong> == '<strong>main</strong>':</p>
+
+<pre><code>print '你好'
+</code></pre>
+
+<p><code>``
+运行程序，会报错：               
+</code>SyntaxError: Non-ASCII character '\xe4' in file 1.py on line 4, but no encoding declared;`              <br/>
+第四行不是ASCII码，出错，由打印的错误信息也可以看出系统默认编码是ASCII码</p>
+
+<p>如果加上<code>#coding:utf-8</code>，则会默认将非ASCII码，编码成utf-8</p>
+
+<p>OK，今天的研究就到这，以后有空再深入研究</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,330 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>常见的IT类面试题[未完] - BaQiao的博客</title>
+
+  <meta name="author" content="BaQiao">
+  
+  <meta name="description" content="常见的IT类面试题[未完] Jul 6th, 2014 1. 讲述计算机启动过程？ 2. 什么是MBR，有多大？ 3. Linux 第一个进程叫什么名字？ 4. http协议状态码，4XX有什么？ 5. raid2,3,4用途？ 6. traceroute的基本原理是什么？ 7. 翻转字符串 8 &hellip;">
+  
+  
+
+  <link rel="canonical" href="http://xdbaqiao.github.io/blog/2014/07/06/interview">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="BaQiao的博客" type="application/atom+xml">
+</head>
+  
+<body class="default">
+  <div id="wrapper">
+    <div id="header">
+  <h1><a href="/">BaQiao的博客</a></h1>
+  
+</div>
+<ul id="social-links">
+  
+  
+  
+    <li><a class="twitter" href="http://twitter.com/yexinjing" title="Twitter">Twitter</a></li>
+  
+  
+    <li> <a class="github" href="https://github.com/xdbaqiao" title="GitHub">GitHub</a> </li>
+  
+</ul>
+<div class="clear"></div>
+<ul id="nav">
+  
+    <li> <a href="/">blog</a> </li>
+  
+
+  
+    <li><a href="/blog/archives">archives</a></li>
+  
+</ul>
+
+    <div id="main"> <div class="post-header">
+  
+    <h1 class="post-title">常见的IT类面试题[未完]</h1>
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-06T18:06:00+08:00" pubdate data-updated="true">Jul 6<span>th</span>, 2014</time>
+</div>
+
+
+<div class="post-content"><pre><code>1. 讲述计算机启动过程？            
+2. 什么是MBR，有多大？               
+3. Linux 第一个进程叫什么名字？              
+4. http协议状态码，4XX有什么？              
+5. raid2,3,4用途？              
+6. traceroute的基本原理是什么？              
+7. 翻转字符串              
+8. 字符串转数字              
+9. crontab 同步时间              
+10. mysql nginx apache 的配置文件位置              
+11. C++中的容器              
+12. 解释$0 $$ $# $! $@ $? $*              
+13. python 生成器和修饰器              
+14. iptables              
+15. Django工作原理              
+16. vim 替换1-10行字符
+17. ls -al
+18. mysql, nginx, apache 优化              
+19. 网站加速              
+20. uwsgi 应用服务器              
+21. ip route add default，网络配置相关              
+22. 关于linux的runlevel              
+</code></pre>
+
+<p><strong>我的解答</strong></p>
+
+<p>1. 讲述计算机启动过程？</p>
+
+<blockquote><p>计算机从BIOS中启动，BIOS一般位于主板的flash中，计算机上电之后，进入BIOS，进行硬件自检，并决定从哪里（可选u盘，硬盘等）启动计算机操作系统，接着BIOS把控制权交给设备，从设备中的前512字节中，读取MBR，即主引导记录，放入内存，里面保存有硬盘分区表等信息。接着进入启动管理器，常见的有grub，lilo等，交由用户决定启动哪个操作系统。</p></blockquote>
+
+<p>2. 什么是MBR，有多大？</p>
+
+<blockquote><p>Master Boot Record，MBR主引导记录，有512字节，前446个字节是主引导程序，将系统控制转交给用户制定的分区表中的系统;然后是四个分区表，用于记录磁盘分区状况，每个分区表16个字节;最后是结束标志AA55</p></blockquote>
+
+<p>3. Linux 第一个进程叫什么名字？</p>
+
+<blockquote><p>init(1)，是进程号为1的进程，用于开机初始化</p></blockquote>
+
+<p>4. http协议状态码，4XX有什么？</p>
+
+<blockquote><p>400：请求报文错误    401：未认证    403：Forbidden      <br/>
+404：not found等</p></blockquote>
+
+<p>5. raid2,3,4用途？</p>
+
+<blockquote><p>raid2 现在用的很少，因为他对大数据有很高读写性能，但少量读写性能不好。它是为超级计算机开发的磁盘阵列，带海明码，在2的n次幂磁盘中设立校验盘。基本思想是在IO到来之后，控制器将数据按位分割，并顺序将每一位数据放置在每一个磁盘中，这样任何数据都能并行读取，提高性能。但这样也不能实现并发IO，因为硬盘被占用。           <br/>
+raid3现在用的也很少，因为其校验盘很容易成为性能瓶颈，其将数据分成多“块”，放在N+1个磁盘上，N个磁盘存放数据，1个磁盘存放校验数据   <br/>
+raid4也用的很少，其校验也是放置在一个磁盘上，这个磁盘很容易成为性能瓶颈。  <br/>
+所以raid2,3,4基本很少见，其主要运用场景是大量数据读写，比如视频，影音等。</p></blockquote>
+
+<p>6. traceroute的基本原理是什么？</p>
+
+<blockquote><p>traceroute主要用于追踪数据包的路由路径，采用icmp协议，数据包经过一个路由器，TTL生存时间将会减一，直到数据包到达目的地或者TTL被置为零。</p></blockquote>
+
+<p>7. 翻转字符串            <br/>
+8. 字符串转数字            <br/>
+9. crontab 同步时间</p>
+
+<blockquote><p>10 10-16/2 * 7 *  /usr/bin/ntpd -s 133.100.9.2       <br/>
+7月十点十分到下午四点十分，每隔两个小时，进行时间同步       <br/>
+有面试官问，crontab同步失败，是什么原因，很有可能是环境变量设置有误，找不到相关命令</p></blockquote>
+
+<p>10. mysql nginx apache 的配置文件位置</p>
+
+<blockquote><p>我完全没有料到居然这也能考，不过我确实没有在意，因为平时凭肌肉记忆和自动补全就能找到相关文件，但笔试起来，我却是如此水。。。。       <br/>
+自动补全是如此关键，另外我觉得这真没什么可考的。。。      <br/>
+以archlinux为例，我在自动补全的帮助下，轻轻松松找到。。。         <br/>
+/etc/mysql/my.cnf   /etc/nginx/nginx.conf    /etc/apache2/httpd.conf</p></blockquote>
+
+<p>11. C++中的容器</p>
+
+<blockquote><p>包括顺序容器和关联容器，顺序容器有vector,list,queue,deque,stack等，其属性和操作包括，size,pop,push,top,insert,erase等，关联容器有map，set等，其属性和操作包括insert,find,count,erase等。</p></blockquote>
+
+<p>12. $0 $$ $# $! $@ $? $*</p>
+
+<blockquote><p>$0 程序名     <br/>
+$$ 当前进程进程号     <br/>
+$# 参数个数           <br/>
+$! 后台运行最后一个进行进程号           <br/>
+$@ 输入参数组合，形如(&#8220;$1&#8221;, &#8220;$2&#8221;, &#8220;$3&#8221;)        <br/>
+$? 前一命令返回码                 <br/>
+$* 输入参数组合，形如(&#8220;$1 $2 $3&#8221;)</p></blockquote>
+
+<p>13. python 生成器和修饰器</p>
+
+<blockquote><p>python的生成器就是yield，表示带yield的函数，其实很简单，类似一个list，不同的是，生成器在使用之后会消耗</p></blockquote>
+
+<p>14. iptables</p>
+
+<blockquote><p>iptables有三表五链，分别是nat、filter、mangle表，prerouting、postrouting、output、input、forward链      <br/>
+nat表用于DNAT与SNAT，包含两个链，prerouting、postrouting       <br/>
+filter表是默认表，包含input、output、forward链      <br/>
+mangle表包含postrouting、prerouting和forward链       <br/>
+可以分三种情况理解防火墙。第一种是进入的数据，先通过prerouting链，进行地址变换，然后进行路由判断，如果目的地址是本机，则通过input链处理;如果目的地不是本机，则是第二种情况，转发的数据，则先通过forward链处理，判断是否拦截或转发，然后交给postrouting链进行处理;第三种情况是出站的数据，首先通过output链，然后进行路由判断，最后通过postrouting，进行SNAT。</p></blockquote>
+
+<p>15. Django工作原理</p>
+
+<blockquote></blockquote>
+
+<p>16. vim 替换1-10行字符</p>
+
+<blockquote><p>:1,10s/www/wwww/g</p></blockquote>
+
+<p>17. ls -al</p>
+
+<blockquote><p>命令第二列表示，子文件夹数量或者文件硬链接数量</p></blockquote>
+
+<p>18. mysql, nginx, apache 优化            <br/>
+19. 网站加速</p>
+
+<blockquote><ol>
+<li>前端优化，静态页面加载速度快</li>
+<li>CDN分发，负载均衡</li>
+<li>nginx, squid代理作cache加速</li>
+</ol>
+</blockquote>
+
+<p>20. uwsgi 应用服务器</p>
+
+<p>21. ip route add default，网络配置相关</p>
+
+<blockquote><p>archlinux 使用最新的网络管理工具包 iproute2，替代之前的nettools</p>
+
+<p>ip raute add default 192.168.0.0/24 via 192.168.0.1 dev eth0</p></blockquote>
+
+<p>22. 关于linux的runlevel</p>
+
+<blockquote><p>runlevel 0 是 关机      <br/>
+runlevel 1 是 单用户模式       <br/>
+runlevel 3 是 多用户模式       <br/>
+runlevel 5 是 图形界面         <br/>
+runlevel 6 是 重启             <br/>
+runlevel s 是 单用户模式       <br/>
+较旧的发行版 其位置为/etc/inittab</p></blockquote>
+
+<p>23. load 的含义</p>
+
+<blockquote><p>分别表示1分钟、5分钟和15分钟的负载情况
+这个负载情况指的是最近时间内，在CPU中，正在运行与准备运行的平均进程数量</p></blockquote>
+</div>
+
+
+
+<div class="post-single">
+  <div class="post-meta">
+    
+
+<span class="categories">
+  Categories:
+  
+    <a class='category' href='/blog/categories/learning/'>learning</a>
+  
+</span>
+
+
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://xdbaqiao.github.io/blog/2014/07/06/interview/" data-via="yexinjing" data-counturl="http://xdbaqiao.github.io/blog/2014/07/06/interview/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+  </div>
+  <div class="clear"></div>
+
+  
+    <div id="comments">
+      <h2>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"></div>
+    </div>
+  
+</div>
+ </div>
+    <div id="footer">
+  <div class="panels">
+    <div class="license">
+      <h2>License</h2>
+      <p>如非特别声明，本 Blog 的文章由 BaQiao 创作，采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 Unported 许可协议</a>进行许可。</p>
+    </div>
+
+    <div class="posts">
+      <h2>Recent Posts</h2>
+      <ul>
+        
+          <li>
+            <a href="/blog/2014/07/12/scrape-cost-engineer-info/">某网站造价工程师数据采集</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/07/06/interview/">常见的IT类面试题[未完]</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/06/08/my-django-blog/">我的django博客</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/03/24/recent-learn/">学习</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2013/11/19/zuoxuewen/">梁漱溟：做学问</a>
+          </li>
+        
+      </ul>
+    </div>
+
+    <div class="douban">
+      <h2>Google+</h2>
+      
+      <a href="https://plus.google.com/112081939216553363796">xdbaqiao on Google+</a>
+      
+    </div>
+  </div>
+
+  <p class="powered">
+    Powered by <a href="https://github.com/xdbaqiao">xdbaqiao</a>
+  </p>
+</div>
+
+  </div> <!-- #wrapper end -->
+
+  
+
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'xdbaqiao';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xdbaqiao.github.io/blog/2014/07/06/interview/';
+        var disqus_url = 'http://xdbaqiao.github.io/blog/2014/07/06/interview/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+</body>
+</html>

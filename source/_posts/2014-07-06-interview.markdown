@@ -1,33 +1,33 @@
 ---
 layout: post
-title: "常见的IT类面试题"
+title: "常见的IT类面试题[未完]"
 date: 2014-07-06 18:06
 comments: true
 categories: learning
 ---
        
-    1\. 讲述计算机启动过程？            
-    2\. 什么是MBR，有多大？               
-    3\. Linux 第一个进程叫什么名字？              
-    4\. http协议状态码，4XX有什么？              
-    5\. raid2,3,4用途？              
-    6\. traceroute的基本原理是什么？              
-    7\. 翻转字符串              
-    8\. 字符串转数字              
-    9\. crontab 同步时间              
-    10\. mysql nginx apache 的配置文件位置              
-    11\. C++中的容器              
-    12\. 解释$0 $$ $# $! $@ $? $*              
-    13\. python 生成器和修饰器              
-    14\. iptables              
-    15\. Django工作原理              
-    16\. vim 替换1-10行字符
-    17\. ls -al
-    18\. mysql, nginx, apache 优化              
-    19\. 网站加速              
-    20\. uwsgi 应用服务器              
-    21\. ip route add default，网络配置相关              
-    22\. 关于linux的runlevel              
+    1. 讲述计算机启动过程？            
+    2. 什么是MBR，有多大？               
+    3. Linux 第一个进程叫什么名字？              
+    4. http协议状态码，4XX有什么？              
+    5. raid2,3,4用途？              
+    6. traceroute的基本原理是什么？              
+    7. 翻转字符串              
+    8. 字符串转数字              
+    9. crontab 同步时间              
+    10. mysql nginx apache 的配置文件位置              
+    11. C++中的容器              
+    12. 解释$0 $$ $# $! $@ $? $*              
+    13. python 生成器和修饰器              
+    14. iptables              
+    15. Django工作原理              
+    16. vim 替换1-10行字符
+    17. ls -al
+    18. mysql, nginx, apache 优化              
+    19. 网站加速              
+    20. uwsgi 应用服务器              
+    21. ip route add default，网络配置相关              
+    22. 关于linux的runlevel              
                   
               
 

@@ -1,0 +1,309 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>我的django博客 - BaQiao的博客</title>
+
+  <meta name="author" content="BaQiao">
+  
+  <meta name="description" content="我的django博客 Jun 8th, 2014 用了两年Python，写了两年Python爬虫，水平一直停留在脚本层级。最近受工作的刺激，梳理了一下思绪，发现自己前端后端都有很大的发展潜力。所以先拿Django开刀，练练手。 Linux和Python已经很熟悉了，所以代码写起来也很顺手。 &hellip;">
+  
+  
+
+  <link rel="canonical" href="http://xdbaqiao.github.io/blog/2014/06/08/my-django-blog">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="BaQiao的博客" type="application/atom+xml">
+</head>
+  
+<body class="default">
+  <div id="wrapper">
+    <div id="header">
+  <h1><a href="/">BaQiao的博客</a></h1>
+  
+</div>
+<ul id="social-links">
+  
+  
+  
+    <li><a class="twitter" href="http://twitter.com/yexinjing" title="Twitter">Twitter</a></li>
+  
+  
+    <li> <a class="github" href="https://github.com/xdbaqiao" title="GitHub">GitHub</a> </li>
+  
+</ul>
+<div class="clear"></div>
+<ul id="nav">
+  
+    <li> <a href="/">blog</a> </li>
+  
+
+  
+    <li><a href="/blog/archives">archives</a></li>
+  
+</ul>
+
+    <div id="main"> <div class="post-header">
+  
+    <h1 class="post-title">我的django博客</h1>
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-08T23:06:00+08:00" pubdate data-updated="true">Jun 8<span>th</span>, 2014</time>
+</div>
+
+
+<div class="post-content"><p>用了两年Python，写了两年Python爬虫，水平一直停留在脚本层级。最近受工作的刺激，梳理了一下思绪，发现自己前端后端都有很大的发展潜力。所以先拿Django开刀，练练手。</p>
+
+<p>Linux和Python已经很熟悉了，所以代码写起来也很顺手。下面记录一下本博客的搭建过程。</p>
+
+<p>原来的博客是Octopress，基本上是嗟来之食，拿来就用，底层原理完全没有理会。现在用Django，感觉自然不一样，当然也学习到很多。</p>
+
+<p>我直接在自己的vps上操作，发行版是Debian。        <br/>
+首先，安装Django</p>
+
+<blockquote><p>pip install django</p></blockquote>
+
+<p>安装完成验证一下</p>
+
+<blockquote><p>python –c “import djang</p></blockquote>
+
+<p>如果没有输出，则表示安装成功了。     <br/>
+运行</p>
+
+<blockquote><p>django-admin.py startproject myblog</p></blockquote>
+
+<p>创建自己的第一个工程，发现在当前目录下，多了文件夹myblog，其中有manage.py，内置众多管理命令。而myblog/myblog 文件夹内也有urls.py, settings.py等关键文件。</p>
+
+<p>执行</p>
+
+<blockquote><p>python manage.py runserver 127.0.0.1:8080</p></blockquote>
+
+<p>就可以在本机浏览器访问了。当然也可以修改ip地址和端口，使远程访问，我就是这样的，因为我直接在vps上操作的。</p>
+
+<p>创建一个博客应用</p>
+
+<blockquote><p>python manage.py startapp sblog</p></blockquote>
+
+<p>会在myblog同级目录下新建sblog目录，里面有models.py, test.py, admin.py, views.py等重要文件。</p>
+
+<p>Django被称为MTV架构，我的理解是，他还是MVC架构，控制器就是整个Django框架，V就是view视图，M就是model进行事物处理，Django多了一个templat模板，模板用于前端展示。</p>
+
+<p><code>M：models.py 进行数据库操作</code>         <br/>
+<code>T：template 用于前端展示</code>        <br/>
+<code>V：views  用于视图逻辑处理</code></p>
+
+<p>另外urls.py用于解析url超链接，进行视图逻辑分发。</p>
+
+<p>首先我打开了admin，安装完Django之后，默认开启了settings.py 中的全部INSTALLED_APP应用（其中添加sblog应用）以及中间件MIDDLEWARE_CLASSES，其他我都没有修改，数据库使用默认的sqllite3</p>
+
+<p>执行</p>
+
+<blockquote><p>python manage.py syncdb</p></blockquote>
+
+<p>进行数据库同步，创建用户。这样就可以通过127.0.0.1:8080/admin访问管理工具了。</p>
+
+<p>为了使管理工具能管理博客，需要编辑models.py 文件，</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>from django.db import models
+</span><span class='line'>from django.contrib import admin
+</span><span class='line'>
+</span><span class='line'>class BQBlog(models.Model):
+</span><span class='line'>    title = models.CharField(max_length=200) 
+</span><span class='line'>    content = models.TextField() 
+</span><span class='line'>timestamp = models.DateTimeField()
+</span><span class='line'>class BQBlogAdmin(admin.ModelAdmin)：
+</span><span class='line'>list_display = ('title','timestamp')
+</span><span class='line'>
+</span><span class='line'>admin.site.register(BQBlog, BQBlogAdmin) //运行python manage.py syncdb前需注释</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使保存在数据库中的博客有标题，内容和时间戳              <br/>
+这样就可以在Django管理工具中进行博客管理了。</p>
+
+<p>进入sblog目录，新建文件夹templates进行模板管理</p>
+
+<p>新建文件chapter.html</p>
+
+<p>在views.py 中添加视图逻辑</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>from django.shortcuts import render_to_response 
+</span><span class='line'>from sblog.models import BQBlog
+</span><span class='line'>
+</span><span class='line'>def chapter(request):
+</span><span class='line'>    posts = BQBlog.objects.all() 
+</span><span class='line'>    return render_to_response("chapter.html", {'posts':posts}) </span></code></pre></td></tr></table></div></figure>
+
+
+<p>myblog文件夹urls.py 中添加url(r&#8217;<sup>$&#8217;,</sup> include(&#8216;blog.urls&#8217;)),              <br/>
+sblog文件夹新建urls.py</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>from django.conf.urls import * 
+</span><span class='line'>from sblog.views import chapter
+</span><span class='line'>
+</span><span class='line'>urlpatterns = patterns('', url(r'^$', chapter), )   </span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样一个基本的、最简单的Django博客就出来了！</p>
+
+<p>最后需要对其进行简单润色。              <br/>
+见<a href="http://django-baqiao.tk/"><code>博客http://django-baqiao.tk</code></a></p>
+
+<p>太丑了！以后有时间再修改！</p>
+</div>
+
+
+
+<div class="post-single">
+  <div class="post-meta">
+    
+
+<span class="categories">
+  Categories:
+  
+    <a class='category' href='/blog/categories/python/'>python</a>
+  
+</span>
+
+
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://xdbaqiao.github.io/blog/2014/06/08/my-django-blog/" data-via="yexinjing" data-counturl="http://xdbaqiao.github.io/blog/2014/06/08/my-django-blog/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+  </div>
+  <div class="clear"></div>
+
+  
+    <div id="comments">
+      <h2>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"></div>
+    </div>
+  
+</div>
+ </div>
+    <div id="footer">
+  <div class="panels">
+    <div class="license">
+      <h2>License</h2>
+      <p>如非特别声明，本 Blog 的文章由 BaQiao 创作，采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 Unported 许可协议</a>进行许可。</p>
+    </div>
+
+    <div class="posts">
+      <h2>Recent Posts</h2>
+      <ul>
+        
+          <li>
+            <a href="/blog/2014/07/12/scrape-cost-engineer-info/">某网站造价工程师数据采集</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/07/06/interview/">常见的IT类面试题[未完]</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/06/08/my-django-blog/">我的django博客</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/03/24/recent-learn/">学习</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2013/11/19/zuoxuewen/">梁漱溟：做学问</a>
+          </li>
+        
+      </ul>
+    </div>
+
+    <div class="douban">
+      <h2>Google+</h2>
+      
+      <a href="https://plus.google.com/112081939216553363796">xdbaqiao on Google+</a>
+      
+    </div>
+  </div>
+
+  <p class="powered">
+    Powered by <a href="https://github.com/xdbaqiao">xdbaqiao</a>
+  </p>
+</div>
+
+  </div> <!-- #wrapper end -->
+
+  
+
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'xdbaqiao';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xdbaqiao.github.io/blog/2014/06/08/my-django-blog/';
+        var disqus_url = 'http://xdbaqiao.github.io/blog/2014/06/08/my-django-blog/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+</body>
+</html>

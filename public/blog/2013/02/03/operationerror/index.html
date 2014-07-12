@@ -1,0 +1,218 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>关于OperationalError - BaQiao的博客</title>
+
+  <meta name="author" content="BaQiao">
+  
+  <meta name="description" content="关于OperationalError Feb 3rd, 2013 往mysql插入数据时，总是提示 ‘OperationalError: (1118, ‘Row size too large. The maximum row size for the used table type, not &hellip;">
+  
+  
+
+  <link rel="canonical" href="http://xdbaqiao.github.io/blog/2013/02/03/operationerror">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="BaQiao的博客" type="application/atom+xml">
+</head>
+  
+<body class="default">
+  <div id="wrapper">
+    <div id="header">
+  <h1><a href="/">BaQiao的博客</a></h1>
+  
+</div>
+<ul id="social-links">
+  
+  
+  
+    <li><a class="twitter" href="http://twitter.com/yexinjing" title="Twitter">Twitter</a></li>
+  
+  
+    <li> <a class="github" href="https://github.com/xdbaqiao" title="GitHub">GitHub</a> </li>
+  
+</ul>
+<div class="clear"></div>
+<ul id="nav">
+  
+    <li> <a href="/">blog</a> </li>
+  
+
+  
+    <li><a href="/blog/archives">archives</a></li>
+  
+</ul>
+
+    <div id="main"> <div class="post-header">
+  
+    <h1 class="post-title">关于OperationalError</h1>
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-03T19:27:00+08:00" pubdate data-updated="true">Feb 3<span>rd</span>, 2013</time>
+</div>
+
+
+<div class="post-content"><p>往mysql插入数据时，总是提示</p>
+
+<blockquote><p>‘OperationalError: (1118, ‘Row size too large. The maximum row size for the used table type, not counting BLOBs, is 8126. You have to change some columns to TEXT or BLOBs’)</p></blockquote>
+
+<p>起初以为是表设计的问题，将超过255的vachar更改成text后，还是报错。但是在另一台计算机上插入数据时，又没有问题。所以，我想可能是我本地mysql配置的问题。网上搜索一下，发现果真是配置的问题。        <br/>
+在mysql配置文件my.cnf中修改或者添加：</p>
+
+<pre><code>[mysqld]
+max_allowed_packet = 16M
+innodb_file_per_table=1
+innodb_file_format='Barracuda'
+</code></pre>
+
+<p>注意mysql的配置文件一定要加上<code>innodb_file_format=’Barracuda</code> ’, 不然会报错</p>
+
+<blockquote><p>requires innodb_file_format > Antelope</p></blockquote>
+
+<p>在设计表时，添加 <code>ROW_FORMAT=COMPRESSED</code></p>
+
+<p>另外，插入数据时，某些字符插入时会产生警告</p>
+
+<blockquote><p>Warning: Incorrect string value: ‘\xD0\x91\xD0\xB8\xD1\x82…’ for column…</p></blockquote>
+
+<p>解决方法是修改表列类型</p>
+
+<pre><code>ALTER TABLE table_name MODIFY COLUMN column_name TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL
+</code></pre>
+</div>
+
+
+
+<div class="post-single">
+  <div class="post-meta">
+    
+
+<span class="categories">
+  Categories:
+  
+    <a class='category' href='/blog/categories/mysql/'>mysql</a>
+  
+</span>
+
+
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://xdbaqiao.github.io/blog/2013/02/03/operationerror/" data-via="yexinjing" data-counturl="http://xdbaqiao.github.io/blog/2013/02/03/operationerror/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+  </div>
+  <div class="clear"></div>
+
+  
+    <div id="comments">
+      <h2>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"></div>
+    </div>
+  
+</div>
+ </div>
+    <div id="footer">
+  <div class="panels">
+    <div class="license">
+      <h2>License</h2>
+      <p>如非特别声明，本 Blog 的文章由 BaQiao 创作，采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 Unported 许可协议</a>进行许可。</p>
+    </div>
+
+    <div class="posts">
+      <h2>Recent Posts</h2>
+      <ul>
+        
+          <li>
+            <a href="/blog/2014/07/12/scrape-cost-engineer-info/">某网站造价工程师数据采集</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/07/06/interview/">常见的IT类面试题[未完]</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/06/08/my-django-blog/">我的django博客</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2014/03/24/recent-learn/">学习</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2013/11/19/zuoxuewen/">梁漱溟：做学问</a>
+          </li>
+        
+      </ul>
+    </div>
+
+    <div class="douban">
+      <h2>Google+</h2>
+      
+      <a href="https://plus.google.com/112081939216553363796">xdbaqiao on Google+</a>
+      
+    </div>
+  </div>
+
+  <p class="powered">
+    Powered by <a href="https://github.com/xdbaqiao">xdbaqiao</a>
+  </p>
+</div>
+
+  </div> <!-- #wrapper end -->
+
+  
+
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'xdbaqiao';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xdbaqiao.github.io/blog/2013/02/03/operationerror/';
+        var disqus_url = 'http://xdbaqiao.github.io/blog/2013/02/03/operationerror/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+</body>
+</html>

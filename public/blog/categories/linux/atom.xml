@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: linux | BaQiao的博客]]></title>
+  <link href="http://xdbaqiao.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://xdbaqiao.github.io/"/>
+  <updated>2014-07-13T00:14:33+08:00</updated>
+  <id>http://xdbaqiao.github.io/</id>
+  <author>
+    <name><![CDATA[BaQiao]]></name>
+    <email><![CDATA[yexj061761@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[tmux]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/10/22/about-tmux/"/>
+    <updated>2013-10-22T09:17:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/10/22/about-tmux</id>
+    <content type="html"><![CDATA[<p>一直以来都是在screen上运行远程程序，偶然发现tmux也有这样的功能，我一直把tmux当分屏工具用，看来真是浪费了额。</p>
+
+<p>对比一下：</p>
+
+<pre><code>tmux attach -t baqiao    ===   screen -D -r baqiao
+
+tmux new -s baqiao       ===   screen -S baqiao
+
+tmux ls               ===   screen -list
+
+Ctrl + b, d           ===   Ctrl + a + d
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu Touch Developer Preview Runs in My Galaxy Nexus]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/05/25/ubuntu-in-nexus/"/>
+    <updated>2013-05-25T19:38:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/05/25/ubuntu-in-nexus</id>
+    <content type="html"><![CDATA[<p><img src="http://i.imgur.com/DK4RATL.jpg" alt="ubuntu" />         <br/>
+*I tried to install the ubuntu touch preview in my Galaxy nexus several mouths ago and i made it.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mini2440 实现软件路由]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/03/13/mini2440/"/>
+    <updated>2013-03-13T19:33:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/03/13/mini2440</id>
+    <content type="html"><![CDATA[<p>（硬件配置：Mini2440嵌入式电路板，外置网卡芯片是DM9601的usb有线网卡）</p>
+
+<p>1.配置内核，使支持iptables，usbnet和mii，交叉编译内核（usbnet和mii主要是为了支持usb网卡，注意是编译到内核，不是编译成模块），将内核移植到Mini2440。</p>
+
+<p>2.交叉编译iptables和usb网卡驱动qf9700，后者是单独的模块qf9700.ko，下载到板上insmod即可（不用modprobe usbnet），可ifconfig eth1看到设备。</p>
+
+<p>3.交叉编译libpcap，版本是0.9，命令大致如下</p>
+
+<blockquote><p>./configure –host=arm-linux</p></blockquote>
+
+<p>编辑Makefile，更改—prefix，使为arm-linux-gcc原目录下的arm-non-。。。。</p>
+
+<pre><code>make 
+make install
+</code></pre>
+
+<p>4. 交叉编译h3cclient，注意Makefile的编写，编译器应该修改为arm-linux-g++</p>
+
+<p>附上Makefile     <br/>
+<code>makefile
+OBJECT = main.o dot1x.o md5.o     
+LIBS = -lpcap    
+TARGET = h3cclient    
+$(TARGET): $(OBJECT)    
+arm-linux-g++ -o $(TARGET) $(OBJECT) $(LIBS)    
+main.o: main.cpp dot1x.h    
+arm-linux-g++ -c main.cpp    
+dot1x.o: dot1x.cpp dot1x.h md5.h    
+arm-linux-g++ -c dot1x.cpp    
+md5.o: md5.cpp md5.h    
+arm-linux-g++ -c md5.cpp    
+clean:    
+rm -f $(OBJECT) $(TARGET)    
+</code>
+客户端为xd-h3c，需要细微修改，将grep及ps相关代码注释，busybox版本有点陈旧，不支持部分选项。       <br/>
+客户端的移植依赖libpcap-0.9.3，libgpg-error-1.1和libgcrypt-1.2.1，这些包的发布时间都是在06年前后，版本很重要，其他版本尝试过几次，都无法顺利移植。编译大同小异，都需要root权限</p>
+
+<pre><code>./configure –host=arm-linux –prefix=/opt/…/arm- 
+make 
+make install
+</code></pre>
+
+<p>编译成功之后需要将相关的库文件libgpg-error.so，libgcrypt.so复制到嵌入式板/usr/lib目录，之后就可以共享上网了。</p>
+
+<p>ifconfig eth0 -promisc关闭网卡混杂模式。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SVM和topic model工具箱在64位Archlinux上的安装]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2013/01/03/svm-in-archlinux/"/>
+    <updated>2013-01-03T11:09:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2013/01/03/svm-in-archlinux</id>
+    <content type="html"><![CDATA[<p>最近在用Matlab做实验，遇到不少问题，本机是64位Archlinux，折腾一下，把问题解决了。</p>
+
+<p>1.安装libsvm库        <br/>
+版本选用libsvm加强版<a href="http://ishare.iask.sina.com.cn/f/20595187.html">libsvm-mat-2.89-3[FarutoUltimate3.0Mcode].rar</a>，因为程序中有函数scaleForSVM的调用，所以需要包含 <code>scaleForSVM.m</code> 程序的版本。下载之后，需要对源文件目录位置做些微调。把文件夹implement里面的文件拷到主文件夹，修改主文件夹的Makefile路径为matlab软件安装目录，并且在matlab中添加路径常量，注意不要把子文件夹添加进去了，然后 <code>!make</code> ，成功搞定！</p>
+
+<p>2.安装topictoolbox
+topictoolbox需要重新编译，如果未编译会出现如下错误：</p>
+
+<pre><code>Attempt to execute SCRIPT GibbsSamplerLDA as a function:
+/usr/local/share/matlab/toolbox/topictoolbox/GibbsSamplerLDA.m
+
+Error in exampleLDA1 (line 47)
+[ WP,DP,Z ] = GibbsSamplerLDA( WS , DS , T , N , ALPHA , BETA , SEED , OUTPUT );
+
+Error in run (line 74)
+evalin('caller',[script ';']);
+
+Error in LDA (line 27)
+run 'exampleLDA1';'
+</code></pre>
+
+<p>版本选用<a href="http://psiexp.ss.uci.edu/research/programs_data/toolbox.htm">最新版本</a>，支持64位操作系统。编译时，在Matlab中切换目录到工具箱所在目录，然后执行 <code>compilescripts</code> ，编译成功之后，topictoolbox就可以使用了，在某些情况下，需要sudo权限执行编译这个步骤。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rm -rf *]]></title>
+    <link href="http://xdbaqiao.github.io/blog/2012/12/30/06-29-rm/"/>
+    <updated>2012-12-30T11:05:00+08:00</updated>
+    <id>http://xdbaqiao.github.io/blog/2012/12/30/06-29-rm</id>
+    <content type="html"><![CDATA[<p>失误，<code>rm -rf *</code>     <br/>
+误删了好多东西，博客也没备份，这下全得重新整过。   <br/>
+博客的文章挑几篇重新po上来了。</p>
+]]></content>
+  </entry>
+  
+</feed>

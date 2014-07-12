@@ -3,15 +3,11 @@
 # ----------------------- #
 
 url: http://xdbaqiao.github.io
-title: BaQiao
-subtitle: <br>XDU/NWPU/VIPSL/<br>
-    Program/Python/Algorithm/<br>
-    Linux/Arch/Embedded Linux/<br>
-    Xi'an, Shannxi Province, China<br>
-    <br><font color="#00DB00" size=+2>KEEP MOVING!</font>
+title: BaQiao的博客
+subtitle: 
 author: BaQiao
 simple_search: http://google.com/search
-description:
+description: 
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
